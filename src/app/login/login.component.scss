@@ -1,0 +1,93 @@
+.animation-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(121, 126, 243, 1), rgba(49, 58, 229, 1));
+    animation: opening 5000ms forwards;
+}
+
+@keyframes opening {
+    0% {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    85% {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+.animation-center {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40%;
+    width: 100%;
+    background-color: aqua;
+    // animation: centerDisappear 5000ms forwards;
+
+    img {
+        width: 460px;
+        object-fit: contain;
+        animation: imgLeft 2000ms forwards;
+    }
+
+    span {
+        color: white;
+        font-weight: 700;
+        font-size: 54px;
+        animation: spanRight 2000ms forwards;
+    }
+}
+
+@keyframes centerDisappear {
+    0% {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    85% {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes imgLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes spanRight {
+    0% {
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
