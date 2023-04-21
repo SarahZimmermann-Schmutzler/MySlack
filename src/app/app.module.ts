@@ -8,6 +8,7 @@ import { WelcomeAnimationComponent } from './welcome-animation/welcome-animation
 import { HeaderComponent } from './header/header.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginProcessComponent } from './login-process/login-process.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginProcessComponent } from './login-process/login-process.component';
     WelcomeAnimationComponent,
     HeaderComponent,
     SignUpComponent,
-    LoginProcessComponent
+    LoginProcessComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
