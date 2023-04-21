@@ -5,6 +5,7 @@
     padding-left: 75px;
     padding-right: 75px;
     padding-top: 50px;
+    height: 75px;
 }
 
 .header-img-container {
@@ -32,13 +33,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    height: 75px;
 
     span {
         font-weight: 400;
         font-size: 18px;
         color: black;
         text-decoration: none;
-        margin-bottom: 15px;
+        margin-bottom: 7px;
     }
 
     a {
@@ -49,9 +51,11 @@
         text-decoration: none;
         cursor: pointer;
         padding: 8px;
+        margin-top: 7px;
+        text-align: center;
 
         &:hover {
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid #ADB0D9;
             border-radius: 20px;
             color: rgba(68, 77, 242, 1);
         }
