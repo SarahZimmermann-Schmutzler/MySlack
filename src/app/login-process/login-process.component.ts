@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoginProcessComponent implements OnInit{
-  login = true;
-  signUp = true;
-  password = true;
+ login = true;
+ signUp = true;
+ password = true;
 
   ngOnInit(): void {
     this.login = false;
@@ -18,10 +18,8 @@ export class LoginProcessComponent implements OnInit{
   constructor () {
   }
 
-  openSignUp() {
-    this.signUp = false;
-    this.login = true;
-  }
+
+
 
   
   
