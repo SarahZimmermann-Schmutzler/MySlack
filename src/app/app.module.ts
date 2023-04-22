@@ -8,14 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { WelcomeAnimationComponent } from './welcome-animation/welcome-animation.component';
 import { PasswordComponent } from './password/password.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     LoginComponent,
     SignUpComponent,
     WelcomeAnimationComponent,
-    PasswordComponent
+    PasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
