@@ -9,6 +9,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { WelcomeAnimationComponent } from './welcome-animation/welcome-animation.component';
 import { PasswordComponent } from './password/password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { WorkspaceComponent } from './workspace/workspace.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ChannelMessagesComponent } from './channel-messages/channel-messages.component';
+import { ThreadsComponent } from './threads/threads.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +27,19 @@ import { NewPasswordComponent } from './new-password/new-password.component';
     SignUpComponent,
     WelcomeAnimationComponent,
     PasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    WorkspaceComponent,
+    SidenavComponent,
+    ChannelMessagesComponent,
+    ThreadsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

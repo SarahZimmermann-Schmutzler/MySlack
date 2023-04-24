@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "myslack-6868b": {
+      "hosting": {
+        "MySlack": [
+          "myslack-6868b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "myslack-6868b"
+  }
+}
