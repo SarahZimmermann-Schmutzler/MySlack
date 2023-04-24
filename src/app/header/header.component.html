@@ -1,11 +1,25 @@
-<div class="header-container">
-    <div class="header-img-container">
-        <img src="assets/img/logo.png">
-        <img src="assets/img/phrase.png">
+<div class="header-container" [class.p60]="workspaceMode">
+    <div class="header-img-container" [class.w20]="workspaceMode">
+        <img src="assets/img/header/logo.png">
+        <img src="assets/img/header/phrase.png">
+        <img src="assets/img/header/show-menu.png" class="show-menu-pic" *ngIf="workspaceMode">
     </div>
 
     <div class="header-link-container" *ngIf="logoMode">
         <span>Neu bei MySlack?</span>
         <a href="#" routerLink="signUp">Konto erstellen</a>
+    </div>
+
+    <div class="searchfield-container" *ngIf="workspaceMode">
+        <input type="search" placeholder="Code learning durchsuchen">
+        <div class="img-container">
+            <img src="assets/img/header/search.png">
+        </div>
+    </div>
+
+    <div class="info-container" *ngIf="workspaceMode">
+        <span>Vorname Nachname</span>
+        <img src="assets/img/header/avatar.png">
+        <img src="assets/img/header/arrow_down.png">
     </div>
 </div>

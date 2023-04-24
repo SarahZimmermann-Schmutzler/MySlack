@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 
 export class HeaderComponent {
   @Input() logoMode = true;
+  @Input() workspaceMode = true;
 }
