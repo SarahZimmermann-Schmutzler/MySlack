@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-
+ @Input() footer = true;
 }
