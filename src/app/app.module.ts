@@ -18,6 +18,7 @@ import { WorkspaceComponent } from './workspace/workspace.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ChannelMessagesComponent } from './channel-messages/channel-messages.component';
 import { ThreadsComponent } from './threads/threads.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ThreadsComponent } from './threads/threads.component';
     WorkspaceComponent,
     SidenavComponent,
     ChannelMessagesComponent,
-    ThreadsComponent
+    ThreadsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
