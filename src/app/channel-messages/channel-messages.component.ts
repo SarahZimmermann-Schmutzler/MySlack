@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./channel-messages.component.scss']
 })
 export class ChannelMessagesComponent {
-
+  mouseOvered = false;
 }
