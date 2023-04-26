@@ -209,21 +209,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // background-color: red;
 }
 
 .answer {
     span {
-        width: 30%;
+        width: 20%;
         // margin-right: 20px;
         font-weight: 400;
         font-size: 16px;
         color: rgba(173, 176, 217, 1);
-        background-color: aqua;
+        // background-color: aqua;
+        white-space: nowrap;
     }
 }
 
+.space {
+    width: 5%;
+}
+
 .line {
-    width: 70%;
+    width: 75%;
     div {
         height: 1px;
         background-color: rgba(173, 176, 217, 1);
