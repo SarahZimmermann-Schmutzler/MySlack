@@ -22,8 +22,10 @@
 .left-container {
     display: flex;
     align-items: center;
-    // background-color: yellowgreen;
-    padding-left: 30px;
+    margin-left: 30px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    cursor: pointer;
 
     img {
         &:first-child {
@@ -41,23 +43,37 @@
     }
 }
 
+.bg-font-lilac {
+    background-color: rgba(236, 238, 254, 1);
+    color: rgba(83, 90, 241, 1);
+}
+
+.imgs-lilac {
+    filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+}
+
 .right-container {
     display: flex;
     align-items: center;
     padding-right: 30px;
     // background-color: yellow;
-
-    span {
-        font-weight: 600;
-        font-size: 20px;
-        margin-right: 20px;
-    }
 }
 
 .member-container {
     display: flex;
     align-items: center;
     margin-right: 10px;
+    border-radius: 30px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+
+    span {
+        font-weight: 600;
+        font-size: 20px;
+        margin-left: 10px;
+    }
 }
 
 .member-ring {
@@ -73,6 +89,24 @@
     img {
         border-radius: 100%;
     }
+}
+
+.add-member-img-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(236, 238, 254, 1);
+    border-radius: 100%;
+    cursor: pointer;
+
+    img {
+        &:hover {
+            filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+        }
+    }
+
 }
 
 
@@ -207,7 +241,6 @@
 }
 
 .third-row {
-
     a {
         text-decoration: none;
         color: rgba(83, 90, 241, 1);
@@ -261,7 +294,7 @@
         &:last-child {
             font-weight: 700;
             font-size: 18px;
-            
+
         }
 
         &:first-child {
@@ -283,6 +316,7 @@
     background-color: rgba(121, 126, 243, 1);
     font-weight: 400;
     font-size: 18px;
+    color: white;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -293,13 +327,12 @@
 }
 
 .user-third-row {
-
     a {
         text-decoration: none;
         color: rgba(83, 90, 241, 1);
         font-size: 18px;
         font-weight: 400;
-        
+
         &:hover {
             font-weight: bold;
         }
@@ -327,6 +360,10 @@
     border: 1px solid rgba(173, 176, 217, 1);
     border-radius: 20px;
     background-color: white;
+
+    &:hover {
+        border: 1px solid #535AF1;
+    }
 
     textarea {
         width: 95%;
@@ -359,5 +396,9 @@
     img {
         width: 20px;
         object-fit: contain;
+
+        &:hover {
+            opacity: 0.6;
+        }
     }
 }

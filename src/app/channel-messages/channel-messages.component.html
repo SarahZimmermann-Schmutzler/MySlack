@@ -1,30 +1,36 @@
 <div class="messages-container">
     <!-- first section -->
     <div class="messages-header">
-        <div class="left-container">
-            <img src="assets/img/workspace/tag.png">
+        <div class="left-container" [class.bg-font-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true"
+            (mouseout)="mouseOveredTwo=false">
+            <img src="assets/img/workspace/tag.png" [class.imgs-lilac]="mouseOveredTwo">
             <span>Channel</span>
-            <img src="assets/img/workspace/arrow_down.png">
+            <img src="assets/img/workspace/arrow_down.png" [class.imgs-lilac]="mouseOveredTwo">
         </div>
 
         <div class="right-container">
-            <div class="member-container">
+            <div class="member-container" [class.bg-font-lilac]="mouseOveredThree" (mouseover)="mouseOveredThree=true"
+            (mouseout)="mouseOveredThree=false">
                 <!-- sollen erstellt werden mit versch. Bildern -->
                 <div class="member-ring">
                     <img src="assets/img/workspace/character.png">
                 </div>
+
                 <div class="member-ring">
                     <img src="assets/img/workspace/character.png">
                 </div>
+
                 <div class="member-ring">
                     <img src="assets/img/workspace/character.png">
                 </div>
+
+                <!-- Anzahl der Mitglieder im Channel -->
+                <span>0</span>
             </div>
 
-            <!-- Anzahl der Mitglieder im Channel -->
-            <span>0</span>
-
-            <img src="assets/img/workspace/add_member.png">
+            <div class="add-member-img-container">
+                <img src="assets/img/workspace/add_member.png">
+            </div>
         </div>
     </div>
 
@@ -37,9 +43,10 @@
                 <div class="date-bubble">Montag, 01 Januar</div>
             </div>
 
-            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false">
+            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                (mouseout)="mouseOvered=false">
                 <img src="assets/img/workspace/character.png">
-                
+
 
                 <div class="message-infos-container">
                     <div class="first-row">
@@ -47,7 +54,9 @@
                         <span>00:00 Uhr</span>
                     </div>
 
-                    <div class="second-row" [class.bg-white]="mouseOvered" >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
+                    <div class="second-row" [class.bg-white]="mouseOvered">Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat
+                        totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
 
                     <div class="third-row">
                         <a>0 Antworten</a>
@@ -71,7 +80,8 @@
                         <span>Name Nachname</span>
                     </div>
 
-                    <div class="user-second-row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi?</div>
+                    <div class="user-second-row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
+                        tenetur nostrum consequuntur quibusdam porro et quae a animi?</div>
 
                     <div class="user-third-row">
                         <span>Letzte Antwort 00:00</span>
@@ -93,9 +103,10 @@
                 <div class="date-bubble">Montag, 01 Januar</div>
             </div>
 
-            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false">
+            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                (mouseout)="mouseOvered=false">
                 <img src="assets/img/workspace/character.png">
-                
+
 
                 <div class="message-infos-container">
                     <div class="first-row">
@@ -103,7 +114,9 @@
                         <span>00:00 Uhr</span>
                     </div>
 
-                    <div class="second-row" [class.bg-white]="mouseOvered" >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
+                    <div class="second-row" [class.bg-white]="mouseOvered">Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat
+                        totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
 
                     <div class="third-row">
                         <a>0 Antworten</a>
@@ -127,7 +140,9 @@
                         <span>Name Nachname</span>
                     </div>
 
-                    <div class="user-second-row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
+                    <div class="user-second-row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
+                        tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat totam aspernatur voluptas
+                        adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
 
                     <div class="user-third-row">
                         <span>Letzte Antwort 00:00</span>

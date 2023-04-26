@@ -22,25 +22,59 @@
     }
 }
 
+.edit-img-container {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(236, 238, 254, 1);
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+
+        &:hover {
+            filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+        }
+    }
+}
+
 .content-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.rotate {
-    transform: rotate(270deg);
-}
+
 
 .channel-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    cursor: pointer;
+
+
+}
+
+.channel-content-left {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+    }
 }
 
 .channel-row-container {
-    width: 65%;
+    // width: 65%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -55,14 +89,42 @@
     }
 }
 
+.rotate {
+    transform: rotate(270deg);
+    margin-right: 25px;
+}
+
+.add-img-container {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: rgba(236, 238, 254, 1);
+        ;
+    }
+
+    img {
+        &:hover {
+            filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+        }
+    }
+}
+
 .direct-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+    }
 }
 
 .direct-row-container {
-    width: 85%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
