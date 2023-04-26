@@ -1,5 +1,119 @@
 <div class="threads-container">
-    <div>Channel</div>
-    <div>messages</div>
-    <div>writing space</div>
-</div>
+    <div class="threads-header">
+        <div class="left-container">
+            <span>Thread</span>
+            <img src="assets/img/workspace/tag_lilac.png">
+            <span>Channel</span>
+        </div>
+
+        <img src="assets/img/workspace/close.png">
+    </div>
+
+    <!-- second section -->
+    <div class="messages-display-container">
+        <!-- Antworten der Mitglieder -->
+        <div class="message-box">
+            <!-- <div class="line-date-container">
+                <div class="line"></div>
+                <div class="date-bubble">Montag, 01 Januar</div>
+            </div> -->
+
+            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                (mouseout)="mouseOvered=false">
+                <img src="assets/img/workspace/character.png">
+
+                <div class="message-infos-container">
+                    <div class="first-row">
+                        <span>Name Nachname</span>
+                        <span>00:00 Uhr</span>
+                    </div>
+
+                    <div class="second-row" [class.bg-white]="mouseOvered">Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat
+                        totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
+
+                    <!-- <div class="third-row">
+                        <a>0 Antworten</a>
+                        <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="answer-container">
+                <div class="answer">
+                    <span>0 Antworten</span>
+                </div>
+                
+                <div class="line">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Antworten der Mitglieder -->
+        <div class="message-box">
+            <!-- <div class="line-date-container">
+                <div class="line"></div>
+                <div class="date-bubble">Montag, 01 Januar</div>
+            </div> -->
+
+            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                (mouseout)="mouseOvered=false">
+                <img src="assets/img/workspace/character.png">
+
+                <div class="message-infos-container">
+                    <div class="first-row">
+                        <span>Name Nachname</span>
+                        <span>00:00 Uhr</span>
+                    </div>
+
+                    <div class="second-row" [class.bg-white]="mouseOvered">Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat
+                        totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
+
+                    <!-- <div class="third-row">
+                        <a>0 Antworten</a>
+                        <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Antworten des Users -->
+        <div class="message-box">
+            <!-- <div class="line-date-container">
+                <div class="line"></div>
+                <div class="date-bubble">Montag, 01 Januar</div>
+            </div> -->
+
+            <div class="user-message-content-container">
+                <div class="user-message-infos-container">
+                    <div class="user-first-row">
+                        <span>00:00 Uhr</span>
+                        <span>Name Nachname</span>
+                    </div>
+
+                    <div class="user-second-row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
+                        tenetur nostrum consequuntur quibusdam porro et quae a animi?</div>
+
+                    <!-- <div class="user-third-row">
+                        <span>Letzte Antwort 00:00</span>
+                        <a>0 Antworten</a>
+                    </div> -->
+                </div>
+
+                <img src="assets/img/workspace/character.png">
+            </div>
+        </div>
+
+        <!-- third section -->
+        <div class="send-message-container">
+            <textarea placeholder="Antworten..."></textarea>
+
+            <div class="like-send-container">
+                <div></div>
+
+                <img src="assets/img/workspace/send.png">
+            </div>
+        </div>
+    </div>
