@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  @ViewChild('mail') mail!: ElementRef;
+  @ViewChild('password') password!: ElementRef;
 
+  constructor () {
+
+  }
+
+  login() {
+    let mailValue = this.mail.nativeElement;
+    let passwordValue = this.password.nativeElement;
+  }
 }
