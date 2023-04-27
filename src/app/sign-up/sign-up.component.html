@@ -14,14 +14,19 @@
 
         <span>Mit deinem Namen und deiner E-Mail-Adresse erstellst du dein neues MySlack-Konto.</span>
 
-        <form>
-            <div><input placeholder="Name und Nachname"></div>
-            <div><input placeholder="beispielname@email.com"></div>
-            <div><input placeholder="Passwort"></div>
+        <form (submit)="saveUser()" ngNativeValidate>
+            <div class="input-container"><input required pattern="[A-Za-z ]+" placeholder="Name und Nachname" class="input-person" name="name" [(ngModel)]="user.name"></div>
+            <div class="input-container"><input required type="email" placeholder="beispielname@email.com" class="input-mail" name="mail" [(ngModel)]="user.mail"></div>
+            <div class="input-container"><input required minlength="8" placeholder="Passwort" class="input-lock" name="password" [(ngModel)]="user.password"></div>
+            <div class="btn-container">
+                <button [disabled]="disabled" [class.disabled]="disabled">Weiter</button>
+            </div>
         </form>
-        
-        <div class="btn-container">
-            <button>Weiter</button>
-        </div>
+    </div>
+</div>
+
+<div class="sign-up-pop-up" *ngIf="popUp">
+    <div>
+        Konto erflogreich erstellt!
     </div>
 </div>
