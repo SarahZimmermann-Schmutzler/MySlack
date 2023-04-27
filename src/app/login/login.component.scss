@@ -38,14 +38,25 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        
+        div {
+            height: 108px;
+        }
 
         input {
+            width: 75%;
             background-color: rgba(236, 238, 254, 1);
             border: none;
             border-radius: 20px;
             padding: 18px 75px;
             height: 30px;
-            margin-bottom: 40px;
+            // margin-bottom: 40px;
+            margin-top: 2px;
+            cursor: pointer;
+
+            &:hover {
+                border: 1px solid #ADB0D9;
+            }
 
             &:first-child {
                 background-image: url('^assets/img/login/mail.png');
