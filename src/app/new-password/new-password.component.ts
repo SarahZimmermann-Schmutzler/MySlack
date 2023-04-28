@@ -24,8 +24,7 @@ export class NewPasswordComponent implements OnInit {
 
   constructor(private router: Router, private auth: Auth, private route: ActivatedRoute) { }
 
-  async resetPassword() {
-    
+  resetPassword() {
     this.route.params.subscribe((params) => {
       this.oobCode = params['oobCode'];
       console.log(this.oobCode)
