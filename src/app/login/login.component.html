@@ -7,15 +7,21 @@
         <span>Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest.</span>
 
         <form>
-            <div><input placeholder="beispielname@email.com" class="input-mail" #mail></div>
-            <div><input placeholder="Passwort" class="input-lock" #password></div>
+            <div><input placeholder="beispielname@email.com" class="input-mail" name="mail" [(ngModel)]="mail"></div>
+            <div><input placeholder="Passwort" class="input-lock" name="password" [(ngModel)]="password"></div>
         </form>
 
         <a href="#" routerLink="password">Passwort vergessen?</a>
         
         <div class="btn-container">
-            <button>Anmelden</button>
+            <button (click)="login()">Anmelden</button>
             <button routerLink="workspace">Gäste-Login</button>
         </div>
+    </div>
+</div>
+
+<div class="login-pop-up" *ngIf="popUp">
+    <div>
+        Anmeldung fehlgeschlagen!
     </div>
 </div>

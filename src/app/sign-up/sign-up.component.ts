@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { User } from 'src/models/user.class';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,39 +9,75 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  user = new User();
   disabled = true;
   popUp = false;
-  coll = collection(this.firestore, 'users');
+  name = '';
+  mail = '';
+  password = '';
 
   ngOnInit(): void {
     setInterval(() => {
-      if(this.user.name && this.user.mail && this.user.password) {
+      if(this.name && this.mail && this.password) {
         this.disabled = false;
       }
-    }, 1000); 
+    }, 1000);
   }
 
-  constructor(
-    public firestore: Firestore,
-    private router: Router) {}
+  constructor(private router: Router, private auth : Auth) {}
   
-    saveUser() {
-    // console.log('current user is', this.user);
-    addDoc(this.coll, this.user.toJSON()).then((result:any) => {
-      // console.log('Adding user finished', result);
-    });
-    this.clearFields();
-    this.disabled = true;
-    this.popUp = true;
-    setTimeout(() => {
+    registerUser() {
+    console.log(this.mail, this.password)
+    createUserWithEmailAndPassword(this.auth, this.mail, this.password).then(() => {
+      this.clearFields();
+      this.disabled = true;
+      this.popUp = true;
+      setTimeout(() => {
       this.router.navigate(['/']);
-    }, 3000);
+      }, 3000);
+    });
+    
   }
 
   clearFields() {
-    this.user.name = '';
-    this.user.mail = '';
-    this.user.password = '';
+    this.name = '';
+    this.mail = '';
+    this.password = '';
   }
 }
+
+// user = new User();
+//   disabled = true;
+//   popUp = false;
+//   coll = collection(this.firestore, 'users');
+
+//   ngOnInit(): void {
+//     setInterval(() => {
+//       if(this.user.name && this.user.mail && this.user.password) {
+//         this.disabled = false;
+//       }
+//     }, 1000); 
+//   }
+
+//   constructor(
+//     public firestore: Firestore,
+//     private router: Router) {}
+  
+//     registerUser() {
+//     // console.log('current user is', this.user);
+//     addDoc(this.coll, this.user.toJSON()).then((result:any) => {
+//       // console.log('Adding user finished', result);
+//     });
+//     this.clearFields();
+//     this.disabled = true;
+//     this.popUp = true;
+//     setTimeout(() => {
+//       this.router.navigate(['/']);
+//     }, 3000);
+//   }
+
+//   clearFields() {
+//     this.user.name = '';
+//     this.user.mail = '';
+//     this.user.password = '';
+//   }
+// }

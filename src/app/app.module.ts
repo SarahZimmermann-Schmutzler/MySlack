@@ -11,7 +11,7 @@ import { PasswordComponent } from './password/password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth,getAuth, Auth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { WorkspaceComponent } from './workspace/workspace.component';
@@ -43,7 +43,7 @@ import { FormsModule } from '@angular/forms';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

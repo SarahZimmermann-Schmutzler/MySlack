@@ -137,3 +137,40 @@
         }
     }
 }
+
+.login-pop-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(236, 238, 254, 0.5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow-x: hidden;
+
+    div {
+        background-color: rgba(68, 77, 242, 1);
+        color: white;
+        font-weight: 700;
+        font-size: 28px;
+        padding: 30px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        margin-bottom: 30px;
+        margin-right: 100px;
+        animation: flyIn 1s ease-in forwards;
+    }
+}
+
+@keyframes flyIn {
+    from {
+        margin-right: -400px
+    }
+
+    to {
+        margin-right: 100px;
+    }
+}
