@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,21 @@ export class LoginComponent {
   mail = '';
   password = '';
   popUp = false;
+  user$: Observable<any>;
+  currentUser = '';
 
   constructor (private router : Router, private auth : Auth) {}
 
   login() {  
   signInWithEmailAndPassword(this.auth, this.mail, this.password).then(() => {
         localStorage.setItem('token','true');
-        this.router.navigate(['/workspace']);
+        onAuthStateChanged(this.auth, (user$) => {
+          if(user$) {
+            this.currentUser = user$.uid;
+            console.log(this.currentUser);
+            this.router.navigateByUrl('/workspace/'+ this.currentUser);
+          }
+        })
       }, () => {
         console.log('Fehlgeschlagen')
         this.popUp = true;

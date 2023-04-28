@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Auth, updateEmail } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-password',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-password.component.scss']
 })
 export class NewPasswordComponent {
+
+  constructor (private router : Router, private auth : Auth) {}
+
+  resetPassword() {
+    updateEmail
+  }
 
 }
