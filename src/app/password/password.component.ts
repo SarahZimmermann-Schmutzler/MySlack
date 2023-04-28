@@ -27,9 +27,10 @@ export class PasswordComponent implements OnInit{
       this.clearFields();
       this.disabled = true;
       this.popUp = true;
-      // setTimeout(() => {
-      // this.router.navigate(['/']);
-      // }, 3000);
+      setTimeout(() => {
+        this.router.navigate(['/']);
+        this.popUp = false;
+      }, 3000);
     })
   }
 
