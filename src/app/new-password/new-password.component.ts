@@ -34,8 +34,9 @@ export class NewPasswordComponent implements OnInit {
       this.popUp = true;
       setTimeout(() => {
         this.router.navigate(['/']);
-        this.popUp = false;
         }, 3000);
+    }) .catch(() => {
+      console.log('Invalid code')
     });
   }
 
@@ -43,5 +44,4 @@ export class NewPasswordComponent implements OnInit {
     this.newpasswordOne = '';
     this.newpasswordTwo = '';
   }
-
 }
