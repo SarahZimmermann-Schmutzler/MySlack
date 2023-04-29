@@ -28,7 +28,7 @@ export class NewPasswordComponent implements OnInit {
     const urlParams = new URL(window.location.toLocaleString()).searchParams;
     let oobCode = urlParams.get('oobCode');
     console.log(oobCode);
-    verifyPasswordResetCode(this.auth, oobCode). then(() => {
+    confirmPasswordReset(this.auth, oobCode, this.newpasswordOne). then(() => {
       this.clearFields();
       this.disabled = true;
       this.popUp = true;
