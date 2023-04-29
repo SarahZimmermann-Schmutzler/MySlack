@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, confirmPasswordReset, updateEmail, verifyPasswordResetCode } from '@angular/fire/auth';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-password',
@@ -22,20 +22,26 @@ export class NewPasswordComponent implements OnInit {
     }, 1000);
   }
 
-  constructor(private router: Router, private auth: Auth, private route: ActivatedRoute) { }
+  constructor(private router: Router, private auth: Auth) { }
 
   resetPassword() {
-    this.route.params.subscribe((params) => {
-      this.oobCode = params['oobCode'];
-      console.log(this.oobCode)
-    })
+    const urlParams = new URL(window.location.toLocaleString()).searchParams;
+    let oobCode = urlParams.get('oobCode');
+    console.log(oobCode);
+    verifyPasswordResetCode(this.auth, oobCode). then(() => {
+      this.clearFields();
+      this.disabled = true;
+      this.popUp = true;
+      setTimeout(() => {
+        this.router.navigate(['/']);
+        this.popUp = false;
+        }, 3000);
+    });
+  }
 
-    // const params = new URLSearchParams(window.location.pathname);
-    // const code = params.get('oobCode')
-    // const email = await verifyPasswordResetCode(this.auth, code)
-    // console.log(email);
-    // verifyPasswordResetCode(this.auth, code)
-    // confirmPasswordReset(this.auth, oobCode, this.newpasswordOne)
+  clearFields() {
+    this.newpasswordOne = '';
+    this.newpasswordTwo = '';
   }
 
 }
