@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,21 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'MySlack';
-  
-  constructor(public router: Router) {}
+  // currentUser$: Observable<any>;
+  // @Input() currentUserId = '';
+
+  constructor(public router: Router, private auth: Auth) { }
 
   ngOnInit(): void {
+    // setInterval(() => {
+
+    //   onAuthStateChanged(this.auth, (currentUser$) => {
+    //   if (currentUser$) {
+    //     this.currentUserId = currentUser$.uid;
+    //     console.log('USer id is', this.currentUserId);
+    //   }});
+
+    // }, 2000);
+    
   }
 }
