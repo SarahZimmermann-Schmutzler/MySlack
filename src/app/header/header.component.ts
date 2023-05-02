@@ -31,5 +31,9 @@ export class HeaderComponent {
       this.router.navigate(['/']);
     })
   }
+
+  GuestLogout() {
+    this.router.navigate(['/']);
+  }
   
 }

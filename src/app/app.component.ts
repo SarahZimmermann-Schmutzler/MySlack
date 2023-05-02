@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'MySlack';
-  // currentUser$: Observable<any>;
-  // @Input() currentUserId = '';
+  currentUser$: Observable<any>;
+  @Input() currentUserId = '';
 
   constructor(public router: Router, private auth: Auth) { }
 
@@ -25,6 +25,12 @@ export class AppComponent implements OnInit {
     //   }});
 
     // }, 2000);
+
+    onAuthStateChanged(this.auth, (currentUser$) => {
+      if (currentUser$) {
+        this.currentUserId = currentUser$.uid;
+        console.log('User id is', this.currentUserId);
+      }});
     
   }
 }

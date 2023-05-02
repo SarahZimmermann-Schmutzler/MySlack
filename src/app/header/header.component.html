@@ -27,6 +27,8 @@
 <div class="pop-up-logout" *ngIf="logoutPopup" (click)="closePopup()">
     <div class="logout-profile-box">
         <div><span>Profil</span></div>
-        <div (click)="logout()"><span>Logout</span></div>
+        <div (click)="logout()" *ngIf="workspaceModeUser"><span>Logout</span></div>
+        <!-- Guest Version -->
+        <div (click)="GuestLogout()" *ngIf="workspaceMode"><span>Logout</span></div>
     </div>
 </div>
