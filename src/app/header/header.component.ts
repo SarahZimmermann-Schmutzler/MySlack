@@ -13,6 +13,7 @@ export class HeaderComponent {
   @Input() workspaceMode = true;
   @Input() workspaceModeUser = true;
   logoutPopup = false;
+  profilePopup = false;
   mouseOvered = false;
   mouseOveredTwo = false;
 
@@ -34,6 +35,14 @@ export class HeaderComponent {
 
   GuestLogout() {
     this.router.navigate(['/']);
+  }
+
+  openProfilePopup() {
+    this.profilePopup = true;
+  }
+
+  closeProfilePopup() {
+    this.profilePopup = false;
   }
   
 }

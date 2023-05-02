@@ -26,9 +26,41 @@
 
 <div class="pop-up-logout" *ngIf="logoutPopup" (click)="closePopup()">
     <div class="logout-profile-box">
-        <div><span>Profil</span></div>
+        <div (click)="openProfilePopup()"><span>Profil</span></div>
         <div (click)="logout()" *ngIf="workspaceModeUser"><span>Logout</span></div>
         <!-- Guest Version -->
         <div (click)="GuestLogout()" *ngIf="workspaceMode"><span>Logout</span></div>
+    </div>
+</div>
+
+<div class="pop-up-profile" *ngIf="profilePopup">
+    <div class="profile-box">
+        <div class="first-row">
+            <span>Profil</span>
+            <div (click)="closeProfilePopup()"><img src="assets/img/workspace/close.png"></div>
+        </div>
+
+        <div class="second-row">
+            <img src="assets/img/workspace/woman.png">
+        </div>
+
+        <div class="third-row">
+            <span>Vorname Name</span>
+            <span>Bearbeiten</span>
+        </div>
+
+        <div class="fourth-row">
+            <div></div>
+            <span>Status</span>
+        </div>
+
+        <div class="fith-row">
+            <img src="assets/img/workspace/mail.png">
+            <span>E-Mail-Adresse</span>
+        </div>
+
+        <div class="sixth-row">
+            <span>email@beispiel.com</span>
+        </div>
     </div>
 </div>
