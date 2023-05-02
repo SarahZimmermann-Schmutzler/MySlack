@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ export class LoginComponent {
   password = '';
   popUp = false;
   user$: Observable<any>;
-  currentUser = '';
+  @Input() currentUser = '';
 
   constructor (private router : Router, private auth : Auth) {}
 

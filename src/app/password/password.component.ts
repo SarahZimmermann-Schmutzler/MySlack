@@ -29,7 +29,6 @@ export class PasswordComponent implements OnInit{
       this.popUp = true;
       setTimeout(() => {
         this.router.navigate(['/']);
-        this.popUp = false;
       }, 3000);
     })
   }
