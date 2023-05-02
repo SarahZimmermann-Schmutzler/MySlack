@@ -37,4 +37,8 @@ export class LoginComponent {
           }, 3000); 
         })
     }
+
+    guestLogin() {
+      this.router.navigateByUrl('/workspace/'+ 'kLLzHS4VI6TDTL2gZUPbRzgOoID3');
+    }
 }

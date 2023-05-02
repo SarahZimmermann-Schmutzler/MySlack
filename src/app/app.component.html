@@ -1,6 +1,6 @@
-<app-header [logoMode]="router.url == '/'" [workspaceMode]="router.url == '/workspace'" [workspaceModeUser]="router.url == '/workspace/' + currentUserId"></app-header>
+<app-header [logoMode]="router.url == '/'" [workspaceMode]="router.url == '/workspace/' + currentUserId"></app-header>
 <!-- logoMode ist true, wenn die routerUrl die Startseite ist -->
 
 <router-outlet></router-outlet>
 
-<app-footer [footer]="router.url !== '/workspace'"></app-footer>
+<app-footer [footer]="router.url !== '/workspace/' + currentUserId"></app-footer>

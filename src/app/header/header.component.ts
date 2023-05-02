@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   @Input() logoMode = true;
   @Input() workspaceMode = true;
-  @Input() workspaceModeUser = true;
   logoutPopup = false;
   profilePopup = false;
   mouseOvered = false;
@@ -31,10 +30,6 @@ export class HeaderComponent {
     signOut(this.auth).then(() => {
       this.router.navigate(['/']);
     })
-  }
-
-  GuestLogout() {
-    this.router.navigate(['/']);
   }
 
   openProfilePopup() {

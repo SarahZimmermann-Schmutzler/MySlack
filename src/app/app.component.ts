@@ -16,21 +16,14 @@ export class AppComponent implements OnInit {
   constructor(public router: Router, private auth: Auth) { }
 
   ngOnInit(): void {
-    // setInterval(() => {
-
-    //   onAuthStateChanged(this.auth, (currentUser$) => {
-    //   if (currentUser$) {
-    //     this.currentUserId = currentUser$.uid;
-    //     console.log('USer id is', this.currentUserId);
-    //   }});
-
-    // }, 2000);
-
     onAuthStateChanged(this.auth, (currentUser$) => {
       if (currentUser$) {
         this.currentUserId = currentUser$.uid;
         console.log('User id is', this.currentUserId);
-      }});
+      } else {
+        this.currentUserId = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
+      }
+    });
     
   }
 }
