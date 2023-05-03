@@ -9,7 +9,7 @@
 
     <div class="content-container">
         <div class="channel-content">
-            <div class="channel-content-left" (click)="openChannel()">
+            <div class="channel-content-left" (click)="openAndCloseChannels()">
                 <img class="rotate" src="assets/img/workspace/arrow.png" [class.rotate-back]="rotateChannel">
                 <div class="channel-row-container">
                     <img src="assets/img/workspace/workspaces.png">
@@ -23,22 +23,33 @@
         </div>
 
         <div class="hide-channel-container" *ngIf="hideChannel">
-            <div>
+            <div class="channel" (click)="openChannel()" [class.hover-stay]="hoverStay">
                 <img src="assets/img/workspace/tag.png">
-                <span>Channel</span>
+                <span [class.hover-stay-span]="hoverStay">Channel</span>
             </div>
 
-            <div>
+            <div class="new-channel">
                 <img src="assets/img/workspace/add_circle_white.png">
                 <span>Channel hinzufügen</span>
             </div>
         </div>
 
-        <div class="direct-content" (click)="openDirectMessages()">
+        <div class="direct-content" (click)="openAndCloseDirectMessages()">
             <img class="rotate" src="assets/img/workspace/arrow.png" [class.rotate-back]="rotateMessage">
             <div class="direct-row-container">
                 <img src="assets/img/workspace/add_circle.png">
                 <div>Direktnachrichten</div>
+            </div>
+        </div>
+
+        <div class="hide-message-container" *ngIf="hideMessage">
+            <div class="contact-info-container">
+                <img src="assets/img/workspace/woman.png">
+                <div class="status-container">
+                    <div></div>
+                </div>
+                <span>Vorname Name</span>
+                <span>(Du)</span>
             </div>
         </div>
     </div>
