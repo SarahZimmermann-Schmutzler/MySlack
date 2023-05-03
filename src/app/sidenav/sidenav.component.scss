@@ -58,7 +58,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     cursor: pointer;
 
 
@@ -83,7 +83,7 @@
         margin-right: 10px;
     }
 
-    span {
+    div {
         font-weight: 700;
         font-size: 18px;
     }
@@ -92,6 +92,10 @@
 .rotate {
     transform: rotate(270deg);
     margin-right: 25px;
+}
+
+.rotate-back {
+    transform: rotate(0deg);
 }
 
 .add-img-container {
@@ -133,8 +137,37 @@
         margin-right: 10px;
     }
 
-    span {
+    div {
         font-weight: 700;
+        font-size: 18px;
+    }
+}
+
+.hide-channel-container {
+    // background-color: aqua;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 30px;
+    // padding-right: 30px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+
+    div {
+        margin-bottom: 20px;
+    }
+
+    img {
+        height: 16px;
+        width: 16px;
+        object-fit: contain;
+        margin-right: 10px;
+    }
+
+    span {
+        font-weight: 400;
         font-size: 18px;
     }
 }

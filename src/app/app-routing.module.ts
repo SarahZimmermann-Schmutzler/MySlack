@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: 'signUp', component: SignUpComponent},
   { path: 'password', component: PasswordComponent},
   { path: 'newpassword', component: NewPasswordComponent},
-  { path: 'workspace', component: WorkspaceComponent},
-  {path: 'workspace/:currentUser', component: WorkspaceComponent}
+  { path: 'workspace/:currentUser', component: WorkspaceComponent}
 ];
 
 @NgModule({
