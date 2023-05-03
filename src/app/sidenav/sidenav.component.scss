@@ -49,10 +49,10 @@
 .content-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    height: 620px;
+    overflow-y: hidden;
 }
-
-
 
 .channel-content {
     display: flex;
@@ -60,8 +60,6 @@
     align-items: center;
     margin-bottom: 30px;
     cursor: pointer;
-
-
 }
 
 .channel-content-left {
@@ -146,14 +144,29 @@
 .hide-channel-container {
     // background-color: aqua;
     width: 100%;
+    min-height: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 30px;
     // padding-right: 30px;
     box-sizing: border-box;
     margin-bottom: 20px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        background-color: white;
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(121, 126, 243, 1);
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: white;
+    }
 
     div {
         margin-bottom: 20px;
@@ -212,14 +225,30 @@
 .hide-message-container {
     // background-color: aqua;
     width: 100%;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 30px;
     // padding-right: 30px;
     box-sizing: border-box;
     margin-bottom: 20px;
+    overflow-y: scroll;
+    // background-color: red;
+
+    &::-webkit-scrollbar {
+        background-color: white;
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(121, 126, 243, 1);
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: white;
+    }
 }
 
 .contact-info-container {

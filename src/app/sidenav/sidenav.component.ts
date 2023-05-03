@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidenavComponent {
   rotateChannel = false;
   rotateMessage = false;
-  hideChannel = true;
-  hideMessage = true;
+  hideChannel = false;
+  hideMessage = false;
   hoverStay = false;
 
   openAndCloseChannels() {
@@ -20,7 +20,7 @@ export class SidenavComponent {
 
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
-    this.hideMessage = !this.hideChannel;
+    this.hideMessage = !this.hideMessage;
   }
 
   openChannel() {
