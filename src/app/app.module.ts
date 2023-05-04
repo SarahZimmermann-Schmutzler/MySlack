@@ -20,6 +20,7 @@ import { ChannelMessagesComponent } from './channel-messages/channel-messages.co
 import { ThreadsComponent } from './threads/threads.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { ChannelMessagesDirectmessageComponent } from './channel-messages-directmessage/channel-messages-directmessage.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     SidenavComponent,
     ChannelMessagesComponent,
     ThreadsComponent,
-    FooterComponent
+    FooterComponent,
+    ChannelMessagesDirectmessageComponent
   ],
   imports: [
     BrowserModule,

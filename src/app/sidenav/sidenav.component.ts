@@ -35,4 +35,8 @@ export class SidenavComponent {
   closePopup() {
     this.channelPopup = false;
   }
+
+  openDirectMessage() {
+    
+  }
 }

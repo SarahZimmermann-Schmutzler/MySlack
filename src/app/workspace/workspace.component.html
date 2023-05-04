@@ -1,7 +1,7 @@
 <div class="content-container">
-    <app-sidenav style="width: 20%; height: 100%;"></app-sidenav>
+    <app-sidenav class="sidenav"></app-sidenav>
 
-    <app-channel-messages style="width: 55%; height: 100%;"></app-channel-messages>
+    <app-channel-messages class="channel-message"></app-channel-messages>
 
-    <app-threads style="width: 25%; height: 100%;"></app-threads>
+    <app-threads class="threads" *ngIf="showThreadSection"></app-threads>
 </div>

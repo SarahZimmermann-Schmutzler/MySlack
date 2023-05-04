@@ -43,7 +43,7 @@
         </div>
 
         <div class="hide-message-container" *ngIf="hideMessage">
-            <div class="contact-info-container">
+            <div class="contact-info-container" (click)="openDirectMessage()">
                 <img src="assets/img/workspace/woman.png">
                 <div class="status-container">
                     <div></div>
@@ -55,8 +55,10 @@
     </div>
 </div>
 
-<div class="pop-up-logout" *ngIf="channelPopup">
-    <div class="logout-profile-box">
+
+<!-- Pop-up -->
+<div class="newChannel-pop-up" *ngIf="channelPopup">
+    <div class="newChannel-profile-box">
         <div class="first-row">
             <span>Channel erstellen</span>
             <div><img src="assets/img/workspace/close.png" (click)="closePopup()"></div>
