@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-threads',
@@ -7,10 +7,9 @@ import { Component, Input, ViewChild } from '@angular/core';
 })
 export class ThreadsComponent {
   mouseOvered = false;
-  // @Input()close = true;
-  @ViewChild('showThreadSection') showThreadSection = true;
-
+  @Output() showThreadsSection = new EventEmitter();
+  
   closeThread() {
-    this.showThreadSection = false;
+    this.showThreadsSection.emit(false);
   }
 }
