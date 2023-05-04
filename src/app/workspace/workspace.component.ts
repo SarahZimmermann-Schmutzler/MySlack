@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class WorkspaceComponent {
  showThreadsSection: boolean = true;
+ 
+ setVariableFalse($event: any) {
+  this.showThreadsSection = $event;
+ }
 }

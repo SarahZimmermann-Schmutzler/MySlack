@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-channel-messages',
@@ -9,4 +9,9 @@ export class ChannelMessagesComponent {
   mouseOvered = false;
   mouseOveredTwo = false;
   mouseOveredThree = false;
+  @Output() a = new EventEmitter();
+  
+  openThread() {
+    
+  }
 }

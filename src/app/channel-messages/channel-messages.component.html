@@ -59,7 +59,7 @@
                         totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.</div>
 
                     <div class="third-row">
-                        <a>0 Antworten</a>
+                        <a (click)="openThread()">0 Antworten</a>
                         <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
 
                     <div class="user-third-row">
                         <span>Letzte Antwort 00:00</span>
-                        <a>0 Antworten</a>
+                        <a (click)="openThread()">0 Antworten</a>
                     </div>
                 </div>
 
@@ -154,8 +154,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <app-channel-messages-directmessage></app-channel-messages-directmessage> -->
 
     <!-- third section -->
     <div class="send-message-container">
