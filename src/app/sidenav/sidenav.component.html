@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="add-img-container">
+            <div class="add-img-container" (click)="createChannel()">
                 <img src="assets/img/workspace/add.png">
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <span [class.hover-stay-span]="hoverStay">Channel</span>
             </div>
 
-            <div class="new-channel">
+            <div class="new-channel" (click)="createChannel()">
                 <img src="assets/img/workspace/add_circle_white.png">
                 <span>Channel hinzufügen</span>
             </div>
@@ -51,6 +51,32 @@
                 <span>Vorname Name</span>
                 <span>(Du)</span>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="pop-up-logout" *ngIf="channelPopup">
+    <div class="logout-profile-box">
+        <div class="first-row">
+            <span>Channel erstellen</span>
+            <div><img src="assets/img/workspace/close.png" (click)="closePopup()"></div>
+        </div>
+
+        <span class="second-row">Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein. <br>  #marketing zum Beispiel.</span>
+        
+        <span class="third-row">Channel-Name</span>
+        
+        <input placeholder="# z.B. Kooperationsprojekte">
+        
+        <div class="fourth-row">
+            <span>Beschreibung</span>
+            <span>(optional)</span>
+        </div>
+        
+        <input>
+        
+        <div class="btn-row">
+            <button>Erstellen</button>
         </div>
     </div>
 </div>

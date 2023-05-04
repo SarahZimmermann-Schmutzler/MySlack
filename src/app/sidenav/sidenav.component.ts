@@ -11,6 +11,7 @@ export class SidenavComponent {
   hideChannel = false;
   hideMessage = false;
   hoverStay = false;
+  channelPopup = false;
 
   openAndCloseChannels() {
     this.rotateChannel = !this.rotateChannel;
@@ -25,5 +26,13 @@ export class SidenavComponent {
 
   openChannel() {
     this.hoverStay = true;
+  }
+
+  createChannel() {
+    this.channelPopup = true;
+  }
+
+  closePopup() {
+    this.channelPopup = false;
   }
 }
