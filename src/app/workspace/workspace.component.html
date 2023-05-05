@@ -1,9 +1,10 @@
 <div class="content-container">
     <app-sidenav class="sidenav"></app-sidenav>
 
-    <app-channel-messages class="messages" (showThreadsSection)="setVariableTrue($event)"></app-channel-messages>
+    <!-- <app-channel-messages class="messages" (showThreadsSection)="setVariableTrue($event)"></app-channel-messages> -->
     <!-- <app-direct-messages class="messages"></app-direct-messages> -->
     <!-- <app-private-messages class="messages"></app-private-messages> -->
+    <app-new-message class="messages"></app-new-message>
 
     <app-threads class="threads" (showThreadsSection)="setVariableFalse($event)" *ngIf="showThreadsSection"></app-threads>
 </div>
