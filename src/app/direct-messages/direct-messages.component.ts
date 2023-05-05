@@ -9,4 +9,13 @@ export class DirectMessagesComponent {
   mouseOvered = false;
   mouseOveredTwo = false;
   mouseOveredThree = false;
+  profilePopup = false;
+
+  openProfilePopup() {
+    this.profilePopup = true;
+  }
+
+  closeProfilePopup() {
+    this.profilePopup = false;
+  }
 }

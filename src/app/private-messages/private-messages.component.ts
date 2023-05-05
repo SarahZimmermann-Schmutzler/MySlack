@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./private-messages.component.scss']
 })
 export class PrivateMessagesComponent {
+  mouseOvered = false;
+  mouseOveredTwo = false;
+  mouseOveredThree = false;
+  profilePopup = false;
 
+  openProfilePopup() {
+    this.profilePopup = true;
+  }
+
+  closeProfilePopup() {
+    this.profilePopup = false;
+  }
 }

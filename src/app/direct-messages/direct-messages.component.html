@@ -1,7 +1,7 @@
 <div class="messages-container">
     <!-- first section -->
     <div class="messages-header">
-        <div class="left-container">
+        <div class="left-container" (click)="openProfilePopup()">
             <img src="assets/img/workspace/character.png">
             <div class="active-container">
                 <div></div>
@@ -64,18 +64,50 @@
 
     <!-- Info -->
     <div class="info-container">
-        <div>Diese Unterhaltung findet nur zwischen <span>@Vorname Nachname</span> und dir statt.</div>
+        <div>Diese Unterhaltung findet nur zwischen <span (click)="openProfilePopup()">@Vorname Nachname</span> und dir statt.</div>
     </div>
 
     <!-- third section -->
     <div class="send-message-container">
         <!-- Placeholder soll namen des Channels tragen -->
-        <textarea placeholder="Nachricht an # Channel"></textarea>
+        <textarea placeholder="Nachricht"></textarea>
 
         <div class="like-send-container">
             <div></div>
 
             <img src="assets/img/workspace/send.png">
+        </div>
+    </div>
+</div>
+
+<div class="pop-up-profile" *ngIf="profilePopup">
+    <div class="profile-box">
+        <div class="profile-first-row">
+            <span>Profil</span>
+            <div (click)="closeProfilePopup()"><img src="assets/img/workspace/close.png"></div>
+        </div>
+
+        <div class="profile-second-row">
+            <img src="assets/img/workspace/character.png">
+        </div>
+
+        <div class="profile-third-row">
+            <span>Vorname Name</span>
+            <span>Bearbeiten</span>
+        </div>
+
+        <div class="profile-fourth-row">
+            <div></div>
+            <span>Status</span>
+        </div>
+
+        <div class="profile-fith-row">
+            <img src="assets/img/workspace/mail.png">
+            <span>E-Mail-Adresse</span>
+        </div>
+
+        <div class="profile-sixth-row">
+            <span>email@beispiel.com</span>
         </div>
     </div>
 </div>
