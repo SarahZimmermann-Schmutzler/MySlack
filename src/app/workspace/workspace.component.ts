@@ -11,4 +11,9 @@ export class WorkspaceComponent {
  setVariableFalse($event: any) {
   this.showThreadsSection = $event;
  }
+
+ setVariableTrue($event) {
+  console.log($event);
+  this.showThreadsSection = $event;
+ }
 }
