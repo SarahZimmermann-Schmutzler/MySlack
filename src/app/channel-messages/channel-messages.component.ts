@@ -9,7 +9,7 @@ export class ChannelMessagesComponent {
   mouseOvered = false;
   mouseOveredTwo = false;
   mouseOveredThree = false;
-  channelPopup = true;
+  channelPopup = false;
   @Output() showThreadsSection = new EventEmitter();
   
   openThread() {
