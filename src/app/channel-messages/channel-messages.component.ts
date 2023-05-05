@@ -9,9 +9,18 @@ export class ChannelMessagesComponent {
   mouseOvered = false;
   mouseOveredTwo = false;
   mouseOveredThree = false;
+  channelPopup = true;
   @Output() showThreadsSection = new EventEmitter();
   
   openThread() {
     this.showThreadsSection.emit(true);
+  }
+
+  editChannel() {
+    this.channelPopup = true;
+  }
+
+  closePopup() {
+    this.channelPopup = false;
   }
 }

@@ -2,7 +2,7 @@
     <!-- first section -->
     <div class="messages-header">
         <div class="left-container" [class.bg-font-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true"
-            (mouseout)="mouseOveredTwo=false">
+            (mouseout)="mouseOveredTwo=false" (click)="editChannel()">
             <img src="assets/img/workspace/tag.png" [class.imgs-lilac]="mouseOveredTwo">
             <span>Channel</span>
             <img src="assets/img/workspace/arrow_down.png" [class.imgs-lilac]="mouseOveredTwo">
@@ -164,6 +164,38 @@
             <div></div>
 
             <img src="assets/img/workspace/send.png">
+        </div>
+    </div>
+</div>
+
+<!-- Pop-up -->
+<div class="newChannel-pop-up" *ngIf="channelPopup">
+    <div class="newChannel-profile-box">
+        <div class="channel-first-row">
+            <div class="firstrow-left-side">
+                <img src="assets/img/workspace/tag.png">
+                <span>Channel</span>
+            </div>
+            
+            <div class="firstrow-right-side"><img src="assets/img/workspace/close.png" (click)="closePopup()"></div>
+        </div>
+        
+        <div class="channel-second-row">
+            <span>Channel-Name</span>
+            <span>Speichern</span>
+        </div>
+        
+        <input placeholder="# Channel">
+        
+        <div class="channel-second-row">
+            <span>Beschreibung</span>
+            <span>Speichern</span>
+        </div>
+        
+        <textarea placeholder="Beschreibe welches Ziel ihr mit dem Channel verfolgt."></textarea>
+        
+        <div class="btn-row">
+            <button>Channel verlassen</button>
         </div>
     </div>
 </div>
