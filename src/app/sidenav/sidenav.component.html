@@ -3,7 +3,7 @@
         <img src="assets/img/workspace/logo.png">
         <span>Code learning</span>
         <div class="edit-img-container">
-            <img src="assets/img/workspace/edit.png">
+            <img src="assets/img/workspace/edit.png" (click)="openNewMessage()">
         </div>
     </div>
 
@@ -23,7 +23,7 @@
         </div>
 
         <div class="hide-channel-container" *ngIf="hideChannel">
-            <div class="channel" (click)="openChannel()" [class.hover-stay]="hoverStay">
+            <div class="channel" (click)="openChannelMessages()" [class.hover-stay]="hoverStay">
                 <img src="assets/img/workspace/tag.png">
                 <span [class.hover-stay-span]="hoverStay">Channel</span>
             </div>
@@ -43,13 +43,21 @@
         </div>
 
         <div class="hide-message-container" *ngIf="hideMessage">
-            <div class="contact-info-container" (click)="openDirectMessage()">
+            <div class="contact-info-container" (click)="openPrivateMessages()">
                 <img src="assets/img/workspace/woman.png">
                 <div class="status-container">
                     <div></div>
                 </div>
                 <span>Vorname Name</span>
                 <span>(Du)</span>
+            </div>
+
+            <div class="contact-info-container" (click)="openDirectMessages()">
+                <img src="assets/img/workspace/character.png">
+                <div class="status-container">
+                    <div></div>
+                </div>
+                <span>Vorname Name</span>
             </div>
         </div>
     </div>
