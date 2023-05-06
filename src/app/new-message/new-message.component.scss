@@ -96,6 +96,48 @@
     &::-webkit-scrollbar-button {
         background-color: white;
     }
+
+    
+}
+
+.message-box {
+    display: flex;
+    flex-direction: column;
+    // background-color: aqua;
+}
+
+.message-content-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 30px;
+}
+
+.message-infos-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.second-row {
+    height: auto;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 8px;
+    background-color: white;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: default;
 }
 
 
