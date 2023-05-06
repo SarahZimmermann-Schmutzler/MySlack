@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
 import { NewMessageComponent } from './new-message/new-message.component';
 import { PrivateMessagesComponent } from './private-messages/private-messages.component';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { PrivateMessagesComponent } from './private-messages/private-messages.co
     FooterComponent,
     DirectMessagesComponent,
     NewMessageComponent,
-    PrivateMessagesComponent
+    PrivateMessagesComponent,
+    ImpressumComponent,
+    DatenschutzComponent
   ],
   imports: [
     BrowserModule,

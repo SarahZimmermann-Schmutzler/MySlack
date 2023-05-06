@@ -1,6 +1,7 @@
-<div class="footer-container" *ngIf="footer">
+<div class="footer-container" *ngIf="footer" [class.position]="position">
     <div class="span-container">
-        <div>Datenschutz</div>
-        <div>Impressum</div>
+        <div routerLink="datenschutz" *ngIf="legal">Datenschutz</div>
+        <div routerLink="impressum" *ngIf="legal">Impressum</div>
+        <div routerLink="/" *ngIf="login">Login</div>
     </div>
 </div>
