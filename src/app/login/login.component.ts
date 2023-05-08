@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import { User } from 'src/models/user.class';
+import { Firestore, collection, doc, setDoc, updateDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +16,9 @@ export class LoginComponent {
   popUp = false;
   user$: Observable<any>;
   @Input() currentUser = '';
+  coll = collection(this.firestore, 'users');
 
-  constructor (private router : Router, private auth : Auth) {}
+  constructor (private router : Router, private auth : Auth, public firestore: Firestore) {}
 
   login() {  
   signInWithEmailAndPassword(this.auth, this.mail, this.password).then(() => {
@@ -24,6 +27,7 @@ export class LoginComponent {
           if(user$) {
             this.currentUser = user$.uid;
             console.log(this.currentUser);
+            setDoc(doc(this.coll, this.currentUser), {statusActive: 'true'}, {merge: true});
             this.router.navigateByUrl('/workspace/'+ this.currentUser);
           }
         })
