@@ -27,7 +27,7 @@ export class LoginComponent {
           if(user$) {
             this.currentUser = user$.uid;
             console.log(this.currentUser);
-            setDoc(doc(this.coll, this.currentUser), {statusActive: 'true'}, {merge: true});
+            setDoc(doc(this.coll, this.currentUser), {status: 'Active'}, {merge: true});
             this.router.navigateByUrl('/workspace/'+ this.currentUser);
           }
         })

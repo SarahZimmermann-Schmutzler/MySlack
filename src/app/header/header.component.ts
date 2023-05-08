@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   coll = collection(this.firestore, 'users');
   userName = '';
   userMail = '';
+  userStatus = '';
 
 
   constructor(private router: Router, private auth: Auth, private route: ActivatedRoute, public firestore: Firestore) { }
@@ -45,6 +46,7 @@ export class HeaderComponent implements OnInit {
       // this.user = new User(user);
       this.userName = user.name;
       this.userMail = user.mail;
+      this.userStatus = user.status;
       console.log('Retrieved userName', user.name);
     })
   }
