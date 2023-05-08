@@ -43,6 +43,8 @@ export class LoginComponent {
     }
 
     guestLogin() {
+      setDoc(doc(this.coll, 'kLLzHS4VI6TDTL2gZUPbRzgOoID3'), 
+      {name: 'Guest', mail: 'guest@guest.de', status: 'Active'}),
       this.router.navigateByUrl('/workspace/'+ 'kLLzHS4VI6TDTL2gZUPbRzgOoID3');
     }
 }
