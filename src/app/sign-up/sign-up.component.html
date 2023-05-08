@@ -16,7 +16,7 @@
 
         <form (submit)="registerUser()" ngNativeValidate #registerForm>
             <div class="input-container"><input required pattern="[A-Za-z ]+" placeholder="Name und Nachname" class="input-person" name="name" [(ngModel)]="user.name"></div>
-            <div class="input-container"><input required type="email" placeholder="beispielname@email.com" class="input-mail" name="mail" [(ngModel)]="mail"></div>
+            <div class="input-container"><input required type="email" placeholder="beispielname@email.com" class="input-mail" name="mail" [(ngModel)]="mail" [(ngModel)]="user.mail"></div>
             <div class="input-container"><input required type="password" minlength="8" placeholder="Passwort" class="input-lock" name="password" [(ngModel)]="password"></div>
             <div class="btn-container">
                 <button [disabled]="disabled" [class.disabled]="disabled">Weiter</button>

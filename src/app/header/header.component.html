@@ -18,7 +18,7 @@
     </div>
 
     <div class="info-container" *ngIf="workspaceMode" [class.font-lilac]="mouseOvered" (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false" (click)="openPopup()">
-        <span>Vorname Nachname</span>
+        <span>{{userName}}</span>
         <img class="avatar" src="assets/img/header/woman.png">
         <img src="assets/img/header/arrow_down.png" [class.img-lilac]="mouseOvered">
     </div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="third-row">
-            <span>Vorname Name</span>
+            <span>{{userName}}</span>
             <span>Bearbeiten</span>
         </div>
 
@@ -58,7 +58,7 @@
         </div>
 
         <div class="sixth-row">
-            <span>email@beispiel.com</span>
+            <span>{{userMail}}</span>
         </div>
     </div>
 </div>
