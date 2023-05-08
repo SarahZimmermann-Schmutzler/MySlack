@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Auth, onAuthStateChanged, signOut } from '@angular/fire/auth';
-import { Firestore, collection, collectionData, doc, docData, getDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, getDoc, setDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   userName = '';
   userMail = '';
   userStatus = '';
+  active: boolean;
 
 
   constructor(private router: Router, private auth: Auth, private route: ActivatedRoute, public firestore: Firestore) { }
@@ -34,12 +35,16 @@ export class HeaderComponent implements OnInit {
       if (user$) {
         this.currentUser = user$.uid;
         console.log(this.currentUser);
-        this.getUserName();
+        this.getUserData();
+      } 
+      else {
+        this.currentUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
+        this.getUserData();
       }
-    })
+    }); 
   }
 
-  getUserName() {
+  getUserData() {
     const docRef = doc(this.coll, this.currentUser);
     this.user$ = docData(docRef);
     this.user$.subscribe(user => {
@@ -48,7 +53,18 @@ export class HeaderComponent implements OnInit {
       this.userMail = user.mail;
       this.userStatus = user.status;
       console.log('Retrieved userName', user.name);
+      this.colorStatus();
     })
+  }
+
+  colorStatus() {
+    if (this.userStatus == 'Active') {
+      this.active = true;
+    }
+
+    if (this.userStatus == 'Inactive') {
+      this.active = false;
+    }
   }
 
   openPopup() {
@@ -60,6 +76,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    setDoc(doc(this.coll, this.currentUser), {status: 'Inactive'}, {merge: true});
     signOut(this.auth).then(() => {
       this.router.navigate(['/']);
     })

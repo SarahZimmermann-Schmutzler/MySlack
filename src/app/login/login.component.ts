@@ -47,4 +47,16 @@ export class LoginComponent {
       {name: 'Guest', mail: 'guest@guest.de', status: 'Active'}),
       this.router.navigateByUrl('/workspace/'+ 'kLLzHS4VI6TDTL2gZUPbRzgOoID3');
     }
+  
+    // getGuestData() {
+    //   const docRef = doc(this.coll, this.currentUser);
+    //   this.user$ = docData(docRef);
+    //   this.user$.subscribe(user => {
+        
+    //     this.userName = user.name;
+    //     this.userMail = user.mail;
+    //     this.userStatus = user.status;
+    //     console.log('Retrieved userName', user.name);
+    //   })
+    // }
 }

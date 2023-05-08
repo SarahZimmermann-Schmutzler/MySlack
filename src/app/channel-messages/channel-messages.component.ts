@@ -11,6 +11,7 @@ export class ChannelMessagesComponent {
   mouseOveredThree = false;
   channelPopup = false;
   @Output() showThreadsSection = new EventEmitter();
+  @Input() userName;
   
   openThread() {
     this.showThreadsSection.emit(true);

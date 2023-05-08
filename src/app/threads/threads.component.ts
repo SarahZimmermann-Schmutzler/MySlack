@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-threads',
@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class ThreadsComponent {
   mouseOvered = false;
   @Output() showThreadsSection = new EventEmitter();
+  @Input() userName;
   
   closeThread() {
     this.showThreadsSection.emit(false);

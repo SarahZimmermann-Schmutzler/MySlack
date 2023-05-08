@@ -44,12 +44,12 @@
 
         <div class="third-row">
             <span>{{userName}}</span>
-            <span>Bearbeiten</span>
+            <!-- <span>Bearbeiten</span> -->
         </div>
 
         <div class="fourth-row">
-            <div></div>
-            <span>{{userStatus}}</span>
+            <div [class.c-green]="active"></div>
+            <span [class.s-green]="active">{{userStatus}}</span>
         </div>
 
         <div class="fith-row">

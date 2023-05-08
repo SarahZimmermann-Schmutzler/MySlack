@@ -1,11 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
   rotateChannel = false;
   rotateMessage = false;
   hideChannel = false;
@@ -17,6 +20,13 @@ export class SidenavComponent {
   @Output() showNewMessage = new EventEmitter();
   @Output() showChannelMessages = new EventEmitter();
   @Output() showThreadSection = new EventEmitter();
+  @Input() userName: string;
+
+  constructor(private auth: Auth, public firestore: Firestore) { }
+
+  ngOnInit(): void {
+    console.log(this.userName);
+  }
 
   openAndCloseChannels() {
     this.rotateChannel = !this.rotateChannel;
