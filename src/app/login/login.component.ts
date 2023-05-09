@@ -16,19 +16,21 @@ export class LoginComponent {
   popUp = false;
   user$: Observable<any>;
   @Input() currentUser = '';
+  guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   coll = collection(this.firestore, 'users');
 
   constructor (private router : Router, private auth : Auth, public firestore: Firestore) {}
 
   login() {  
   signInWithEmailAndPassword(this.auth, this.mail, this.password).then(() => {
-        localStorage.setItem('token','true');
         onAuthStateChanged(this.auth, (user$) => {
           if(user$) {
             this.currentUser = user$.uid;
             // console.log(this.currentUser);
+            localStorage.setItem('currentUser', this.currentUser);
             setDoc(doc(this.coll, this.currentUser), {status: 'Active'}, {merge: true});
-            this.router.navigateByUrl('/workspace/'+ this.currentUser);
+            // this.router.navigateByUrl('/workspace/'+ this.currentUser);
+            this.router.navigateByUrl('/workspace');
           }
         })
       }, () => {
@@ -43,8 +45,10 @@ export class LoginComponent {
     }
 
     guestLogin() {
-      setDoc(doc(this.coll, 'kLLzHS4VI6TDTL2gZUPbRzgOoID3'), 
-      {name: 'Guest', mail: 'guest@guest.de', status: 'Active'}),
-      this.router.navigateByUrl('/workspace/'+ 'kLLzHS4VI6TDTL2gZUPbRzgOoID3');
+      setDoc(doc(this.coll, this.guestUser), 
+      {name: 'Guest', mail: 'guest@guest.de', status: 'Active'});
+      localStorage.setItem('currentUser', this.guestUser);
+      // this.router.navigateByUrl('/workspace/'+ this.guestUser);
+      this.router.navigateByUrl('/workspace');
     }
 }

@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   profilePopup = false;
   mouseOvered = false;
   mouseOveredTwo = false;
-  currentUser = '';
   user$: Observable<any>;
   user: User = new User();
   coll = collection(this.firestore, 'users');
@@ -26,22 +25,33 @@ export class HeaderComponent implements OnInit {
   userMail = '';
   userStatus = '';
   active: boolean;
+  currentUser = '';
+  startFunction: boolean;
+  interval;
 
 
   constructor(private router: Router, private auth: Auth, private route: ActivatedRoute, public firestore: Firestore) { }
 
   ngOnInit(): void {
-    onAuthStateChanged(this.auth, (user$) => {
-      if (user$) {
-        this.currentUser = user$.uid;
-        // console.log(this.currentUser);
-        this.getUserData();
-      } 
-      else {
-        this.currentUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-        this.getUserData();
+    // onAuthStateChanged(this.auth, (user$) => {
+    //   if (user$) {
+    //     this.currentUser = user$.uid;
+    //     // console.log(this.currentUser);
+    //     this.getUserData();
+    //   } 
+    //   else {
+    //     this.currentUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
+    //     this.getUserData();
+    //   }
+    // });
+
+    this.interval = setInterval(() => {
+      if (this.workspaceMode) {
+        this.currentUser = localStorage.getItem('currentUser');
+        console.log(this.currentUser);
+        this.getUserData()
       }
-    }); 
+    }, 1000);
   }
 
   getUserData() {
@@ -54,6 +64,7 @@ export class HeaderComponent implements OnInit {
       this.userStatus = user.status;
       // console.log('Retrieved userName', user.name);
       this.colorStatus();
+      clearInterval(this.interval);
     })
   }
 
@@ -76,7 +87,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    setDoc(doc(this.coll, this.currentUser), {status: 'Inactive'}, {merge: true});
+    setDoc(doc(this.coll, this.currentUser), { status: 'Inactive' }, { merge: true });
+    localStorage.setItem('currentUser', '');
     signOut(this.auth).then(() => {
       this.router.navigate(['/']);
     })
