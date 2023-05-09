@@ -45,8 +45,7 @@ export class LoginComponent {
     }
 
     guestLogin() {
-      setDoc(doc(this.coll, this.guestUser), 
-      {name: 'Guest', mail: 'guest@guest.de', status: 'Active'});
+      setDoc(doc(this.coll, this.guestUser), {name: 'Guest', mail: 'guest@guest.de', status: 'Active'});
       localStorage.setItem('currentUser', this.guestUser);
       // this.router.navigateByUrl('/workspace/'+ this.guestUser);
       this.router.navigateByUrl('/workspace');

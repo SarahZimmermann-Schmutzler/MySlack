@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Channels } from 'src/models/channels.class';
 
 @Component({
   selector: 'app-sidenav',
@@ -21,11 +22,26 @@ export class SidenavComponent implements OnInit {
   @Output() showChannelMessages = new EventEmitter();
   @Output() showThreadSection = new EventEmitter();
   @Input() userName: string;
+  channels = new Channels();
+  collCh = collection(this.firestore, 'channels');
+  allChannels: Array<any> | undefined;
+  channelId;
 
   constructor(private auth: Auth, public firestore: Firestore) { }
 
   ngOnInit(): void {
-    // console.log(this.userName);
+    collectionData(this.collCh, {idField: 'id'}).subscribe(newChannels => {
+      console.log('Neue Channels sind', newChannels);
+      this.allChannels = newChannels;
+    })
+  }
+
+  createNewChannel() {
+    addDoc(this.collCh, this.channels.toJSON()).then(() => {
+      this.channels.name = '';
+      this.channels.description = '';
+      this.closePopup();
+    });
   }
 
   openAndCloseChannels() {
@@ -74,13 +90,14 @@ export class SidenavComponent implements OnInit {
     this.hoverStay = false;
   }
 
-  openChannelMessages() {
+  openChannelMessages(channelId) {
     this.showChannelMessages.emit(true);
     this.showNewMessage.emit(false);
     this.showDirectMessages.emit(false);
     this.showPrivateMessages.emit(false);
     this.showThreadSection.emit(false);
     this.hoverStay = true;
+    console.log(channelId)
   }
 
   hideThreadSection() {

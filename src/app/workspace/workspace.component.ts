@@ -15,7 +15,7 @@ export class WorkspaceComponent {
   showDirectMessages = false;
   showNewMessage = false;
   currentUser = '';
-  guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
+  // guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   userName = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
@@ -23,17 +23,21 @@ export class WorkspaceComponent {
   constructor(private auth: Auth, public firestore: Firestore) { }
 
   ngOnInit(): void {
-    onAuthStateChanged(this.auth, (user$) => {
-      if (user$) {
-        this.currentUser = user$.uid;
-        // console.log(this.currentUser);
-        this.getUserData();
-      }
-      else {
-        this.currentUser = this.guestUser;
-        this.getUserData();
-      }
-    });
+    // onAuthStateChanged(this.auth, (user$) => {
+    //   if (user$) {
+    //     this.currentUser = user$.uid;
+    //     console.log(this.currentUser);
+    //     this.getUserData();
+    //   }
+    //   else {
+    //     this.currentUser = this.guestUser;
+    //     this.getUserData();
+    //   }
+    // });
+
+    this.currentUser = localStorage.getItem('currentUser');
+    console.log(this.currentUser);
+    this.getUserData()
   }
 
   getUserData() {
