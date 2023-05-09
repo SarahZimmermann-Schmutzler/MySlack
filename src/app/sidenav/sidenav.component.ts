@@ -25,7 +25,7 @@ export class SidenavComponent implements OnInit {
   constructor(private auth: Auth, public firestore: Firestore) { }
 
   ngOnInit(): void {
-    console.log(this.userName);
+    // console.log(this.userName);
   }
 
   openAndCloseChannels() {

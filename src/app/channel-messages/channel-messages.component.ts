@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-channel-messages',

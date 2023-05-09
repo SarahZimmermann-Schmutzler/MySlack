@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     onAuthStateChanged(this.auth, (user$) => {
       if (user$) {
         this.currentUser = user$.uid;
-        console.log(this.currentUser);
+        // console.log(this.currentUser);
         this.getUserData();
       } 
       else {
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
       this.userName = user.name;
       this.userMail = user.mail;
       this.userStatus = user.status;
-      console.log('Retrieved userName', user.name);
+      // console.log('Retrieved userName', user.name);
       this.colorStatus();
     })
   }

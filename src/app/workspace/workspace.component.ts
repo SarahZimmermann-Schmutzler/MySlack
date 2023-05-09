@@ -26,7 +26,7 @@ export class WorkspaceComponent {
     onAuthStateChanged(this.auth, (user$) => {
       if (user$) {
         this.currentUser = user$.uid;
-        console.log(this.currentUser);
+        // console.log(this.currentUser);
         this.getUserData();
       }
       else {
@@ -42,7 +42,7 @@ export class WorkspaceComponent {
     this.user$.subscribe(user => {
       // this.user = new User(user);
       this.userName = user.name;
-      console.log('Retrieved userName', user.name);
+      // console.log('Retrieved userName', user.name);
     })
   }
 

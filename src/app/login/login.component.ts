@@ -26,7 +26,7 @@ export class LoginComponent {
         onAuthStateChanged(this.auth, (user$) => {
           if(user$) {
             this.currentUser = user$.uid;
-            console.log(this.currentUser);
+            // console.log(this.currentUser);
             setDoc(doc(this.coll, this.currentUser), {status: 'Active'}, {merge: true});
             this.router.navigateByUrl('/workspace/'+ this.currentUser);
           }
@@ -47,16 +47,4 @@ export class LoginComponent {
       {name: 'Guest', mail: 'guest@guest.de', status: 'Active'}),
       this.router.navigateByUrl('/workspace/'+ 'kLLzHS4VI6TDTL2gZUPbRzgOoID3');
     }
-  
-    // getGuestData() {
-    //   const docRef = doc(this.coll, this.currentUser);
-    //   this.user$ = docData(docRef);
-    //   this.user$.subscribe(user => {
-        
-    //     this.userName = user.name;
-    //     this.userMail = user.mail;
-    //     this.userStatus = user.status;
-    //     console.log('Retrieved userName', user.name);
-    //   })
-    // }
 }

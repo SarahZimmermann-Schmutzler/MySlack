@@ -38,7 +38,7 @@ export class SignUpComponent implements OnInit {
       onAuthStateChanged(this.auth, (user$) => {
         if(user$) {
           this.currentUser = user$.uid;
-          console.log(this.currentUser);
+          // console.log(this.currentUser);
           setDoc(doc(this.coll, this.currentUser), this.user.toJSON());
         }
       });
@@ -57,46 +57,3 @@ export class SignUpComponent implements OnInit {
     this.password = '';
   }
 }
-
-// public toJSON() {
-//   return {
-//       name: this.name
-//   };
-// }
-
-// user = new User();
-//   disabled = true;
-//   popUp = false;
-//   coll = collection(this.firestore, 'users');
-
-//   ngOnInit(): void {
-//     setInterval(() => {
-//       if(this.user.name && this.user.mail && this.user.password) {
-//         this.disabled = false;
-//       }
-//     }, 1000); 
-//   }
-
-//   constructor(
-//     public firestore: Firestore,
-//     private router: Router) {}
-  
-//     registerUser() {
-//     // console.log('current user is', this.user);
-//     addDoc(this.coll, this.user.toJSON()).then((result:any) => {
-//       // console.log('Adding user finished', result);
-//     });
-//     this.clearFields();
-//     this.disabled = true;
-//     this.popUp = true;
-//     setTimeout(() => {
-//       this.router.navigate(['/']);
-//     }, 3000);
-//   }
-
-//   clearFields() {
-//     this.user.name = '';
-//     this.user.mail = '';
-//     this.user.password = '';
-//   }
-// }
