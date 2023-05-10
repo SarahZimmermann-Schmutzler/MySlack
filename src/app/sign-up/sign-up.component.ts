@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
         if(user$) {
           this.currentUser = user$.uid;
           // console.log(this.currentUser);
-          setDoc(doc(this.coll, this.currentUser), this.user.toJSON());
+          setDoc(doc(this.coll, this.currentUser), this.user.toJSON(), {merge: true});
         }
       });
     this.clearFields();

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Firestore, collection, doc, setDoc, updateDoc } from '@angular/fire/fir
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   mail = '';
   password = '';
   popUp = false;
@@ -18,6 +18,10 @@ export class LoginComponent {
   @Input() currentUser = '';
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   coll = collection(this.firestore, 'users');
+
+  ngOnInit(): void {
+    
+  }
 
   constructor (private router : Router, private auth : Auth, public firestore: Firestore) {}
 

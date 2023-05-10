@@ -4,7 +4,7 @@
         <div class="left-container" [class.bg-font-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true"
             (mouseout)="mouseOveredTwo=false" (click)="editChannel()">
             <img src="assets/img/workspace/tag.png" [class.imgs-lilac]="mouseOveredTwo">
-            <span>Channel</span>
+            <span>{{channelName || 'Channel'}}</span>
             <img src="assets/img/workspace/arrow_down.png" [class.imgs-lilac]="mouseOveredTwo">
         </div>
 
@@ -158,12 +158,12 @@
     <!-- third section -->
     <div class="send-message-container">
         <!-- Placeholder soll namen des Channels tragen -->
-        <textarea placeholder="Nachricht an # Channel"></textarea>
+        <textarea placeholder="Nachricht an # Channel" name="messages"></textarea>
 
         <div class="like-send-container">
             <div></div>
 
-            <img src="assets/img/workspace/send.png">
+            <img src="assets/img/workspace/send.png" (click)="setMessages()">
         </div>
     </div>
 </div>
@@ -174,7 +174,7 @@
         <div class="channel-first-row">
             <div class="firstrow-left-side">
                 <img src="assets/img/workspace/tag.png">
-                <span>Channel</span>
+                <span>{{channelName || 'Channel'}}</span>
             </div>
             
             <div class="firstrow-right-side"><img src="assets/img/workspace/close.png" (click)="closePopup()"></div>
@@ -185,14 +185,14 @@
             <span>Speichern</span>
         </div>
         
-        <input placeholder="# Channel">
+        <input placeholder="{{channelName || '# Channel'}}">
         
         <div class="channel-second-row">
             <span>Beschreibung</span>
             <span>Speichern</span>
         </div>
         
-        <textarea placeholder="Beschreibe welches Ziel ihr mit dem Channel verfolgt."></textarea>
+        <textarea placeholder="{{channelDescription || 'Beschreibe welches Ziel ihr mit dem Channel verfolgt.'}}" [(ngModel)]="channelMessages.messages['text']"></textarea>
         
         <div class="btn-row">
             <button>Channel verlassen</button>

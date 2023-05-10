@@ -98,6 +98,7 @@ export class SidenavComponent implements OnInit {
     this.showThreadSection.emit(false);
     this.hoverStay = true;
     console.log(channelId)
+    localStorage.setItem('Channel ID', channelId);
   }
 
   hideThreadSection() {
