@@ -1,8 +1,8 @@
 export class ChannelMessages {
     threadText: string;
     threadWriter: any;
-    threadDate: number;
-    threadTime: number;
+    threadDate: any;
+    threadTime: any;
 
     constructor(obj?: any) {
         this.threadText = obj;

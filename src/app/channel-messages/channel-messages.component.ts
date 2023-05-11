@@ -25,7 +25,6 @@ export class ChannelMessagesComponent implements OnInit {
   channelMessages = new ChannelMessages();
   currentTimestamp = new Date();
   timestamp;
-  date;
   
   
 
@@ -50,13 +49,10 @@ export class ChannelMessagesComponent implements OnInit {
   setMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();
     this.channelMessages.threadWriter = this.userId;
-    this.date = this.currentTimestamp.getDate();
-    this.channelMessages.threadDate
-    this.channelMessages.threadTime
-    console.log('Timestamp is', this.currentTimestamp)
-   
-    // setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp),this.channelMessages.toJSON(), {merge: true});
-    // this.channelMessages.threadText = '';
+    this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
+    this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
+    setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp),this.channelMessages.toJSON(), {merge: true});
+    this.channelMessages.threadText = '';
   }
   
   openThread() {
