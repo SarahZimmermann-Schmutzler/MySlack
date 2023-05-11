@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, Timestamp, collection, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Firestore, Timestamp, addDoc, collection, doc, docData, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
 import { User } from 'src/models/user.class';
@@ -23,7 +23,9 @@ export class ChannelMessagesComponent implements OnInit {
   channelName;
   channelDescription;
   channelMessages = new ChannelMessages();
-  timestamp = Timestamp;
+  currentTimestamp = new Date();
+  timestamp;
+  date;
   
   
 
@@ -46,7 +48,15 @@ export class ChannelMessagesComponent implements OnInit {
   }
 
   setMessages() {
-    setDoc(doc(this.collCh, this.currentChannel), this.channelMessages.toJSON(), {merge: true});
+    this.timestamp = this.currentTimestamp.getTime().toString();
+    this.channelMessages.threadWriter = this.userId;
+    this.date = this.currentTimestamp.getDate();
+    this.channelMessages.threadDate
+    this.channelMessages.threadTime
+    console.log('Timestamp is', this.currentTimestamp)
+   
+    // setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp),this.channelMessages.toJSON(), {merge: true});
+    // this.channelMessages.threadText = '';
   }
   
   openThread() {
