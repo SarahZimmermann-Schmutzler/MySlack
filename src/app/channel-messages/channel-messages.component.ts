@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, Timestamp, addDoc, collection, doc, docData, getDocs, setDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, docData, getDocs, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
-import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-channel-messages',
@@ -28,6 +27,7 @@ export class ChannelMessagesComponent implements OnInit {
   channelThread;
   messages$: Observable<any>;
   messages = [];
+  threadText;
   
   
 
@@ -51,13 +51,18 @@ export class ChannelMessagesComponent implements OnInit {
   }
 
   getMessagesData() {
-    const docRef = doc(this.collCh, this.currentChannel, 'messages', '1683791078606');
-    this.messages$ = docData(docRef);
-    this.messages$.subscribe(messages => {
+    // const docRef = doc(this.collCh, this.currentChannel, 'messages', '1683791078606');
+    // this.messages$ = docData(docRef);
+    // this.messages$.subscribe(messages => {
+    //   this.messages = messages;
+    //   console.log(this.messages);
+    // })
+
+    let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
+    collectionData(coll).subscribe(messages => {
+      console.log('Messages sind', messages);
       this.messages = messages;
-      console.log(this.messages);
     })
-    
   }
 
   setMessages() {

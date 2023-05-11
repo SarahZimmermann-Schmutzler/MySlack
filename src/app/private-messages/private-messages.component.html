@@ -40,17 +40,20 @@
 
     <!-- Info -->
     <div class="info-container">
-        <div><b>Dieser Raum ist nur für dich da.</b> Mache dir Notizen, liste deine To-dos auf oder bewahre Links und Dateien griffbereit auf. Du kannst hier auch gerne Dinge mit dir selbst besprechen</div>
+        <div><b>Dieser Raum ist nur für dich da.</b> Mache dir Notizen, liste deine To-dos auf oder bewahre Links und
+            Dateien griffbereit auf. Du kannst hier auch gerne Dinge mit dir selbst besprechen</div>
     </div>
 
     <!-- third section -->
-    <div class="send-message-container">
-        <textarea placeholder="Notiz" name="notes" [(ngModel)]="privateMessages.messageText"></textarea>
+    <div>
+        <div class="send-message-container">
+            <textarea placeholder="Notiz" name="notes" [(ngModel)]="privateMessages.messageText"></textarea>
 
-        <div class="like-send-container">
-            <div></div>
+            <div class="like-send-container">
+                <div></div>
 
-            <img src="assets/img/workspace/send.png" (click)="createNotes()">
+                <img src="assets/img/workspace/send.png" (click)="createNotes()">
+            </div>
         </div>
     </div>
 </div>

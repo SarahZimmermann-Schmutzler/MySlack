@@ -4,6 +4,7 @@
     background-color: white;
     padding-bottom: 35px;
     position: relative;
+    overflow-y: hidden;
 }
 
 .threads-header {
@@ -71,6 +72,7 @@
     margin-top: 20px;
     margin-bottom: 30px;
     overflow-y: scroll;
+    overflow-x: hidden;
 
     &::-webkit-scrollbar {
         background-color: white;
@@ -95,7 +97,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 20px;
+    // margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px 30px;
 
@@ -115,6 +117,11 @@
 
 .first-row {
     margin-bottom: 8px;
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 
     span {
         &:first-child {
@@ -259,11 +266,21 @@
 
 
 // third section
-.send-message-container {
+.third-section-container {
     position: absolute;
-    bottom: 35px;
-    left: 30px;
-    right: 30px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 35px;
+    background-color: white;
+}
+.send-message-container {
+    // position: absolute;
+    // bottom: 35px;
+    // padding-left: 30px;
+    // padding-right: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;

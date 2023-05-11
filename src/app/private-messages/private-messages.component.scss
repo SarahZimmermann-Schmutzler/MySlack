@@ -188,9 +188,13 @@
 
 // Info Container
 .info-container {
-    padding-left: 30px;
-    padding-right: 30px;
+    height: 50px;
+    position: absolute;
+    bottom: 170px;
+    left: 30px;
+    right: 30px;
     color: rgba(104, 104, 104, 1);
+    background-color: white;
 
     span {
         color: rgba(83, 90, 241, 1);
@@ -199,11 +203,18 @@
 }
 
 // third section
-.send-message-container {
+.third-section-container {
     position: absolute;
-    bottom: 35px;
-    left: 30px;
-    right: 30px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 35px;
+    background-color: white;
+}
+
+.send-message-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -211,7 +222,6 @@
     height: 120px;
     border: 1px solid rgba(173, 176, 217, 1);
     border-radius: 20px;
-    background-color: white;
 
     &:hover {
         border: 1px solid #535AF1;
