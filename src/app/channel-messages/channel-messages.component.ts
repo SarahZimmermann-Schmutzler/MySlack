@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, Timestamp, addDoc, collection, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Firestore, Timestamp, addDoc, collection, doc, docData, getDocs, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
 import { User } from 'src/models/user.class';
@@ -25,6 +25,9 @@ export class ChannelMessagesComponent implements OnInit {
   channelMessages = new ChannelMessages();
   currentTimestamp = new Date();
   timestamp;
+  channelThread;
+  messages$: Observable<any>;
+  messages = [];
   
   
 
@@ -33,6 +36,7 @@ export class ChannelMessagesComponent implements OnInit {
     this.currentChannel = localStorage.getItem('Channel ID');
     console.log(this.currentChannel);
     this.getChannelData();
+    this.getMessagesData()
   }
 
   constructor(public firestore: Firestore) {}
@@ -44,6 +48,16 @@ export class ChannelMessagesComponent implements OnInit {
       this.channelName = channel.name;
       this.channelDescription = channel.description;
     })
+  }
+
+  getMessagesData() {
+    const docRef = doc(this.collCh, this.currentChannel, 'messages', '1683791078606');
+    this.messages$ = docData(docRef);
+    this.messages$.subscribe(messages => {
+      this.messages = messages;
+      console.log(this.messages);
+    })
+    
   }
 
   setMessages() {
