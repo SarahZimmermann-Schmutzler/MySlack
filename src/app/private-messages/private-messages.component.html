@@ -45,12 +45,12 @@
 
     <!-- third section -->
     <div class="send-message-container">
-        <textarea placeholder="Notiz"></textarea>
+        <textarea placeholder="Notiz" name="notes" [(ngModel)]="privateMessages.messageText"></textarea>
 
         <div class="like-send-container">
             <div></div>
 
-            <img src="assets/img/workspace/send.png">
+            <img src="assets/img/workspace/send.png" (click)="createNotes()">
         </div>
     </div>
 </div>
