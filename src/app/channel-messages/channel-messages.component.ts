@@ -29,8 +29,7 @@ export class ChannelMessagesComponent implements OnInit {
   messages = [];
   threadText;
   userMessages = [];
-  userIsMe = false;
-  result = [];
+  memberMessages = [];
   
 
   ngOnInit(): void {
@@ -58,24 +57,17 @@ export class ChannelMessagesComponent implements OnInit {
       console.log('Messages sind', messages);
       this.messages = messages;
       console.log('This Messages sind', this.messages)
-    })
-    this.getUserMessages();
+
+      this.getUserMessages();
+    });
   }
 
   getUserMessages() {
-    for (let i = 0; i < this.messages.length; i++) {
-      const messages = this.messages[i];
-      console.log('const Message includes', messages);
-      
-      if(messages.threadWriter == 'BeHRMEboncdaltnPd0iYDN9cMBe2') {
-        this.userIsMe = true;
-      }
-      // this.userMessages = messages.filter(element => element.threadWriter == this.userId);
-
-    }
-    console.log('User Messages are', this.userIsMe);
+    this.userMessages = this.messages.filter(s => s.threadWriter == this.userId);
+    console.log('User Messages are',this.userMessages)
+    this.memberMessages = this.messages.filter(s => s.threadWriter !== this.userId);
+    console.log('User Messages are',this.memberMessages);
   }
-
 
   setMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();

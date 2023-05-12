@@ -37,7 +37,7 @@
     <!-- second section -->
     <div class="messages-display-container">
         <!-- Threads der Mitglieder -->
-        <div class="message-box" *ngFor="let message of messages">
+        <div class="message-box" *ngFor="let message of memberMessages">
             <div class="line-date-container">
                 <div class="line"></div>
                 <div class="date-bubble">{{message.threadDate}}</div>
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Threads des Users -->
-        <div class="message-box" *ngFor="let message of messages">
+        <div class="message-box" *ngFor="let message of userMessages">
             <div class="line-date-container">
                 <div class="line"></div>
                 <div class="date-bubble">{{message.threadDate}}</div>
@@ -75,7 +75,7 @@
                 <div class="user-message-infos-container">
                     <div class="user-first-row">
                         <span>{{message.threadTime}} Uhr</span>
-                        <span>{{message.threadWriter}}</span>
+                        <span>{{userName}}</span>
                     </div>
 
                     <div class="user-second-row">{{message.threadText}}</div>
