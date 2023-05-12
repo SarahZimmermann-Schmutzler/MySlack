@@ -28,7 +28,9 @@ export class ChannelMessagesComponent implements OnInit {
   messages$: Observable<any>;
   messages = [];
   threadText;
-  
+  userMessages = [];
+  userIsMe = false;
+  result = [];
   
 
   ngOnInit(): void {
@@ -51,19 +53,29 @@ export class ChannelMessagesComponent implements OnInit {
   }
 
   getMessagesData() {
-    // const docRef = doc(this.collCh, this.currentChannel, 'messages', '1683791078606');
-    // this.messages$ = docData(docRef);
-    // this.messages$.subscribe(messages => {
-    //   this.messages = messages;
-    //   console.log(this.messages);
-    // })
-
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     collectionData(coll).subscribe(messages => {
       console.log('Messages sind', messages);
       this.messages = messages;
+      console.log('This Messages sind', this.messages)
     })
+    this.getUserMessages();
   }
+
+  getUserMessages() {
+    for (let i = 0; i < this.messages.length; i++) {
+      const messages = this.messages[i];
+      console.log('const Message includes', messages);
+      
+      if(messages.threadWriter == 'BeHRMEboncdaltnPd0iYDN9cMBe2') {
+        this.userIsMe = true;
+      }
+      // this.userMessages = messages.filter(element => element.threadWriter == this.userId);
+
+    }
+    console.log('User Messages are', this.userIsMe);
+  }
+
 
   setMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();
@@ -71,6 +83,7 @@ export class ChannelMessagesComponent implements OnInit {
     this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
     setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp),this.channelMessages.toJSON(), {merge: true});
+    localStorage.setItem('messageId', this.timestamp);
     this.channelMessages.threadText = '';
   }
   

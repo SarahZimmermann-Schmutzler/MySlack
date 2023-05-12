@@ -36,11 +36,11 @@
 
     <!-- second section -->
     <div class="messages-display-container">
-        <!-- Antworten der Mitglieder -->
-        <div class="message-box">
+        <!-- Threads der Mitglieder -->
+        <div class="message-box" *ngFor="let message of messages">
             <div class="line-date-container">
                 <div class="line"></div>
-                <div class="date-bubble">Montag, 01 Januar</div>
+                <div class="date-bubble">{{message.threadDate}}</div>
             </div>
 
             <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
@@ -50,11 +50,11 @@
 
                 <div class="message-infos-container">
                     <div class="first-row">
-                        <span>Name Vorname</span>
-                        <span>00:00 Uhr</span>
+                        <span>{{message.threadWriter}}</span>
+                        <span>{{message.threadTime}} Uhr</span>
                     </div>
 
-                    <div class="second-row" [class.bg-white]="mouseOvered">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, dolorem. Voluptatum nihil labore saepe. Numquam dolorem sequi expedita sit eaque minus reprehenderit. Officiis laboriosam deserunt recusandae eius incidunt eaque amet.</div>
+                    <div class="second-row" [class.bg-white]="mouseOvered">{{message.threadText}}</div>
 
                     <div class="third-row">
                         <a (click)="openThread()">0 Antworten</a>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <!-- Antworten des Users -->
+        <!-- Threads des Users -->
         <div class="message-box" *ngFor="let message of messages">
             <div class="line-date-container">
                 <div class="line"></div>
@@ -75,7 +75,7 @@
                 <div class="user-message-infos-container">
                     <div class="user-first-row">
                         <span>{{message.threadTime}} Uhr</span>
-                        <span>{{userName}}</span>
+                        <span>{{message.threadWriter}}</span>
                     </div>
 
                     <div class="user-second-row">{{message.threadText}}</div>
