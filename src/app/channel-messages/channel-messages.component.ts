@@ -63,15 +63,15 @@ export class ChannelMessagesComponent implements OnInit {
   }
 
   getUserMessages() {
-    this.userMessages = this.messages.filter(s => s.threadWriter == this.userId);
+    this.userMessages = this.messages.filter(s => s.threadWriter == this.userName);
     console.log('User Messages are',this.userMessages)
-    this.memberMessages = this.messages.filter(s => s.threadWriter !== this.userId);
+    this.memberMessages = this.messages.filter(s => s.threadWriter !== this.userName);
     console.log('User Messages are',this.memberMessages);
   }
 
   setMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();
-    this.channelMessages.threadWriter = this.userId;
+    this.channelMessages.threadWriter = this.userName;
     this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
     setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp),this.channelMessages.toJSON(), {merge: true});
