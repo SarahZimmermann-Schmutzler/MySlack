@@ -86,12 +86,12 @@
         <!-- third section -->
         <div class="third-section-container">
             <div class="send-message-container">
-                <textarea placeholder="Antworten..."></textarea>
+                <textarea placeholder="Antworten..." name="answerText" [(ngModel)]="threadAnswers.answerText"></textarea>
 
                 <div class="like-send-container">
                     <div></div>
 
-                    <img src="assets/img/workspace/send.png">
+                    <img src="assets/img/workspace/send.png" (click)="setAnswers()" >
                 </div>
             </div>
         </div>

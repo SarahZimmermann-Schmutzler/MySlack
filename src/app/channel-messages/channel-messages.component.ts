@@ -54,7 +54,7 @@ export class ChannelMessagesComponent implements OnInit {
     this.showNewMessage.emit(false);
     this.showDirectMessages.emit(false);
     this.showPrivateMessages.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showThreadSection.emit(false);
   }
 
   // hideThreadSection() {
@@ -67,15 +67,12 @@ export class ChannelMessagesComponent implements OnInit {
     this.channel$.subscribe(channel => {
       this.channelName = channel.name;
       this.channelDescription = channel.description;
-      
     })
-
-    
   }
 
   getMessagesData() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
-    collectionData(coll).subscribe(messages => {
+    collectionData(coll, {idField: 'id'}).subscribe(messages => {
       console.log('Messages sind', messages);
       this.messages = messages;
       console.log('This Messages sind', this.messages)
@@ -101,8 +98,10 @@ export class ChannelMessagesComponent implements OnInit {
     this.channelMessages.threadText = '';
   }
   
-  openThread() {
+  openThread(threadId) {
     this.showThreadsSection.emit(true);
+    console.log(threadId);
+    localStorage.setItem('threadId', threadId);
   }
 
   editChannel() {

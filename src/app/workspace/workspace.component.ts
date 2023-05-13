@@ -29,7 +29,6 @@ export class WorkspaceComponent {
     this.currentUser = localStorage.getItem('currentUser');
     console.log(this.currentUser);
     this.getCurrentUserData();
-    // this.getUserData();
   }
 
   getCurrentUserData() {
@@ -39,18 +38,6 @@ export class WorkspaceComponent {
       this.userName = currentUser.name;
     })
   }
-
-  // getUserData() {
-  //   collectionData(this.coll).subscribe(allUsers => {
-  //     this.allUsers = allUsers;
-  //     this.getUserNames();
-  //   });
-  // }
-
-  // getUserNames() {
-  //   this.userNames = this.allUsers.find(s => s.name == 'Oswald Mandus');
-  //   console.log('Users Names are', this.userNames)
-  // }
 
   setVariableFalse($event: any) {
     this.showThreadsSection = $event;
