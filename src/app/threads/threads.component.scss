@@ -200,9 +200,9 @@
 
 .user-message-content-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 20px;
+    // margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px 30px;
 
@@ -227,15 +227,19 @@
 
 .user-first-row {
     margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 
     span {
-        &:last-child {
+        &:first-child {
             font-weight: 700;
             font-size: 18px;
             
         }
 
-        &:first-child {
+        &:last-child {
             font-weight: 400;
             font-size: 14px;
             color: rgba(104, 104, 104, 1);

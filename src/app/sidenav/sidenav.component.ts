@@ -16,11 +16,6 @@ export class SidenavComponent implements OnInit {
   hideMessage = false;
   hoverStay = false;
   channelPopup = false;
-  @Output() showPrivateMessages = new EventEmitter();
-  @Output() showDirectMessages = new EventEmitter();
-  @Output() showNewMessage = new EventEmitter();
-  @Output() showChannelMessages = new EventEmitter();
-  @Output() showThreadSection = new EventEmitter();
   @Input() userName: string;
   channels = new Channels();
   collCh = collection(this.firestore, 'channels');
@@ -64,11 +59,11 @@ export class SidenavComponent implements OnInit {
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
     this.hideMessage = !this.hideMessage;
-    for (let i = 0; i < this.allUsers.length; i++) {
-      const name = this.allUsers[i];
-      // this.allNames = this.allUsers[i]['name'];
-      // console.log(this.allNames);
-    }
+    // for (let i = 0; i < this.allUsers.length; i++) {
+    //   const name = this.allUsers[i];
+    //   this.allNames = this.allUsers[i]['name'];
+    //   console.log(this.allNames);
+    // }
   }
 
   createChannel() {
@@ -80,44 +75,45 @@ export class SidenavComponent implements OnInit {
   }
 
   openPrivateMessages() {
-    this.showChannelMessages.emit(false);
-    this.showPrivateMessages.emit(true);
-    this.showDirectMessages.emit(false);
-    this.showNewMessage.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(false);
+    // this.showPrivateMessages.emit(true);
+    // this.showDirectMessages.emit(false);
+    // this.showNewMessage.emit(false);
+    // this.showThreadSection.emit(false);
     this.hoverStay = false;
   }
 
   openDirectMessages() {
-    this.showChannelMessages.emit(false);
-    this.showDirectMessages.emit(true);
-    this.showPrivateMessages.emit(false);
-    this.showNewMessage.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(false);
+    // this.showDirectMessages.emit(true);
+    // this.showPrivateMessages.emit(false);
+    // this.showNewMessage.emit(false);
+    // this.showThreadSection.emit(false);
     this.hoverStay = false;
   }
 
   openNewMessage() {
-    this.showChannelMessages.emit(false);
-    this.showNewMessage.emit(true);
-    this.showDirectMessages.emit(false);
-    this.showPrivateMessages.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(false);
+    // this.showNewMessage.emit(true);
+    // this.showDirectMessages.emit(false);
+    // this.showPrivateMessages.emit(false);
+    // this.showThreadSection.emit(false);
     this.hoverStay = false;
   }
 
   openChannelMessages(channelId) {
-    this.showChannelMessages.emit(true);
-    this.showNewMessage.emit(false);
-    this.showDirectMessages.emit(false);
-    this.showPrivateMessages.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(true);
+    // this.showNewMessage.emit(false);
+    // this.showDirectMessages.emit(false);
+    // this.showPrivateMessages.emit(false);
+    // this.showThreadSection.emit(false);
     this.hoverStay = true;
     console.log(channelId)
     localStorage.setItem('Channel ID', channelId);
+    window.location.reload();
   }
 
-  hideThreadSection() {
-    this.showThreadSection.emit(false);
-  }
+  // hideThreadSection() {
+  //   this.showThreadSection.emit(false);
+  // }
 }
