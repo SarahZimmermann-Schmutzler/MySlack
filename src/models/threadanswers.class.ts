@@ -13,10 +13,10 @@ export class ThreadAnswers {
 
     public toJSON() {
         return {
-            threadText: this.answerText,
-            threadWriter: this.answerWriter,
-            threadDate: this.answerDate,
-            threadTime: this.answerTime
+            answerText: this.answerText,
+            answerWriter: this.answerWriter,
+            answerDate: this.answerDate,
+            answerTime: this.answerTime
         };
     }
 }

@@ -100,8 +100,8 @@ export class ChannelMessagesComponent implements OnInit {
   
   openThread(threadId) {
     this.showThreadsSection.emit(true);
-    console.log(threadId);
     localStorage.setItem('threadId', threadId);
+    window.location.reload();
   }
 
   editChannel() {

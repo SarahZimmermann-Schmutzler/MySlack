@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { ThreadAnswers } from 'src/models/threadanswers.class';
 
 @Component({
@@ -17,11 +17,17 @@ export class ThreadsComponent implements OnInit {
   currentChannel;
   currentMessage;
   currentThread;
+  currentUser;
+  answers = [];
+  userAnswers = [];
+  memberAnswers = [];
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');
     this.currentMessage = localStorage.getItem('messageId');
     this.currentThread = localStorage.getItem('threadId');
+    this.currentUser = localStorage.getItem('currentUser');
+    this.getAnswerData();
   }
 
   constructor(public firestore: Firestore) {}
@@ -35,6 +41,24 @@ export class ThreadsComponent implements OnInit {
     setDoc(doc(coll, this.currentThread, "answers", this.timestamp),this.threadAnswers.toJSON(), {merge: true});
     localStorage.setItem('answerId', this.timestamp);
     this.threadAnswers.answerText = '';
+  }
+
+  getAnswerData() {
+    let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.currentThread, 'answers');
+    collectionData(coll, {idField: 'id'}).subscribe(answers => {
+      console.log('Answers are', answers);
+      this.answers = answers;
+      console.log('Answers are', this.answers);
+      console.log('Länge', this.answers.length);
+      this.getUserAnswers();
+    });
+  }
+
+  getUserAnswers() {
+    this.userAnswers = this.answers.filter(s => s.answerWriter == this.userName);
+    console.log('User Answers are',this.userAnswers)
+    this.memberAnswers = this.answers.filter(s => s.answerWriter !== this.userName);
+    console.log('Member Answers are',this.memberAnswers);
   }
 
   closeThread() {
