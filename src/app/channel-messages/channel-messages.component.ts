@@ -72,6 +72,7 @@ export class ChannelMessagesComponent implements OnInit {
     this.channel$.subscribe(channel => {
       this.channelName = channel.name;
       this.channelDescription = channel.description;
+      this.service.sendChannelName(this.channelName);
     })
   }
 

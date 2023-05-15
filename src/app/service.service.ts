@@ -7,10 +7,15 @@ import {Subject} from 'rxjs';
 export class ServiceService {
 
   numberOfAnswers = new Subject();
+  currentChannelName = new Subject();
 
   constructor() { }
 
   sendData(data) {
     this.numberOfAnswers.next(data);
+  }
+
+  sendChannelName(data) {
+    this.currentChannelName.next(data);
   }
 }
