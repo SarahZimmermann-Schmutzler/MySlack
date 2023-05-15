@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, doc, docData, getDocs, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-channel-messages',
@@ -35,6 +36,7 @@ export class ChannelMessagesComponent implements OnInit {
   threadText;
   userMessages = [];
   memberMessages = [];
+  howManyAnswers;
   
 
   ngOnInit(): void {
@@ -45,9 +47,12 @@ export class ChannelMessagesComponent implements OnInit {
     this.getChannelData();
     this.getMessagesData();
     // this.view();
+    this.service.numberOfAnswers.subscribe(data => {
+      this.howManyAnswers = data;
+    })
   }
 
-  constructor(public firestore: Firestore) {}
+  constructor(public firestore: Firestore, private service: ServiceService) {}
 
   view() {
     this.showChannelMessages.emit(true);

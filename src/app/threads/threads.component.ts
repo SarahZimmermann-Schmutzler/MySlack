@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { ThreadAnswers } from 'src/models/threadanswers.class';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-threads',
@@ -21,6 +22,7 @@ export class ThreadsComponent implements OnInit {
   answers = [];
   userAnswers = [];
   memberAnswers = [];
+  howManyAnswers;
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');
@@ -30,7 +32,7 @@ export class ThreadsComponent implements OnInit {
     this.getAnswerData();
   }
 
-  constructor(public firestore: Firestore) {}
+  constructor(public firestore: Firestore, private service: ServiceService) {}
 
   setAnswers() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
@@ -50,6 +52,8 @@ export class ThreadsComponent implements OnInit {
       this.answers = answers;
       console.log('Answers are', this.answers);
       console.log('Länge', this.answers.length);
+      this.howManyAnswers = this.answers.length;
+      this.service.sendData(this.howManyAnswers);
       this.getUserAnswers();
     });
   }

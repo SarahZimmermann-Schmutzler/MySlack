@@ -25,6 +25,7 @@ import { NewMessageComponent } from './new-message/new-message.component';
 import { PrivateMessagesComponent } from './private-messages/private-messages.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { ServiceService } from './service.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
     provideFirestore(() => getFirestore()),
     FormsModule,
   ],
-  providers: [],
+  providers: [ServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -51,12 +51,12 @@
                 <span>{{userName}} (Du)</span>
             </div>
 
-            <div class="contact-info-container" (click)="openDirectMessages()">
+            <div class="contact-info-container" (click)="openDirectMessages()" *ngFor="let member of members">
                 <img src="assets/img/workspace/character.png">
                 <div class="status-container">
                     <div></div>
                 </div>
-                <span>Name</span>
+                <span>{{member.name}}</span>
             </div>
         </div>
     </div>

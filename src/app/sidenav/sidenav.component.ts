@@ -26,6 +26,7 @@ export class SidenavComponent implements OnInit {
   currentUser;
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   allNames: Array<any> | undefined;
+  members = [];
 
   constructor(private auth: Auth, public firestore: Firestore) { }
 
@@ -59,11 +60,7 @@ export class SidenavComponent implements OnInit {
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
     this.hideMessage = !this.hideMessage;
-    // for (let i = 0; i < this.allUsers.length; i++) {
-    //   const name = this.allUsers[i];
-    //   this.allNames = this.allUsers[i]['name'];
-    //   console.log(this.allNames);
-    // }
+    this.members = this.allUsers.filter(s => s.name !== this.userName && s.name !== 'Guest');
   }
 
   createChannel() {

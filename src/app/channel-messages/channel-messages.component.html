@@ -57,7 +57,7 @@
                     <div class="second-row" [class.bg-white]="mouseOvered">{{message.threadText}}</div>
 
                     <div class="third-row">
-                        <a (click)="openThread(message.id)">0 Antworten</a>
+                        <a (click)="openThread(message.id)">{{howManyAnswers}} Antworten</a>
                         <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
 
                     <div class="user-third-row">
                         <span>Letzte Antwort 00:00</span>
-                        <a (click)="openThread(message.id)">0 Antworten</a>
+                        <a (click)="openThread(message.id)">{{howManyAnswers}} Antworten</a>
                     </div>
                 </div>
 
