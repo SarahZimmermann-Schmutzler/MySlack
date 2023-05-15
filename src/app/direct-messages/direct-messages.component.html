@@ -44,7 +44,7 @@
             </div>
 
             <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-            (mouseout)="mouseOvered=false">
+                (mouseout)="mouseOvered=false">
                 <img src="assets/img/workspace/character.png">
 
                 <div class="message-infos-container">
@@ -64,18 +64,21 @@
 
     <!-- Info -->
     <div class="info-container">
-        <div>Diese Unterhaltung findet nur zwischen <span (click)="openProfilePopup()">@Vorname Nachname</span> und dir statt.</div>
+        <div>Diese Unterhaltung findet nur zwischen <span (click)="openProfilePopup()">@Vorname Nachname</span> und dir
+            statt.</div>
     </div>
 
     <!-- third section -->
-    <div class="send-message-container">
-        <!-- Placeholder soll namen des Channels tragen -->
-        <textarea placeholder="Nachricht"></textarea>
+    <div class="third-section-container">
+        <div class="send-message-container">
+            <!-- Placeholder soll namen des Channels tragen -->
+            <textarea placeholder="Nachricht"></textarea>
 
-        <div class="like-send-container">
-            <div></div>
+            <div class="like-send-container">
+                <div></div>
 
-            <img src="assets/img/workspace/send.png">
+                <img src="assets/img/workspace/send.png">
+            </div>
         </div>
     </div>
 </div>

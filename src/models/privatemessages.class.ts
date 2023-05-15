@@ -11,9 +11,9 @@ export class PrivateMessages {
 
     public toJSON() {
         return {
-            threadText: this.messageText,
-            threadDate: this.messageDate,
-            threadTime: this.messageTime
+            noteText: this.messageText,
+            noteDate: this.messageDate,
+            noteTime: this.messageTime
         };
     }
 }

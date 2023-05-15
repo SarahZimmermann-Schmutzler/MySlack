@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { PrivateMessages } from 'src/models/privatemessages.class';
 
 @Component({
@@ -18,9 +18,11 @@ export class PrivateMessagesComponent implements OnInit {
   timestamp;
   coll = collection(this.firestore, 'users');
   currentUser;
+  allNotes = [];
 
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser')
+    this.getNotes();
   }
 
   constructor(public firestore: Firestore) {}
@@ -31,6 +33,14 @@ export class PrivateMessagesComponent implements OnInit {
     this.privateMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
     setDoc(doc(this.coll, this.currentUser, "notes", this.timestamp),this.privateMessages.toJSON(), {merge: true});
     this.privateMessages.messageText = '';
+  }
+
+  getNotes() {
+    let coll = collection(this.firestore, 'users', this.currentUser, 'notes');
+    collectionData(coll, {idField: 'id'}).subscribe(notes => {
+      console.log('Notes sind', notes);
+      this.allNotes = notes;
+    });
   }
 
   openProfilePopup() {

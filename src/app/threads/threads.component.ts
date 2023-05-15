@@ -24,6 +24,7 @@ export class ThreadsComponent implements OnInit {
   memberAnswers = [];
   howManyAnswers;
   currentChannelName;
+  lastAnswers = [];
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');
@@ -52,21 +53,27 @@ export class ThreadsComponent implements OnInit {
   getAnswerData() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.currentThread, 'answers');
     collectionData(coll, {idField: 'id'}).subscribe(answers => {
-      console.log('Answers are', answers);
       this.answers = answers;
-      console.log('Answers are', this.answers);
-      console.log('Länge', this.answers.length);
+
+      // zeigt bei jedem Thread die Anzahl des aktuell geöffneten Threads an
       this.howManyAnswers = this.answers.length;
       this.service.sendData(this.howManyAnswers);
+
       this.getUserAnswers();
+
+      // ist die Uhrzeit der letzten Antwort des geöffnetet Threads
+      this.getLastAnswer();
     });
+  }
+
+  getLastAnswer() {
+    this.lastAnswers = this.answers.slice(-1);
+    console.log('thisLastAnswer', this.lastAnswers[0].answerTime)
   }
 
   getUserAnswers() {
     this.userAnswers = this.answers.filter(s => s.answerWriter == this.userName);
-    console.log('User Answers are',this.userAnswers)
     this.memberAnswers = this.answers.filter(s => s.answerWriter !== this.userName);
-    console.log('Member Answers are',this.memberAnswers);
   }
 
   closeThread() {

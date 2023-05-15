@@ -1,5 +1,5 @@
 <div class="content-container">
-    <app-sidenav class="sidenav" [userName]="userName" ></app-sidenav>
+    <app-sidenav class="sidenav" [userName]="userName" (showDirectMessages)="showDirectMessagesSection($event)" (showChannelMessages)="hideChannelMessagesSection($event)" (showPrivateMessages)="showPrivateMessagesSection($event)" (showNewMessage)="showNewMessageSection($event)" (showThreadSection)="hideThreadSection($event)"></app-sidenav>
 
     <app-channel-messages class="messages" [userName]="userName"  (showThreadsSection)="setVariableTrue($event)" *ngIf="showChannelMessages"></app-channel-messages>
     <app-direct-messages class="messages" [userName]="userName" *ngIf="showDirectMessages"></app-direct-messages>
@@ -9,4 +9,4 @@
     <app-threads class="threads" [userName]="userName" (showThreadsSection)="setVariableFalse($event)" *ngIf="showThreadsSection"></app-threads>
 </div>
 
-<!-- (showDirectMessages)="showDirectMessagesSection($event)" (showChannelMessages)="hideChannelMessagesSection($event)" (showPrivateMessages)="showPrivateMessagesSection($event)" (showNewMessage)="showNewMessageSection($event)" (showThreadSection)="hideThreadSection($event)" -->
+

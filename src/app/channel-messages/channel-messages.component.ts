@@ -16,11 +16,7 @@ export class ChannelMessagesComponent implements OnInit {
   channelPopup = false;
   @Output() showThreadsSection = new EventEmitter();
   @Input() userName;
-  @Output() showPrivateMessages = new EventEmitter();
-  @Output() showDirectMessages = new EventEmitter();
-  @Output() showNewMessage = new EventEmitter();
-  @Output() showChannelMessages = new EventEmitter();
-  @Output() showThreadSection = new EventEmitter();
+  
   currentChannel;
   userId;
   collCh = collection(this.firestore, 'channels');
@@ -46,25 +42,12 @@ export class ChannelMessagesComponent implements OnInit {
     console.log(this.currentChannel);
     this.getChannelData();
     this.getMessagesData();
-    // this.view();
     this.service.numberOfAnswers.subscribe(data => {
       this.howManyAnswers = data;
     })
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) {}
-
-  view() {
-    this.showChannelMessages.emit(true);
-    this.showNewMessage.emit(false);
-    this.showDirectMessages.emit(false);
-    this.showPrivateMessages.emit(false);
-    // this.showThreadSection.emit(false);
-  }
-
-  // hideThreadSection() {
-  //   this.showThreadSection.emit(false);
-  // }
 
   getChannelData() {
     const docRef = doc(this.collCh, this.currentChannel);

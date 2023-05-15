@@ -17,6 +17,11 @@ export class SidenavComponent implements OnInit {
   hoverStay = false;
   channelPopup = false;
   @Input() userName: string;
+  @Output() showPrivateMessages = new EventEmitter();
+  @Output() showDirectMessages = new EventEmitter();
+  @Output() showNewMessage = new EventEmitter();
+  @Output() showChannelMessages = new EventEmitter();
+  @Output() showThreadSection = new EventEmitter();
   channels = new Channels();
   collCh = collection(this.firestore, 'channels');
   collUs = collection(this.firestore, 'users');
@@ -72,20 +77,20 @@ export class SidenavComponent implements OnInit {
   }
 
   openPrivateMessages() {
-    // this.showChannelMessages.emit(false);
-    // this.showPrivateMessages.emit(true);
-    // this.showDirectMessages.emit(false);
-    // this.showNewMessage.emit(false);
-    // this.showThreadSection.emit(false);
+    this.showChannelMessages.emit(false);
+    this.showPrivateMessages.emit(true);
+    this.showDirectMessages.emit(false);
+    this.showNewMessage.emit(false);
+    this.showThreadSection.emit(false);
     this.hoverStay = false;
   }
 
   openDirectMessages() {
-    // this.showChannelMessages.emit(false);
-    // this.showDirectMessages.emit(true);
-    // this.showPrivateMessages.emit(false);
-    // this.showNewMessage.emit(false);
-    // this.showThreadSection.emit(false);
+    this.showChannelMessages.emit(false);
+    this.showDirectMessages.emit(true);
+    this.showPrivateMessages.emit(false);
+    this.showNewMessage.emit(false);
+    this.showThreadSection.emit(false);
     this.hoverStay = false;
   }
 

@@ -263,8 +263,11 @@
 
 // Info Container
 .info-container {
-    padding-left: 30px;
-    padding-right: 30px;
+    height: 50px;
+    position: absolute;
+    bottom: 150px;
+    left: 30px;
+    right: 30px;
     color: rgba(104, 104, 104, 1);
 
     span {
@@ -274,11 +277,18 @@
 }
 
 // third section
-.send-message-container {
+.third-section-container {
     position: absolute;
-    bottom: 35px;
-    left: 30px;
-    right: 30px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 35px;
+    background-color: white;
+}
+
+.send-message-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
