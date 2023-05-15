@@ -90,7 +90,9 @@ export class HeaderComponent implements OnInit {
     setDoc(doc(this.coll, this.currentUser), { status: 'Inactive' }, { merge: true });
     localStorage.setItem('currentUser', '');
     signOut(this.auth).then(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then(() => {
+        window.location.reload();
+      });
     })
   }
 

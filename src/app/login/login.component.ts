@@ -21,22 +21,7 @@ export class LoginComponent implements OnInit {
   interval;
 
   ngOnInit(): void {
-    // this.route.params.subscribe(() => {
-    //   console.log('Seite neu geladen');
-    //   this.interval = setInterval(() => {
-    //     window.location.reload()
-    //     this.stopReload();
-    //   }, 1000);
-
-    //   this.stopReload();
-    // }) 
-
-    // this.interval = setInterval(() => {
-    //   window.location.reload()
-    //   this.stopReload();
-    // }, 1000);
-
-    // this.stopReload();
+    
   }
 
   constructor(private router: Router, private auth: Auth, public firestore: Firestore, private route: ActivatedRoute) {
@@ -56,7 +41,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('currentUser', this.currentUser);
           setDoc(doc(this.coll, this.currentUser), { status: 'Active' }, { merge: true });
           // this.router.navigateByUrl('/workspace/'+ this.currentUser);
-          this.router.navigateByUrl('/workspace');
+          this.router.navigateByUrl('/workspace').then(() => {
+            window.location.reload();
+          });
         }
       })
     }, () => {
@@ -74,6 +61,8 @@ export class LoginComponent implements OnInit {
     setDoc(doc(this.coll, this.guestUser), { name: 'Guest', mail: 'guest@guest.de', status: 'Active' });
     localStorage.setItem('currentUser', this.guestUser);
     // this.router.navigateByUrl('/workspace/'+ this.guestUser);
-    this.router.navigateByUrl('/workspace');
+    this.router.navigateByUrl('/workspace').then(() => {
+      window.location.reload();
+    });
   }
 }
