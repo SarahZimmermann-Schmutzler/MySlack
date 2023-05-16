@@ -323,8 +323,12 @@
         width: 10px;
         height: 10px;
         border-radius: 100%;
-        background-color: rgba(146, 200, 62, 1);
+        background-color: red;
     }
+}
+
+.c-green {
+    background-color: rgba(146, 200, 62, 1) !important;
 }
 
 .newChannel-pop-up {

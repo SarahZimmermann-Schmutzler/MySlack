@@ -3,6 +3,7 @@ import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { Firestore, addDoc, collection, collectionData, doc, docData, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Channels } from 'src/models/channels.class';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -32,8 +33,10 @@ export class SidenavComponent implements OnInit {
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   allNames: Array<any> | undefined;
   members = [];
+  userStatus;
+  active = false;
 
-  constructor(private auth: Auth, public firestore: Firestore) { }
+  constructor(private auth: Auth, public firestore: Firestore, private service: ServiceService) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
@@ -45,6 +48,11 @@ export class SidenavComponent implements OnInit {
 
     collectionData(this.collUs, {idField: 'id'}).subscribe(Users => {
       this.allUsers = Users;
+    })
+
+    this.service.userStatus.subscribe(data => {
+      this.userStatus = data;
+      this.active = true;
     })
   }
 

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { PrivateMessages } from 'src/models/privatemessages.class';
+import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-private-messages',
@@ -25,14 +27,15 @@ export class PrivateMessagesComponent implements OnInit {
     this.getNotes();
   }
 
-  constructor(public firestore: Firestore) {}
+  constructor(public firestore: Firestore, private service: ServiceService, private router: Router) {}
 
   createNotes() {
     this.timestamp = this.currentTimestamp.getTime().toString();
     this.privateMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.privateMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
-    setDoc(doc(this.coll, this.currentUser, "notes", this.timestamp),this.privateMessages.toJSON(), {merge: true});
-    this.privateMessages.messageText = '';
+    setDoc(doc(this.coll, this.currentUser, "notes", this.timestamp),this.privateMessages.toJSON(), {merge: true}).then(() => {
+      this.privateMessages.messageText = '';
+    });
   }
 
   getNotes() {

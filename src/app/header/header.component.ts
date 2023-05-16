@@ -4,6 +4,7 @@ import { Firestore, collection, collectionData, doc, docData, getDoc, setDoc } f
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,13 @@ export class HeaderComponent implements OnInit {
   interval;
 
 
-  constructor(private router: Router, private auth: Auth, private route: ActivatedRoute, public firestore: Firestore) { }
+  constructor(
+    private router: Router, 
+    private auth: Auth, 
+    private route: ActivatedRoute, 
+    public firestore: Firestore,
+    private service: ServiceService
+    ) { }
 
   ngOnInit(): void {
     // onAuthStateChanged(this.auth, (user$) => {
@@ -62,6 +69,7 @@ export class HeaderComponent implements OnInit {
       this.userName = user.name;
       this.userMail = user.mail;
       this.userStatus = user.status;
+      this.service.sendUserStatus(this.userStatus);
       // console.log('Retrieved userName', user.name);
       this.colorStatus();
       clearInterval(this.interval);

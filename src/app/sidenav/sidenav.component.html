@@ -2,9 +2,10 @@
     <div class="header-container">
         <img src="assets/img/workspace/logo.png">
         <span>Coding</span>
-        <div class="edit-img-container">
+        <!-- coming soon: newMessage -->
+        <!-- <div class="edit-img-container">
             <img src="assets/img/workspace/edit.png" (click)="openNewMessage()">
-        </div>
+        </div> -->
     </div>
 
     <div class="content-container">
@@ -46,7 +47,7 @@
             <div class="contact-info-container" (click)="openPrivateMessages()">
                 <img src="assets/img/workspace/woman.png">
                 <div class="status-container">
-                    <div></div>
+                    <div [class.c-green]="active"></div>
                 </div>
                 <span>{{userName}} (Du)</span>
             </div>
