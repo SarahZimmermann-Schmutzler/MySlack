@@ -5,6 +5,7 @@ import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { User } from 'src/models/user.class';
 import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { DirectMessages } from 'src/models/directmessages.class';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,6 +22,7 @@ export class SignUpComponent implements OnInit {
   password = '';
   user$: Observable<any>;
   currentUser = '';
+  
 
   ngOnInit(): void {
     setInterval(() => {
@@ -40,6 +42,7 @@ export class SignUpComponent implements OnInit {
           this.currentUser = user$.uid;
           // console.log(this.currentUser);
           setDoc(doc(this.coll, this.currentUser), this.user.toJSON(), {merge: true});
+          
         }
       });
     this.clearFields();
@@ -50,6 +53,8 @@ export class SignUpComponent implements OnInit {
     }, 3000);
     });
   }
+
+  
 
   clearFields() {
     this.name = '';

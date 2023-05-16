@@ -6,7 +6,7 @@
             <div class="active-container">
                 <div [class.c-green]="active"></div>
             </div>
-            <span>Name Vorname</span>
+            <span>{{memberName}}</span>
         </div>
 
     </div>
@@ -64,20 +64,21 @@
 
     <!-- Info -->
     <div class="info-container">
-        <div>Diese Unterhaltung findet nur zwischen <span (click)="openProfilePopup()">@Vorname Nachname</span> und dir
-            statt.</div>
+        <div>Diese Unterhaltung findet nur zwischen <span (click)="openProfilePopup()">@{{memberName}}</span> und dir
+            statt.
+        </div>
     </div>
 
     <!-- third section -->
     <div class="third-section-container">
         <div class="send-message-container">
             <!-- Placeholder soll namen des Channels tragen -->
-            <textarea placeholder="Nachricht"></textarea>
+            <textarea placeholder="Nachricht" name="messageText" [(ngModel)]="directMessages.messageText"></textarea>
 
             <div class="like-send-container">
                 <div></div>
 
-                <img src="assets/img/workspace/send.png">
+                <img src="assets/img/workspace/send.png" (click)="createDirectMessages()">
             </div>
         </div>
     </div>
@@ -95,13 +96,13 @@
         </div>
 
         <div class="profile-third-row">
-            <span>Vorname Name</span>
-            <span>Bearbeiten</span>
+            <span>{{memberName}}</span>
+            <!-- <span>Bearbeiten</span> -->
         </div>
 
         <div class="profile-fourth-row">
             <div [class.c-green]="active"></div>
-            <span>{{userStatus}}</span>
+            <span>{{memberStatus}}</span>
         </div>
 
         <div class="profile-fith-row">
@@ -110,7 +111,7 @@
         </div>
 
         <div class="profile-sixth-row">
-            <span>email@beispiel.com</span>
+            <span>{{memberMail}}</span>
         </div>
     </div>
 </div>

@@ -52,7 +52,7 @@
                 <span>{{userName}} (Du)</span>
             </div>
 
-            <div class="contact-info-container" (click)="openDirectMessages()" *ngFor="let member of members">
+            <div class="contact-info-container" (click)="openDirectMessages(member.id)" *ngFor="let member of members">
                 <img src="assets/img/workspace/character.png">
                 <div class="status-container">
                     <div></div>

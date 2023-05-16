@@ -93,13 +93,14 @@ export class SidenavComponent implements OnInit {
     this.hoverStay = false;
   }
 
-  openDirectMessages() {
+  openDirectMessages(memberId) {
     this.showChannelMessages.emit(false);
     this.showDirectMessages.emit(true);
     this.showPrivateMessages.emit(false);
     this.showNewMessage.emit(false);
     this.showThreadSection.emit(false);
     this.hoverStay = false;
+    localStorage.setItem('currentMember', memberId);
   }
 
   openNewMessage() {
@@ -118,7 +119,6 @@ export class SidenavComponent implements OnInit {
     // this.showPrivateMessages.emit(false);
     // this.showThreadSection.emit(false);
     this.hoverStay = true;
-    console.log(channelId)
     localStorage.setItem('Channel ID', channelId);
     window.location.reload();
   }

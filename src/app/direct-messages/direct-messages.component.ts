@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
+import { Firestore, collection, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { DirectMessages } from 'src/models/directmessages.class';
 
 @Component({
   selector: 'app-direct-messages',
@@ -12,17 +15,60 @@ export class DirectMessagesComponent implements OnInit {
   mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
+  member$: Observable<any>;
   active = false;
   userStatus;
+  currentMember;
+  coll = collection(this.firestore, 'users');
+  memberName;
+  memberStatus;
+  memberMail;
+  timestamp;
+  currentTimestamp = new Date();
+  directMessages = new DirectMessages();
 
   ngOnInit() {
-    this.service.userStatus.subscribe(data => {
-      this.userStatus = data;
-      this.active = true;
+    // this.service.userStatus.subscribe(data => {
+    //   this.userStatus = data;
+    //   this.active = true;
+    // })
+    this.currentMember = localStorage.getItem('currentMember')
+    console.log('current Member is', this.currentMember)
+    this.getMemberData();
+  }
+
+  constructor(private service: ServiceService, private firestore: Firestore) {}
+
+  createDirectMessages() {
+    this.timestamp = this.currentTimestamp.getTime().toString();
+    this.directMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
+    this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
+    this.directMessages.messageWriter = this.userName;
+    setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp),this.directMessages.toJSON(), {merge: true}).then(() => {
+      this.directMessages.messageText = '';
+    });
+  }
+
+  getMemberData() {
+    const docRef = doc(this.coll, this.currentMember);
+    this.member$ = docData(docRef);
+    this.member$.subscribe(member => {
+      this.memberName = member.name;
+      this.memberStatus = member.status;
+      this.memberMail = member.mail;
+      this.colorStatus();
     })
   }
 
-  constructor(private service: ServiceService) {}
+  colorStatus() {
+    if (this.userStatus == 'Active') {
+      this.active = true;
+    }
+
+    if (this.userStatus == 'Inactive') {
+      this.active = false;
+    }
+  }
 
   openProfilePopup() {
     this.profilePopup = true;
