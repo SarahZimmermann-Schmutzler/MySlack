@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Auth, onAuthStateChanged, signOut } from '@angular/fire/auth';
-import { Firestore, collection, collectionData, doc, docData, getDoc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
@@ -69,9 +69,8 @@ export class HeaderComponent implements OnInit {
       this.userName = user.name;
       this.userMail = user.mail;
       this.userStatus = user.status;
-      this.service.sendUserStatus(this.userStatus);
-      // console.log('Retrieved userName', user.name);
       this.colorStatus();
+      this.service.sendUserStatus(this.userStatus);
       clearInterval(this.interval);
     })
   }
@@ -94,9 +93,12 @@ export class HeaderComponent implements OnInit {
     this.logoutPopup = false;
   }
 
-  logout() {
-    setDoc(doc(this.coll, this.currentUser), { status: 'Inactive' }, { merge: true });
-    localStorage.setItem('currentUser', '');
+  async logout() {
+    let ref = doc(this.coll, this.currentUser)
+    await updateDoc(ref, { status: 'Inactive' }).then(() => {
+      localStorage.setItem('currentUser', '');
+    });
+    
     signOut(this.auth).then(() => {
       this.router.navigate(['/']).then(() => {
         window.location.reload();

@@ -37,13 +37,12 @@ export class LoginComponent implements OnInit {
       onAuthStateChanged(this.auth, (user$) => {
         if (user$) {
           this.currentUser = user$.uid;
-          // console.log(this.currentUser);
           localStorage.setItem('currentUser', this.currentUser);
-          setDoc(doc(this.coll, this.currentUser), { status: 'Active' }, { merge: true });
-          // this.router.navigateByUrl('/workspace/'+ this.currentUser);
-          this.router.navigateByUrl('/workspace').then(() => {
+          setDoc(doc(this.coll, this.currentUser), { status: 'Active' }, { merge: true }).then(() => {
+            this.router.navigateByUrl('/workspace').then(() => {
             window.location.reload();
           });
+        });
         }
       })
     }, () => {
@@ -57,10 +56,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  guestLogin() {
-    setDoc(doc(this.coll, this.guestUser), { name: 'Guest', mail: 'guest@guest.de', status: 'Active' });
-    localStorage.setItem('currentUser', this.guestUser);
-    // this.router.navigateByUrl('/workspace/'+ this.guestUser);
+
+  async guestLogin() {
+    await setDoc(doc(this.coll, this.guestUser), { name: 'Guest', mail: 'guest@guest.de', status: 'Active' }).then(() => {
+      localStorage.setItem('currentUser', this.guestUser);
+    });
     this.router.navigateByUrl('/workspace').then(() => {
       window.location.reload();
     });

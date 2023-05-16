@@ -4,7 +4,7 @@
         <div class="left-container" (click)="openProfilePopup()">
             <img src="assets/img/workspace/character.png">
             <div class="active-container">
-                <div></div>
+                <div [class.c-green]="active"></div>
             </div>
             <span>Name Vorname</span>
         </div>
@@ -100,8 +100,8 @@
         </div>
 
         <div class="profile-fourth-row">
-            <div></div>
-            <span>Status</span>
+            <div [class.c-green]="active"></div>
+            <span>{{userStatus}}</span>
         </div>
 
         <div class="profile-fith-row">
