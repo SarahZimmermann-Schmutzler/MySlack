@@ -14,21 +14,20 @@
     <!-- second section -->
     <div class="messages-display-container">
         <!-- Antworten des Users -->
-        <div class="message-box">
+        <div class="message-box" *ngFor="let dm of userDirectMessages">
             <div class="line-date-container">
                 <div class="line"></div>
-                <div class="date-bubble">Montag, 01 Januar</div>
+                <div class="date-bubble">{{dm.messageDate}}</div>
             </div>
 
             <div class="user-message-content-container">
                 <div class="user-message-infos-container">
                     <div class="user-first-row">
-                        <span>00:00 Uhr</span>
+                        <span>{{dm.messageTime}}</span>
                         <span>{{userName}}</span>
                     </div>
 
-                    <div class="user-second-row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
-                        tenetur nostrum consequuntur quibusdam porro et quae a animi?
+                    <div class="user-second-row">{{dm.messageText}}
                     </div>
                 </div>
 
@@ -37,10 +36,10 @@
         </div>
 
         <!-- Antworten der Mitglieder -->
-        <div class="message-box">
+        <div class="message-box" *ngFor="let dm of memberDirectMessages">
             <div class="line-date-container">
                 <div class="line"></div>
-                <div class="date-bubble">Montag, 01 Januar</div>
+                <div class="date-bubble">{{dm.messageDate}}</div>
             </div>
 
             <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
@@ -49,14 +48,11 @@
 
                 <div class="message-infos-container">
                     <div class="first-row">
-                        <span>Name Nachname</span>
-                        <span>00:00 Uhr</span>
+                        <span>{{dm.messageWriter}}</span>
+                        <span>{{dm.messageTime}} Uhr</span>
                     </div>
 
-                    <div class="second-row" [class.bg-white]="mouseOvered">Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Minima tenetur nostrum consequuntur quibusdam porro et quae a animi? Fugiat
-                        totam aspernatur voluptas adipisci pariatur, dignissimos rerum voluptatem cum non earum.
-                    </div>
+                    <div class="second-row" [class.bg-white]="mouseOvered">{{dm.messageText}}</div>
                 </div>
             </div>
         </div>

@@ -33,10 +33,11 @@ export class ChannelMessagesComponent implements OnInit {
   userMessages = [];
   memberMessages = [];
   howManyAnswers;
+  thisIsUser: boolean;
+  thisIsMember;
   
 
   ngOnInit(): void {
-    
     this.userId = localStorage.getItem('currentUser');
     this.currentChannel = localStorage.getItem('Channel ID');
     console.log(this.currentChannel);
@@ -66,8 +67,23 @@ export class ChannelMessagesComponent implements OnInit {
       this.messages = messages;
       console.log('This Messages sind', this.messages)
 
-      this.getUserMessages();
+      // this.getUserMessages();
+      this.messageStyle();
+      
     });
+  }
+
+  messageStyle() {
+    for (let i = 0; i < this.messages.length; i++) {
+      const element = this.messages[i];
+      if(element.threadWriter == this.userName) {
+        this.thisIsUser = true;
+      } else {
+        this.thisIsUser = false;
+      }
+      
+      console.log('this is User', this.thisIsUser)
+    }
   }
 
   getUserMessages() {

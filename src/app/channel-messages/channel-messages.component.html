@@ -36,8 +36,119 @@
 
     <!-- second section -->
     <div class="messages-display-container">
+        <div *ngFor="let message of messages">
+            <div class="message-box" *ngIf="!thisIsUser">
+                    <div class="line-date-container">
+                        <div class="line"></div>
+                        <div class="date-bubble">{{message.threadDate}}</div>
+                    </div>
+    
+                    <div class="message-content-container"  [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                    (mouseout)="mouseOvered=false">
+                    <img src="assets/img/workspace/character.png">
+    
+                    <div class="message-infos-container">
+                        <div class="first-row">
+                            <span>{{message.threadWriter}}</span>
+                            <span>{{message.threadTime}} Uhr</span>
+                        </div>
+    
+                        <div class="second-row" [class.bg-white]="mouseOvered">{{message.threadText}}</div>
+    
+                        <div class="third-row">
+                            <a (click)="openThread(message.id)">Antworten</a>
+                            <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-box" *ngIf="thisIsUser">
+                    <div class="line-date-container">
+                        <div class="line"></div>
+                        <div class="date-bubble">{{message.threadDate}}</div>
+                    </div>
+    
+                    <div class="user-message-content-container" >
+                        <div class="user-message-infos-container">
+                            <div class="user-first-row">
+                                <span>{{message.threadTime}} Uhr</span>
+                                <span>{{message.threadWriter}}</span>
+                            </div>
+        
+                            <div class="user-second-row">{{message.threadText}}</div>
+        
+                            <div class="user-third-row">
+                                <span>Letzte Antwort 00:00</span>
+                                <a (click)="openThread(message.id)">Antworten</a>
+                            </div>
+                        </div>
+        
+                        <img src="assets/img/workspace/woman.png">
+                    </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="message-box" *ngFor="let message of messages">
+            <div *ngIf="thisIsMember">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{message.threadDate}}</div>
+                </div>
+
+                <div class="message-content-container"  [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                (mouseout)="mouseOvered=false">
+                <img src="assets/img/workspace/character.png">
+
+                <div class="message-infos-container">
+                    <div class="first-row">
+                        <span>{{message.threadWriter}}</span>
+                        <span>{{message.threadTime}} Uhr</span>
+                    </div>
+
+                    <div class="second-row" [class.bg-white]="mouseOvered">{{message.threadText}}</div>
+
+                    <div class="third-row">
+                        <a (click)="openThread(message.id)">Antworten</a>
+                        <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div *ngIf="thisIsUser">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{message.threadDate}}</div>
+                </div>
+
+                <div class="user-message-content-container" >
+                    <div class="user-message-infos-container">
+                        <div class="user-first-row">
+                            <span>{{message.threadTime}} Uhr</span>
+                            <span>{{message.threadWriter}}</span>
+                        </div>
+    
+                        <div class="user-second-row">{{message.threadText}}</div>
+    
+                        <div class="user-third-row">
+                            <span>Letzte Antwort 00:00</span>
+                            <a (click)="openThread(message.id)">Antworten</a>
+                        </div>
+                    </div>
+    
+                    <img src="assets/img/workspace/woman.png">
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+
         <!-- Threads der Mitglieder -->
-        <div class="message-box" *ngFor="let message of memberMessages">
+        <!-- <div class="message-box" *ngFor="let message of memberMessages">
             <div class="line-date-container">
                 <div class="line"></div>
                 <div class="date-bubble">{{message.threadDate}}</div>
@@ -62,10 +173,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Threads des Users -->
-        <div class="message-box" *ngFor="let message of userMessages">
+        <!-- <div class="message-box" *ngFor="let message of memberMessages">
             <div class="line-date-container">
                 <div class="line"></div>
                 <div class="date-bubble">{{message.threadDate}}</div>
@@ -88,7 +199,7 @@
 
                 <img src="assets/img/workspace/woman.png">
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- third section -->

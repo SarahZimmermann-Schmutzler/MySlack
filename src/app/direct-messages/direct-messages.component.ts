@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
-import { Firestore, collection, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { DirectMessages } from 'src/models/directmessages.class';
 
@@ -19,6 +19,7 @@ export class DirectMessagesComponent implements OnInit {
   active = false;
   userStatus;
   currentMember;
+  currentUser;
   coll = collection(this.firestore, 'users');
   memberName;
   memberStatus;
@@ -26,6 +27,8 @@ export class DirectMessagesComponent implements OnInit {
   timestamp;
   currentTimestamp = new Date();
   directMessages = new DirectMessages();
+  userDirectMessages = [];
+  memberDirectMessages = [];
 
   ngOnInit() {
     // this.service.userStatus.subscribe(data => {
@@ -33,8 +36,11 @@ export class DirectMessagesComponent implements OnInit {
     //   this.active = true;
     // })
     this.currentMember = localStorage.getItem('currentMember')
+    this.currentUser = localStorage.getItem('currentUser')
     console.log('current Member is', this.currentMember)
     this.getMemberData();
+    this.getUserDirectMessageData();
+    this.getMemberDirectMessageData();
   }
 
   constructor(private service: ServiceService, private firestore: Firestore) {}
@@ -46,6 +52,20 @@ export class DirectMessagesComponent implements OnInit {
     this.directMessages.messageWriter = this.userName;
     setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp),this.directMessages.toJSON(), {merge: true}).then(() => {
       this.directMessages.messageText = '';
+    });
+  }
+
+  getUserDirectMessageData() {
+    let coll = collection(this.firestore, 'users', this.currentMember, 'directMessages');
+    collectionData(coll, {idField: 'id'}).subscribe(dm => {
+      this.userDirectMessages = dm;
+    });
+  }
+
+  getMemberDirectMessageData() {
+    let coll = collection(this.firestore, 'users', this.currentUser, 'directMessages');
+    collectionData(coll, {idField: 'id'}).subscribe(dm => {
+      this.memberDirectMessages = dm;
     });
   }
 
