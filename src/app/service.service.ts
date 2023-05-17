@@ -9,6 +9,7 @@ export class ServiceService {
   numberOfAnswers = new Subject();
   currentChannelName = new Subject();
   userStatus = new Subject();
+  answerData = new Subject<[]>();
 
   constructor() { }
 
@@ -22,5 +23,9 @@ export class ServiceService {
 
   sendUserStatus(data) {
     this.userStatus.next(data);
+  }
+
+  sendAnswerData(data) {
+    this.answerData.next(data);
   }
 }

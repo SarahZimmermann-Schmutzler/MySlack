@@ -74,11 +74,13 @@ export class ThreadsComponent implements OnInit {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.currentThread, 'answers');
     collectionData(coll, {idField: 'id'}).subscribe(answers => {
       this.answers = answers;
+      this.service.sendAnswerData(this.answers);
 
       // zeigt bei jedem Thread die Anzahl des aktuell geöffneten Threads an
       this.howManyAnswers = this.answers.length;
       console.log('how many Answers', this.howManyAnswers);
       this.service.sendData(this.howManyAnswers);
+      
 
       // this.getUserAnswers();
       this.messagePosition();

@@ -34,6 +34,8 @@ export class ChannelMessagesComponent implements OnInit {
   memberMessages = [];
   howManyAnswers;
   numberOfAnswers;
+  answers = [];
+  new = [];
   
 
   ngOnInit(): void {
@@ -42,9 +44,13 @@ export class ChannelMessagesComponent implements OnInit {
     console.log(this.currentChannel);
     this.getChannelData();
     this.getMessagesData();
-    this.service.numberOfAnswers.subscribe(data => {
-      this.howManyAnswers = data;
-    })
+    // this.service.numberOfAnswers.subscribe(data => {
+    //   this.howManyAnswers = data;
+    // })
+    // this.service.answerData.subscribe(data => {
+    //   this.answers = data;
+    //   console.log('Answers from Threads', this.answers)
+    // })
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) {}
