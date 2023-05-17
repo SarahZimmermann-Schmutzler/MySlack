@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc } from '@angular/fire/firestore';
 import { ThreadAnswers } from 'src/models/threadanswers.class';
 import { ServiceService } from '../service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-threads',
@@ -25,6 +26,12 @@ export class ThreadsComponent implements OnInit {
   howManyAnswers;
   currentChannelName;
   lastAnswers = [];
+  threads$: Observable<any>;
+  threadAnswer$: Observable<any>;
+  threadWriter;
+  threadTime;
+  threadText;
+  number;
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');
@@ -35,9 +42,21 @@ export class ThreadsComponent implements OnInit {
       this.currentChannelName = data;
     })
     this.getAnswerData();
+    this.getThreadData();
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) {}
+
+  getThreadData() {
+    const collCh = collection(this.firestore, 'channels', this.currentChannel, 'messages');
+    const docRef = doc(collCh, this.currentThread);
+    this.threads$ = docData(docRef);
+    this.threads$.subscribe(thread => {
+      this.threadWriter = thread.threadWriter;
+      this.threadTime = thread.threadTime;
+      this.threadText = thread.threadText;
+    })
+  }
 
   setAnswers() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
@@ -58,6 +77,7 @@ export class ThreadsComponent implements OnInit {
 
       // zeigt bei jedem Thread die Anzahl des aktuell geöffneten Threads an
       this.howManyAnswers = this.answers.length;
+      console.log('how many Answers', this.howManyAnswers);
       this.service.sendData(this.howManyAnswers);
 
       // this.getUserAnswers();

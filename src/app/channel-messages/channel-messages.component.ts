@@ -33,6 +33,7 @@ export class ChannelMessagesComponent implements OnInit {
   userMessages = [];
   memberMessages = [];
   howManyAnswers;
+  numberOfAnswers;
   
 
   ngOnInit(): void {
@@ -62,7 +63,7 @@ export class ChannelMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     collectionData(coll, {idField: 'id'}).subscribe(messages => {
       this.messages = messages;
-      // this.getUserMessages();
+      console.log('messages', this.messages)
       this.messagePosition();
     });
   }
