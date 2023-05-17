@@ -3,12 +3,14 @@ export class ThreadAnswers {
     answerWriter: any;
     answerDate: any;
     answerTime: any;
+    thisIsUser: any;
 
     constructor(obj?: any) {
         this.answerText = obj;
         this.answerWriter = obj;
         this.answerDate = obj;
         this.answerTime = obj;
+        this.thisIsUser = obj;
     }
 
     public toJSON() {
@@ -16,7 +18,8 @@ export class ThreadAnswers {
             answerText: this.answerText,
             answerWriter: this.answerWriter,
             answerDate: this.answerDate,
-            answerTime: this.answerTime
+            answerTime: this.answerTime,
+            thisIsUser: this.thisIsUser
         };
     }
 }

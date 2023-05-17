@@ -13,23 +13,24 @@
 
     <!-- second section -->
     <div class="messages-display-container">
-        <!-- Antworten der Mitglieder -->
-        <div class="message-box" *ngFor="let answers of memberAnswers">
-            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-                (mouseout)="mouseOvered=false">
-                <img src="assets/img/workspace/character.png">
+        <div *ngFor="let answers of answers">
+            <!-- Antworten der Mitglieder -->
+            <div class="message-box" *ngIf="!answers.thisIsUser">
+                <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                    (mouseout)="mouseOvered=false">
+                    <img src="assets/img/workspace/character.png">
 
-                <div class="message-infos-container">
-                    <div class="first-row">
-                        <span>{{answers.answerWriter}}</span>
-                        <span>{{answers.answerTime}} Uhr</span>
+                    <div class="message-infos-container">
+                        <div class="first-row">
+                            <span>{{answers.answerWriter}}</span>
+                            <span>{{answers.answerTime}} Uhr</span>
+                        </div>
+
+                        <div class="second-row" [class.bg-white]="mouseOvered">{{answers.answerText}}</div>
                     </div>
-
-                    <div class="second-row" [class.bg-white]="mouseOvered">{{answers.answerText}}</div>
                 </div>
-            </div>
 
-            <!-- <div class="answer-container">
+                <!-- <div class="answer-container">
                 <div class="answer">
                     <span>0 Antworten</span>
                 </div>
@@ -40,33 +41,36 @@
                     <div></div>
                 </div>
             </div> -->
-        </div>
+            </div>
 
-        <!-- Antworten des Users -->
-        <div class="message-box" *ngFor="let answers of userAnswers">
-            <div class="user-message-content-container">
-                <div class="user-message-infos-container">
-                    <div class="user-first-row">
-                        <span>{{answers.answerWriter}}</span>
-                        <span>{{answers.answerTime}} Uhr</span>
+            <!-- Antworten des Users -->
+            <div class="message-box" *ngIf="answers.thisIsUser">
+                <div class="user-message-content-container">
+                    <div class="user-message-infos-container">
+                        <div class="user-first-row">
+                            <span>{{answers.answerWriter}}</span>
+                            <span>{{answers.answerTime}} Uhr</span>
+                        </div>
+
+                        <div class="user-second-row">{{answers.answerText}}</div>
                     </div>
 
-                    <div class="user-second-row">{{answers.answerText}}</div>
+                    <img src="assets/img/workspace/woman.png">
                 </div>
-
-                <img src="assets/img/workspace/woman.png">
             </div>
         </div>
+
 
         <!-- third section -->
         <div class="third-section-container">
             <div class="send-message-container">
-                <textarea placeholder="Antworten..." name="answerText" [(ngModel)]="threadAnswers.answerText"></textarea>
+                <textarea placeholder="Antworten..." name="answerText"
+                    [(ngModel)]="threadAnswers.answerText"></textarea>
 
                 <div class="like-send-container">
                     <div></div>
 
-                    <img src="assets/img/workspace/send.png" (click)="setAnswers()" >
+                    <img src="assets/img/workspace/send.png" (click)="setAnswers()">
                 </div>
             </div>
         </div>

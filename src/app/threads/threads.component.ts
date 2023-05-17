@@ -45,6 +45,7 @@ export class ThreadsComponent implements OnInit {
     this.threadAnswers.answerWriter = this.userName;
     this.threadAnswers.answerDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.threadAnswers.answerTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
+    this.threadAnswers.thisIsUser = '';
     setDoc(doc(coll, this.currentThread, "answers", this.timestamp),this.threadAnswers.toJSON(), {merge: true});
     localStorage.setItem('answerId', this.timestamp);
     this.threadAnswers.answerText = '';
@@ -59,11 +60,23 @@ export class ThreadsComponent implements OnInit {
       this.howManyAnswers = this.answers.length;
       this.service.sendData(this.howManyAnswers);
 
-      this.getUserAnswers();
+      // this.getUserAnswers();
+      this.messagePosition();
 
       // ist die Uhrzeit der letzten Antwort des geöffnetet Threads
       this.getLastAnswer();
     });
+  }
+
+  messagePosition() {
+    for (let i = 0; i < this.answers.length; i++) {
+      const element = this.answers[i];
+      if(element.answerWriter == this.userName) {
+        element.thisIsUser = true;
+      } else {
+        element.thisIsUser = false;
+      }
+    }
   }
 
   getLastAnswer() {

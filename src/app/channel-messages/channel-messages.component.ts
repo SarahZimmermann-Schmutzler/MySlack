@@ -61,16 +61,13 @@ export class ChannelMessagesComponent implements OnInit {
   getMessagesData() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     collectionData(coll, {idField: 'id'}).subscribe(messages => {
-      console.log('Messages sind', messages);
       this.messages = messages;
-      console.log('This Messages sind', this.messages)
-
       // this.getUserMessages();
-      this.messageStyle();
+      this.messagePosition();
     });
   }
 
-  messageStyle() {
+  messagePosition() {
     for (let i = 0; i < this.messages.length; i++) {
       const element = this.messages[i];
       if(element.threadWriter == this.userName) {
@@ -78,16 +75,15 @@ export class ChannelMessagesComponent implements OnInit {
       } else {
         element.thisIsUser = false;
       }
-      console.log('this is User', element.thisIsUser)
     }
   }
 
-  getUserMessages() {
-    this.userMessages = this.messages.filter(s => s.threadWriter == this.userName);
-    console.log('User Messages are',this.userMessages)
-    this.memberMessages = this.messages.filter(s => s.threadWriter !== this.userName);
-    console.log('User Messages are',this.memberMessages);
-  }
+  // getUserMessages() {
+  //   this.userMessages = this.messages.filter(s => s.threadWriter == this.userName);
+  //   console.log('User Messages are',this.userMessages)
+  //   this.memberMessages = this.messages.filter(s => s.threadWriter !== this.userName);
+  //   console.log('User Messages are',this.memberMessages);
+  // }
 
   setMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();
