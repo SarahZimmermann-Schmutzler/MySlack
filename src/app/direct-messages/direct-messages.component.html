@@ -13,49 +13,53 @@
 
     <!-- second section -->
     <div class="messages-display-container">
-        <!-- Antworten des Users -->
-        <div class="message-box" *ngFor="let dm of userDirectMessages">
-            <div class="line-date-container">
-                <div class="line"></div>
-                <div class="date-bubble">{{dm.messageDate}}</div>
-            </div>
-
-            <div class="user-message-content-container">
-                <div class="user-message-infos-container">
-                    <div class="user-first-row">
-                        <span>{{dm.messageTime}}</span>
-                        <span>{{userName}}</span>
-                    </div>
-
-                    <div class="user-second-row">{{dm.messageText}}
-                    </div>
+        <div *ngFor="let dm of allDirectMessagesSorted">
+            <!-- Antworten des Users -->
+            <div class="message-box" *ngIf="dm.thisIsUser">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{dm.messageDate}}</div>
                 </div>
 
-                <img src="assets/img/workspace/character.png">
-            </div>
-        </div>
+                <div class="user-message-content-container">
+                    <div class="user-message-infos-container">
+                        <div class="user-first-row">
+                            <span>{{dm.messageTime}}</span>
+                            <span>{{userName}}</span>
+                        </div>
 
-        <!-- Antworten der Mitglieder -->
-        <div class="message-box" *ngFor="let dm of memberDirectMessages">
-            <div class="line-date-container">
-                <div class="line"></div>
-                <div class="date-bubble">{{dm.messageDate}}</div>
-            </div>
-
-            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-                (mouseout)="mouseOvered=false">
-                <img src="assets/img/workspace/character.png">
-
-                <div class="message-infos-container">
-                    <div class="first-row">
-                        <span>{{dm.messageWriter}}</span>
-                        <span>{{dm.messageTime}} Uhr</span>
+                        <div class="user-second-row">{{dm.messageText}}
+                        </div>
                     </div>
 
-                    <div class="second-row" [class.bg-white]="mouseOvered">{{dm.messageText}}</div>
+                    <img src="assets/img/workspace/character.png">
                 </div>
             </div>
+
+            <!-- Antworten der Mitglieder -->
+            <div class="message-box" *ngIf="!dm.thisIsUser">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{dm.messageDate}}</div>
+                </div>
+
+                <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                    (mouseout)="mouseOvered=false">
+                    <img src="assets/img/workspace/character.png">
+
+                    <div class="message-infos-container">
+                        <div class="first-row">
+                            <span>{{dm.messageWriter}}</span>
+                            <span>{{dm.messageTime}} Uhr</span>
+                        </div>
+
+                        <div class="second-row" [class.bg-white]="mouseOvered">{{dm.messageText}}</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
 
     <!-- Info -->

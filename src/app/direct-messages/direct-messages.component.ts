@@ -29,18 +29,14 @@ export class DirectMessagesComponent implements OnInit {
   directMessages = new DirectMessages();
   userDirectMessages = [];
   memberDirectMessages = [];
+  allDirectMessages = [];
+  allDirectMessagesSorted = [];
 
   ngOnInit() {
-    // this.service.userStatus.subscribe(data => {
-    //   this.userStatus = data;
-    //   this.active = true;
-    // })
-    this.currentMember = localStorage.getItem('currentMember')
-    this.currentUser = localStorage.getItem('currentUser')
-    console.log('current Member is', this.currentMember)
+    this.currentMember = localStorage.getItem('currentMember');
+    this.currentUser = localStorage.getItem('currentUser');
+    this.getMessageData();
     this.getMemberData();
-    this.getUserDirectMessageData();
-    this.getMemberDirectMessageData();
   }
 
   constructor(private service: ServiceService, private firestore: Firestore) {}
@@ -50,9 +46,15 @@ export class DirectMessagesComponent implements OnInit {
     this.directMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
     this.directMessages.messageWriter = this.userName;
+    this.directMessages.thisIsUser = '';
     setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp),this.directMessages.toJSON(), {merge: true}).then(() => {
       this.directMessages.messageText = '';
     });
+  }
+
+  getMessageData() {
+    this.getUserDirectMessageData();
+    this.getMemberDirectMessageData();
   }
 
   getUserDirectMessageData() {
@@ -66,7 +68,26 @@ export class DirectMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'users', this.currentUser, 'directMessages');
     collectionData(coll, {idField: 'id'}).subscribe(dm => {
       this.memberDirectMessages = dm;
+      this.combineToMessageData();
     });
+  }
+
+  combineToMessageData() {
+    this.allDirectMessages = this.userDirectMessages.concat(this.memberDirectMessages);
+    this.allDirectMessagesSorted = this.allDirectMessages.sort((a,b) => (a.id - b.id));
+    this.messagePosition();
+    this.getMessageData();
+  }
+
+  messagePosition() {
+    for (let i = 0; i < this.allDirectMessagesSorted.length; i++) {
+      const element = this.allDirectMessagesSorted[i];
+      if(element.messageWriter == this.userName) {
+        element.thisIsUser = true;
+      } else {
+        element.thisIsUser = false;
+      }
+    }
   }
 
   getMemberData() {

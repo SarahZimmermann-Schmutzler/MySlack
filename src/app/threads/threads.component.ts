@@ -84,10 +84,10 @@ export class ThreadsComponent implements OnInit {
     console.log('thisLastAnswer', this.lastAnswers[0].answerTime)
   }
 
-  getUserAnswers() {
-    this.userAnswers = this.answers.filter(s => s.answerWriter == this.userName);
-    this.memberAnswers = this.answers.filter(s => s.answerWriter !== this.userName);
-  }
+  // getUserAnswers() {
+  //   this.userAnswers = this.answers.filter(s => s.answerWriter == this.userName);
+  //   this.memberAnswers = this.answers.filter(s => s.answerWriter !== this.userName);
+  // }
 
   closeThread() {
     this.showThreadsSection.emit(false);

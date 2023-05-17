@@ -23,8 +23,9 @@ export class PrivateMessagesComponent implements OnInit {
   allNotes = [];
 
   ngOnInit() {
-    this.currentUser = localStorage.getItem('currentUser')
+    this.currentUser = localStorage.getItem('currentUser');
     this.getNotes();
+    console.log('ng on Init works');
   }
 
   constructor(public firestore: Firestore, private service: ServiceService, private router: Router) {}
