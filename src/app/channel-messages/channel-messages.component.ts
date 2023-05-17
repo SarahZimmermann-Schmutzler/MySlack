@@ -33,8 +33,6 @@ export class ChannelMessagesComponent implements OnInit {
   userMessages = [];
   memberMessages = [];
   howManyAnswers;
-  thisIsUser: boolean;
-  thisIsMember;
   
 
   ngOnInit(): void {
@@ -69,7 +67,6 @@ export class ChannelMessagesComponent implements OnInit {
 
       // this.getUserMessages();
       this.messageStyle();
-      
     });
   }
 
@@ -77,12 +74,11 @@ export class ChannelMessagesComponent implements OnInit {
     for (let i = 0; i < this.messages.length; i++) {
       const element = this.messages[i];
       if(element.threadWriter == this.userName) {
-        this.thisIsUser = true;
+        element.thisIsUser = true;
       } else {
-        this.thisIsUser = false;
+        element.thisIsUser = false;
       }
-      
-      console.log('this is User', this.thisIsUser)
+      console.log('this is User', element.thisIsUser)
     }
   }
 
@@ -98,6 +94,7 @@ export class ChannelMessagesComponent implements OnInit {
     this.channelMessages.threadWriter = this.userName;
     this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
+    this.channelMessages.thisIsUser = '';
     setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp),this.channelMessages.toJSON(), {merge: true});
     localStorage.setItem('messageId', this.timestamp);
     this.channelMessages.threadText = '';

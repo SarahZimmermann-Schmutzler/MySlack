@@ -3,12 +3,14 @@ export class ChannelMessages {
     threadWriter: any;
     threadDate: any;
     threadTime: any;
+    thisIsUser: any;
 
     constructor(obj?: any) {
         this.threadText = obj;
         this.threadWriter = obj;
         this.threadDate = obj;
         this.threadTime = obj;
+        this.thisIsUser = obj;
     }
 
     public toJSON() {
@@ -16,7 +18,8 @@ export class ChannelMessages {
             threadText: this.threadText,
             threadWriter: this.threadWriter,
             threadDate: this.threadDate,
-            threadTime: this.threadTime
+            threadTime: this.threadTime,
+            thisIsUser: this.thisIsUser,
         };
     }
 }
