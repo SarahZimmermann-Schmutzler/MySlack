@@ -44,9 +44,9 @@ export class ChannelMessagesComponent implements OnInit {
     console.log(this.currentChannel);
     this.getChannelData();
     this.getMessagesData();
-    // this.service.numberOfAnswers.subscribe(data => {
-    //   this.howManyAnswers = data;
-    // })
+    this.service.numberOfAnswers.subscribe(data => {
+      this.howManyAnswers = data;
+    })
     // this.service.answerData.subscribe(data => {
     //   this.answers = data;
     //   console.log('Answers from Threads', this.answers)
@@ -69,8 +69,9 @@ export class ChannelMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     collectionData(coll, {idField: 'id'}).subscribe(messages => {
       this.messages = messages;
-      console.log('messages', this.messages)
+      console.log('messages', this.messages); 
       this.messagePosition();
+      // this.combineAnswers();
     });
   }
 
@@ -84,6 +85,13 @@ export class ChannelMessagesComponent implements OnInit {
       }
     }
   }
+
+  // combineAnswers() {
+  //   for (let i = 0; i < this.messages.length; i++) {
+  //     const element = this.messages[i];
+  //     element.howManyAnswers = this.howManyAnswers;
+  //   }
+  // }
 
   // getUserMessages() {
   //   this.userMessages = this.messages.filter(s => s.threadWriter == this.userName);
