@@ -32,7 +32,7 @@ export class ChannelMessagesComponent implements OnInit {
   threadText;
   userMessages = [];
   memberMessages = [];
-  howManyAnswers;
+  // howManyAnswers;
   numberOfAnswers;
   answers = [];
   new = [];
@@ -42,15 +42,12 @@ export class ChannelMessagesComponent implements OnInit {
     this.userId = localStorage.getItem('currentUser');
     this.currentChannel = localStorage.getItem('Channel ID');
     console.log(this.currentChannel);
+    this.service.answerData.subscribe(data => {
+      this.answers = data;
+      console.log('Answers from Threads', this.answers)
+    });
     this.getChannelData();
     this.getMessagesData();
-    this.service.numberOfAnswers.subscribe(data => {
-      this.howManyAnswers = data;
-    })
-    // this.service.answerData.subscribe(data => {
-    //   this.answers = data;
-    //   console.log('Answers from Threads', this.answers)
-    // })
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) {}
@@ -71,7 +68,7 @@ export class ChannelMessagesComponent implements OnInit {
       this.messages = messages;
       console.log('messages', this.messages); 
       this.messagePosition();
-      // this.combineAnswers();
+      this.combineAnswers();
     });
   }
 
@@ -86,12 +83,11 @@ export class ChannelMessagesComponent implements OnInit {
     }
   }
 
-  // combineAnswers() {
-  //   for (let i = 0; i < this.messages.length; i++) {
-  //     const element = this.messages[i];
-  //     element.howManyAnswers = this.howManyAnswers;
-  //   }
-  // }
+  combineAnswers() {
+    for (let i = 0; i < this.messages.length; i++) {
+      const element = this.messages[i];
+    }
+  }
 
   // getUserMessages() {
   //   this.userMessages = this.messages.filter(s => s.threadWriter == this.userName);
