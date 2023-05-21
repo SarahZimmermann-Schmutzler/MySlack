@@ -6,16 +6,17 @@ import {Subject} from 'rxjs';
 })
 export class ServiceService {
 
-  numberOfAnswers = new Subject();
+  // numberOfAnswers = new Subject();
   currentChannelName = new Subject();
   userStatus = new Subject();
-  answerData = new Subject<[]>();
+  // answerData = new Subject<[]>();
+  howManyUsers = new Subject();
 
   constructor() { }
 
-  sendData(data) {
-    this.numberOfAnswers.next(data);
-  }
+  // sendData(data) {
+  //   this.numberOfAnswers.next(data);
+  // }
 
   sendChannelName(data) {
     this.currentChannelName.next(data);
@@ -25,7 +26,11 @@ export class ServiceService {
     this.userStatus.next(data);
   }
 
-  sendAnswerData(data) {
-    this.answerData.next(data);
+  // sendAnswerData(data) {
+  //   this.answerData.next(data);
+  // }
+
+  sendNumberOfUsers(data) {
+    this.howManyUsers.next(data);
   }
 }

@@ -35,6 +35,7 @@ export class SidenavComponent implements OnInit {
   members = [];
   userStatus;
   active = false;
+  howManyUsers;
 
   constructor(private auth: Auth, public firestore: Firestore, private service: ServiceService) { }
 
@@ -48,6 +49,8 @@ export class SidenavComponent implements OnInit {
 
     collectionData(this.collUs, {idField: 'id'}).subscribe(Users => {
       this.allUsers = Users;
+      this.howManyUsers = this.allUsers.length;
+      this.service.sendNumberOfUsers(this.howManyUsers);
     })
 
     this.service.userStatus.subscribe(data => {

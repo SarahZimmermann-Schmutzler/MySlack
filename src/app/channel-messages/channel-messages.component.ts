@@ -32,6 +32,7 @@ export class ChannelMessagesComponent implements OnInit {
   messages$: Observable<any>;
   messages = [];
   threadText;
+  howManyUsers;
   // userMessages = [];
   // memberMessages = [];
   // howManyAnswers;
@@ -45,10 +46,9 @@ export class ChannelMessagesComponent implements OnInit {
     this.userId = localStorage.getItem('currentUser');
     this.currentChannel = localStorage.getItem('Channel ID');
     console.log(this.currentChannel);
-    // this.service.answerData.subscribe(data => {
-    //   this.answers = data;
-    //   console.log('Answers from Threads', this.answers)
-    // });
+    this.service.howManyUsers.subscribe(data => {
+      this.howManyUsers = data;
+    });
     this.getChannelData();
     this.getMessagesData();
     // this.getMessageAnswers();
