@@ -9,5 +9,4 @@ export class FooterComponent {
  @Input() footer = true;
  @Input() login = false;
  @Input() legal = true;
- @Input() position = true;
 }

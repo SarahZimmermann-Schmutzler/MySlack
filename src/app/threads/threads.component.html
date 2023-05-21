@@ -43,8 +43,8 @@
             <div *ngFor="let answers of answers">
                 <!-- Antworten der Mitglieder -->
                 <div class="message-box" *ngIf="!answers.thisIsUser">
-                    <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-                        (mouseout)="mouseOvered=false">
+                    <div class="message-content-container" [class.bg-lilac]="mouseOveredOne" (mouseover)="mouseOveredOne=true"
+                        (mouseout)="mouseOveredOne=false">
                         <img src="assets/img/workspace/character.png">
 
                         <div class="message-infos-container">
@@ -53,7 +53,7 @@
                                 <span>{{answers.answerTime}} Uhr</span>
                             </div>
 
-                            <div class="second-row" [class.bg-white]="mouseOvered">{{answers.answerText}}</div>
+                            <div class="second-row" [class.bg-white]="mouseOveredOne">{{answers.answerText}}</div>
                         </div>
                     </div>
                 </div>

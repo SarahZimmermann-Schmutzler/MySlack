@@ -1,10 +1,11 @@
 .footer-container {
     // background-color: red;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
     height: 45px;
+    margin-top: 50px;
 }
 
 .span-container {
@@ -30,8 +31,4 @@
             color: rgba(68, 77, 242, 1);
         }
     }
-}
-
-.position {
-    position: unset !important;
 }

@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ThreadsComponent implements OnInit {
   mouseOvered = false;
+  mouseOveredOne = false;
   @Output() showThreadsSection = new EventEmitter();
   @Input() userName;
   threadAnswers = new ThreadAnswers();
