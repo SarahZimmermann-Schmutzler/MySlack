@@ -4,7 +4,6 @@ export class ChannelMessages {
     threadDate: any;
     threadTime: any;
     thisIsUser: any;
-    howManyAnswers: any;
 
     constructor(obj?: any) {
         this.threadText = obj;
@@ -12,7 +11,6 @@ export class ChannelMessages {
         this.threadDate = obj;
         this.threadTime = obj;
         this.thisIsUser = obj;
-        this.howManyAnswers = obj;
     }
 
     public toJSON() {
@@ -22,7 +20,6 @@ export class ChannelMessages {
             threadDate: this.threadDate,
             threadTime: this.threadTime,
             thisIsUser: this.thisIsUser,
-            howManyAnswers: this.howManyAnswers
         };
     }
 }

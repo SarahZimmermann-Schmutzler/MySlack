@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, docData, getDocs, setDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, docData, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
 import { ServiceService } from '../service.service';
 import { idToken } from '@angular/fire/auth';
+import { get } from '@angular/fire/database';
 
 @Component({
   selector: 'app-channel-messages',
@@ -31,13 +32,13 @@ export class ChannelMessagesComponent implements OnInit {
   messages$: Observable<any>;
   messages = [];
   threadText;
-  userMessages = [];
-  memberMessages = [];
+  // userMessages = [];
+  // memberMessages = [];
   // howManyAnswers;
-  numberOfAnswers;
-  answers = [];
-  new = [];
-  docId;
+  // numberOfAnswers;
+  // answers = [];
+  // new = [];
+  // docId;
 
 
   ngOnInit(): void {
@@ -50,7 +51,7 @@ export class ChannelMessagesComponent implements OnInit {
     // });
     this.getChannelData();
     this.getMessagesData();
-    this.getMessageAnswers();
+    // this.getMessageAnswers();
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -75,12 +76,12 @@ export class ChannelMessagesComponent implements OnInit {
     });
   }
 
-  combineAnswers() {
-    for (let i = 0; i < this.messages.length; i++) {
-      const element = this.messages[i];
-      element.howManyAnswers = this.answers.length;
-    }
-  }
+  // combineAnswers() {
+  //   for (let i = 0; i < this.messages.length; i++) {
+  //     const element = this.messages[i];
+  //     element.howManyAnswers = this.answers.length;
+  //   }
+  // }
 
   messagePosition() {
     for (let i = 0; i < this.messages.length; i++) {
@@ -93,23 +94,38 @@ export class ChannelMessagesComponent implements OnInit {
     }
   }
 
-  async getMessageAnswers() {
-    const querySnapshot = await getDocs(collection(this.firestore, 'channels', this.currentChannel, 'messages'));
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-      this.docId = doc.id;
-    });
+  // getMessageAnswers() {
+  //   let docRefi = collection(this.firestore, 'channels');
+  //   let docRef = doc(docRefi, this.currentChannel);
+  //   let subCollRef = collection(docRef, 'messages');
+  //   getDocs(subCollRef).then(function(querySnapshot) {
+  //     querySnapshot.forEach(function(doc) {
+  //       console.log(doc.id, '=>', doc.data());
+  //     });
+  //   })
 
-    this.newFunction();
-  }
 
-  newFunction() {
-    let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.docId, 'answers');
-    collectionData(coll, { idField: 'id' }).subscribe(answers => {
-      this.answers = answers;
-      console.log('Hallo Antworten', this.answers)
-    });
-  }
+  //   const querySnapshot = await getDocs(collection(this.firestore, 'channels', this.currentChannel, 'messages'));
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.id, " => ", doc.data());
+  //     this.docId = doc.id;
+  //   });
+
+  //   this.newFunction();
+  // }
+
+  // async newFunction() {
+  //   let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.docId, 'answers');
+  //   collectionData(coll, { idField: 'id' }).subscribe(answers => {
+  //     this.answers = answers;
+  //     console.log('Hallo Antworten', this.answers)
+  //   });
+
+  //   const querySnapshot = await getDocs(collection(this.firestore, 'channels', this.currentChannel, 'messages', this.docId, 'answers'));
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.id, " => ", doc.data());
+  //   });
+  // }
 
 
 
@@ -126,7 +142,6 @@ export class ChannelMessagesComponent implements OnInit {
     this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     this.channelMessages.thisIsUser = '';
-    this.channelMessages.howManyAnswers = '';
     setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp), this.channelMessages.toJSON(), { merge: true });
     localStorage.setItem('messageId', this.timestamp);
     this.channelMessages.threadText = '';

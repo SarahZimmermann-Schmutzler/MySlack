@@ -86,7 +86,7 @@ export class ThreadsComponent implements OnInit {
       this.messagePosition();
 
       // ist die Uhrzeit der letzten Antwort des geöffnetet Threads
-      this.getLastAnswer();
+      // this.getLastAnswer();
     });
   }
 
@@ -101,10 +101,10 @@ export class ThreadsComponent implements OnInit {
     }
   }
 
-  getLastAnswer() {
-    this.lastAnswers = this.answers.slice(-1);
-    console.log('thisLastAnswer', this.lastAnswers[0].answerTime)
-  }
+  // getLastAnswer() {
+  //   this.lastAnswers = this.answers.slice(-1);
+  //   console.log('thisLastAnswer', this.lastAnswers[0].answerTime)
+  // }
 
   // getUserAnswers() {
   //   this.userAnswers = this.answers.filter(s => s.answerWriter == this.userName);
