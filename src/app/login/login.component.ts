@@ -4,6 +4,7 @@ import { Auth, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/f
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
 import { Firestore, collection, doc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,13 @@ export class LoginComponent implements OnInit {
   popUp = false;
   user$: Observable<any>;
   @Input() currentUser = '';
-  guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
+  guestUserId = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   coll = collection(this.firestore, 'users');
   interval;
 
   ngOnInit(): void {}
 
-  constructor(private router: Router, private auth: Auth, public firestore: Firestore, private route: ActivatedRoute) {}
+  constructor(private router: Router, private auth: Auth, public firestore: Firestore, private route: ActivatedRoute, private service: ServiceService) {}
 
   stopReload() {
     clearInterval(this.interval);
@@ -54,8 +55,8 @@ export class LoginComponent implements OnInit {
 
 
   async guestLogin() {
-    await setDoc(doc(this.coll, this.guestUser), { name: 'Guest', mail: 'guest@guest.de', status: 'Active', pic: 'assets/img/profiles/profile_bw.png' }).then(() => {
-      localStorage.setItem('currentUser', this.guestUser);
+    await setDoc(doc(this.coll, this.guestUserId), { name: 'Guest', mail: 'guest@guest.de', status: 'Active', pic: 'assets/img/profiles/character3.png' }).then(() => {
+      localStorage.setItem('currentUser', this.guestUserId);
     });
     this.router.navigateByUrl('/workspace').then(() => {
       window.location.reload();

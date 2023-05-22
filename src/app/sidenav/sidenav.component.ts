@@ -77,7 +77,7 @@ export class SidenavComponent implements OnInit {
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
     this.hideMessage = !this.hideMessage;
-    this.members = this.allUsers.filter(s => s.name !== this.userName && s.name !== 'Guest');
+    this.members = this.allUsers.filter(s => s.name !== this.userName);
   }
 
   createChannel() {

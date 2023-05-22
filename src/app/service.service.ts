@@ -11,6 +11,7 @@ export class ServiceService {
   userStatus = new Subject();
   // answerData = new Subject<[]>();
   howManyUsers = new Subject();
+  guestUser = new Subject();
 
   constructor() { }
 
@@ -32,5 +33,9 @@ export class ServiceService {
 
   sendNumberOfUsers(data) {
     this.howManyUsers.next(data);
+  }
+
+  sendGuestUser(data) {
+    this.guestUser.next(data);
   }
 }

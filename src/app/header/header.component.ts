@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   active: boolean;
   currentUser = '';
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
+  // guestUser;
   startFunction: boolean;
   interval;
 
@@ -61,6 +62,11 @@ export class HeaderComponent implements OnInit {
         this.getUserData()
       }
     }, 1000);
+
+    // this.service.guestUser.subscribe(data => {
+    //   this.guestUser = data;
+    //   console.log(this.guestUser)
+    // })
   }
 
   getUserData() {

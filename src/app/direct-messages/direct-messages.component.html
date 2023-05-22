@@ -13,23 +13,22 @@
 
     <!-- second section -->
     <div class="messages-display-container">
-        <div *ngFor="let dm of allDirectMessagesSorted">
+        <div *ngFor="let dm of allDirectMessagesSorted" >
             <!-- Antworten des Users -->
             <div class="message-box" *ngIf="dm.thisIsUser">
                 <div class="line-date-container">
                     <div class="line"></div>
-                    <div class="date-bubble">{{dm.messageDate}}</div>
+                    <div class="date-bubble" >{{dm.messageDate}}</div>
                 </div>
 
                 <div class="user-message-content-container">
                     <div class="user-message-infos-container">
                         <div class="user-first-row">
-                            <span>{{dm.messageTime}}</span>
+                            <span >{{dm.messageTime}}</span>
                             <span>{{userName}}</span>
                         </div>
 
-                        <div class="user-second-row">{{dm.messageText}}
-                        </div>
+                        <div class="user-second-row">{{dm.messageText}}</div>
                     </div>
 
                     <img src={{dm.messagePic}}>
