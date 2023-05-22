@@ -1,12 +1,12 @@
 <div class="content-container">
-    <app-sidenav class="sidenav" [userName]="userName" (showDirectMessages)="showDirectMessagesSection($event)" (showChannelMessages)="hideChannelMessagesSection($event)" (showPrivateMessages)="showPrivateMessagesSection($event)" (showNewMessage)="showNewMessageSection($event)" (showThreadSection)="hideThreadSection($event)"></app-sidenav>
+    <app-sidenav class="sidenav" [userPic]="userPic" [userName]="userName" (showDirectMessages)="showDirectMessagesSection($event)" (showChannelMessages)="hideChannelMessagesSection($event)" (showPrivateMessages)="showPrivateMessagesSection($event)" (showNewMessage)="showNewMessageSection($event)" (showThreadSection)="hideThreadSection($event)"></app-sidenav>
 
-    <app-channel-messages class="messages" [userName]="userName"  (showThreadsSection)="setVariableTrue($event)" *ngIf="showChannelMessages"></app-channel-messages>
-    <app-direct-messages class="messages" [userName]="userName" *ngIf="showDirectMessages" ></app-direct-messages>
-    <app-private-messages class="messages" [userName]="userName" *ngIf="showPrivateMessages"></app-private-messages>
-    <app-new-message class="messages" *ngIf="showNewMessage"></app-new-message>
+    <app-channel-messages class="messages" [userPic]="userPic" [userName]="userName"  (showThreadsSection)="setVariableTrue($event)" *ngIf="showChannelMessages"></app-channel-messages>
+    <app-direct-messages class="messages" [userPic]="userPic" [userName]="userName" *ngIf="showDirectMessages" ></app-direct-messages>
+    <app-private-messages class="messages" [userPic]="userPic" [userName]="userName" *ngIf="showPrivateMessages"></app-private-messages>
+    <app-new-message class="messages"  *ngIf="showNewMessage"></app-new-message>
 
-    <app-threads class="threads" [userName]="userName" (showThreadsSection)="setVariableFalse($event)" *ngIf="showThreadsSection"></app-threads>
+    <app-threads class="threads" [userPic]="userPic" [userName]="userName" (showThreadsSection)="setVariableFalse($event)" *ngIf="showThreadsSection"></app-threads>
 </div>
 
 

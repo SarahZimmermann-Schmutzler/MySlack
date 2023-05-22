@@ -16,7 +16,7 @@
         <div class="message-box">
             <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
                 (mouseout)="mouseOvered=false">
-                <img src="assets/img/workspace/character.png">
+                <img src={{threadPic}}>
 
                 <div class="message-infos-container">
                     <div class="first-row">
@@ -45,7 +45,7 @@
                 <div class="message-box" *ngIf="!answers.thisIsUser">
                     <div class="message-content-container" [class.bg-lilac]="mouseOveredOne" (mouseover)="mouseOveredOne=true"
                         (mouseout)="mouseOveredOne=false">
-                        <img src="assets/img/workspace/character.png">
+                        <img src={{answers.answerPic}}>
 
                         <div class="message-infos-container">
                             <div class="first-row">
@@ -70,7 +70,7 @@
                             <div class="user-second-row">{{answers.answerText}}</div>
                         </div>
 
-                        <img src="assets/img/workspace/woman.png">
+                        <img src={{answers.answerPic}}>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@
 
     <div class="info-container" *ngIf="workspaceMode" [class.font-lilac]="mouseOvered" (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false" (click)="openPopup()">
         <span>{{userName}}</span>
-        <img class="avatar" src="assets/img/header/woman.png">
+        <img class="avatar" src={{userPic}}>
         <img src="assets/img/header/arrow_down.png" [class.img-lilac]="mouseOvered">
     </div>
 </div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="second-row">
-            <img src="assets/img/workspace/woman.png">
+            <img src={{userPic}}>
         </div>
 
         <div class="third-row">

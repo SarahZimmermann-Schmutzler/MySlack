@@ -4,6 +4,7 @@ export class ChannelMessages {
     threadDate: any;
     threadTime: any;
     thisIsUser: any;
+    threadPic: any;
 
     constructor(obj?: any) {
         this.threadText = obj;
@@ -11,6 +12,7 @@ export class ChannelMessages {
         this.threadDate = obj;
         this.threadTime = obj;
         this.thisIsUser = obj;
+        this.threadPic = obj;
     }
 
     public toJSON() {
@@ -20,6 +22,7 @@ export class ChannelMessages {
             threadDate: this.threadDate,
             threadTime: this.threadTime,
             thisIsUser: this.thisIsUser,
+            threadPic: this.threadPic
         };
     }
 }

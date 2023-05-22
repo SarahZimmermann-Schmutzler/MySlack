@@ -4,6 +4,7 @@ export class DirectMessages {
     messageDate: any;
     messageTime: any;
     thisIsUser: any;
+    messagePic: any;
 
     constructor(obj?: any) {
         this.messageWriter = obj;
@@ -11,6 +12,7 @@ export class DirectMessages {
         this.messageDate = obj;
         this.messageTime = obj;
         this.thisIsUser = obj;
+        this.messagePic = obj;
     }
 
     public toJSON() {
@@ -19,7 +21,8 @@ export class DirectMessages {
             messageDate: this.messageDate,
             messageTime: this.messageTime,
             messageWriter: this.messageWriter,
-            thisIsUser: this.thisIsUser
+            thisIsUser: this.thisIsUser,
+            messagePic: this.messagePic
         };
     }
 }

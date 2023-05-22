@@ -14,6 +14,7 @@ export class ThreadsComponent implements OnInit {
   mouseOveredOne = false;
   @Output() showThreadsSection = new EventEmitter();
   @Input() userName;
+  @Input() userPic;
   threadAnswers = new ThreadAnswers();
   currentTimestamp = new Date();
   timestamp;
@@ -32,6 +33,7 @@ export class ThreadsComponent implements OnInit {
   threadWriter;
   threadTime;
   threadText;
+  threadPic;
   number;
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class ThreadsComponent implements OnInit {
       this.threadWriter = thread.threadWriter;
       this.threadTime = thread.threadTime;
       this.threadText = thread.threadText;
+      this.threadPic = thread.threadPic;
     })
   }
 
@@ -63,6 +66,7 @@ export class ThreadsComponent implements OnInit {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     this.timestamp = this.currentTimestamp.getTime().toString();
     this.threadAnswers.answerWriter = this.userName;
+    this.threadAnswers.answerPic = this.userPic;
     this.threadAnswers.answerDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.threadAnswers.answerTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
     this.threadAnswers.thisIsUser = '';

@@ -17,6 +17,7 @@ export class WorkspaceComponent {
   currentUser = '';
   // guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   userName = '';
+  userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
   allUsers = [];
@@ -36,6 +37,7 @@ export class WorkspaceComponent {
     this.user$ = docData(docRef);
     this.user$.subscribe(currentUser => {
       this.userName = currentUser.name;
+      this.userPic = currentUser.pic;
     })
   }
 

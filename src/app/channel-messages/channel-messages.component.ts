@@ -18,6 +18,7 @@ export class ChannelMessagesComponent implements OnInit {
   channelPopup = false;
   @Output() showThreadsSection = new EventEmitter();
   @Input() userName;
+  @Input() userPic;
 
   currentChannel;
   userId;
@@ -139,6 +140,7 @@ export class ChannelMessagesComponent implements OnInit {
   setMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();
     this.channelMessages.threadWriter = this.userName;
+    this.channelMessages.threadPic = this.userPic;
     this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     this.channelMessages.thisIsUser = '';

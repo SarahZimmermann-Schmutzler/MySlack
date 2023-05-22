@@ -49,7 +49,7 @@
 
         <div class="hide-message-container" *ngIf="hideMessage">
             <div class="contact-info-container" (click)="openPrivateMessages()">
-                <img src="assets/img/workspace/woman.png">
+                <img src={{userPic}}>
                 <div class="status-container">
                     <div [class.c-green]="active"></div>
                 </div>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="contact-info-container" (click)="openDirectMessages(member.id)" *ngFor="let member of members">
-                <img src="assets/img/workspace/character.png">
+                <img src={{member.pic}}>
                 <div class="status-container">
                     <div></div>
                 </div>

@@ -15,6 +15,7 @@ export class DirectMessagesComponent implements OnInit {
   mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
+  @Input() userPic;
   member$: Observable<any>;
   active = false;
   userStatus;
@@ -24,6 +25,7 @@ export class DirectMessagesComponent implements OnInit {
   memberName;
   memberStatus;
   memberMail;
+  memberPic;
   timestamp;
   currentTimestamp = new Date();
   directMessages = new DirectMessages();
@@ -46,6 +48,7 @@ export class DirectMessagesComponent implements OnInit {
     this.directMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
     this.directMessages.messageWriter = this.userName;
+    this.directMessages.messagePic = this.userPic;
     this.directMessages.thisIsUser = '';
     setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp),this.directMessages.toJSON(), {merge: true}).then(() => {
       this.directMessages.messageText = '';
@@ -97,6 +100,8 @@ export class DirectMessagesComponent implements OnInit {
       this.memberName = member.name;
       this.memberStatus = member.status;
       this.memberMail = member.mail;
+      this.memberPic = member.pic;
+      console.log('Nutzbild', this.memberPic)
       this.colorStatus();
     })
   }

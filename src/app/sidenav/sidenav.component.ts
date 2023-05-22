@@ -18,6 +18,7 @@ export class SidenavComponent implements OnInit {
   hoverStay = false;
   channelPopup = false;
   @Input() userName: string;
+  @Input() userPic;
   @Output() showPrivateMessages = new EventEmitter();
   @Output() showDirectMessages = new EventEmitter();
   @Output() showNewMessage = new EventEmitter();

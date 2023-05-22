@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   userName = '';
   userMail = '';
   userStatus = '';
+  userPic = '';
   active: boolean;
   currentUser = '';
   startFunction: boolean;
@@ -69,6 +70,7 @@ export class HeaderComponent implements OnInit {
       this.userName = user.name;
       this.userMail = user.mail;
       this.userStatus = user.status;
+      this.userPic = user.pic;
       this.colorStatus();
       this.service.sendUserStatus(this.userStatus);
       clearInterval(this.interval);

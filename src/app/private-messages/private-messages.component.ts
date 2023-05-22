@@ -15,6 +15,7 @@ export class PrivateMessagesComponent implements OnInit {
   mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
+  @Input() userPic;
   privateMessages = new PrivateMessages();
   currentTimestamp = new Date();
   timestamp;
