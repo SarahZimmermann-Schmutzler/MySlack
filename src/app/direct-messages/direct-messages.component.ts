@@ -41,16 +41,16 @@ export class DirectMessagesComponent implements OnInit {
     this.getMemberData();
   }
 
-  constructor(private service: ServiceService, private firestore: Firestore) {}
+  constructor(private service: ServiceService, private firestore: Firestore) { }
 
   createDirectMessages() {
     this.timestamp = this.currentTimestamp.getTime().toString();
     this.directMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
-    this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0,5);
+    this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     this.directMessages.messageWriter = this.userName;
     this.directMessages.messagePic = this.userPic;
     this.directMessages.thisIsUser = '';
-    setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp),this.directMessages.toJSON(), {merge: true}).then(() => {
+    setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp), this.directMessages.toJSON(), { merge: true }).then(() => {
       this.directMessages.messageText = '';
     });
   }
@@ -62,14 +62,14 @@ export class DirectMessagesComponent implements OnInit {
 
   getUserDirectMessageData() {
     let coll = collection(this.firestore, 'users', this.currentMember, 'directMessages');
-    collectionData(coll, {idField: 'id'}).subscribe(dm => {
+    collectionData(coll, { idField: 'id' }).subscribe(dm => {
       this.userDirectMessages = dm;
     });
   }
 
   getMemberDirectMessageData() {
     let coll = collection(this.firestore, 'users', this.currentUser, 'directMessages');
-    collectionData(coll, {idField: 'id'}).subscribe(dm => {
+    collectionData(coll, { idField: 'id' }).subscribe(dm => {
       this.memberDirectMessages = dm;
       this.combineToMessageData();
     });
@@ -77,7 +77,7 @@ export class DirectMessagesComponent implements OnInit {
 
   combineToMessageData() {
     this.allDirectMessages = this.userDirectMessages.concat(this.memberDirectMessages);
-    this.allDirectMessagesSorted = this.allDirectMessages.sort((a,b) => (a.id - b.id));
+    this.allDirectMessagesSorted = this.allDirectMessages.sort((a, b) => (a.id - b.id));
     this.messagePosition();
     this.getMessageData();
   }
@@ -85,7 +85,7 @@ export class DirectMessagesComponent implements OnInit {
   messagePosition() {
     for (let i = 0; i < this.allDirectMessagesSorted.length; i++) {
       const element = this.allDirectMessagesSorted[i];
-      if(element.messageWriter == this.userName) {
+      if (element.messageWriter == this.userName) {
         element.thisIsUser = true;
       } else {
         element.thisIsUser = false;
@@ -101,7 +101,6 @@ export class DirectMessagesComponent implements OnInit {
       this.memberStatus = member.status;
       this.memberMail = member.mail;
       this.memberPic = member.pic;
-      console.log('Nutzbild', this.memberPic)
       this.colorStatus();
     })
   }

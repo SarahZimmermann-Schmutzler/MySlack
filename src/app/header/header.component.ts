@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Auth, onAuthStateChanged, signOut } from '@angular/fire/auth';
-import { Firestore, collection, collectionData, doc, docData, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, deleteDoc, doc, docData, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   userPic = '';
   active: boolean;
   currentUser = '';
+  guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   startFunction: boolean;
   interval;
 
@@ -100,6 +101,8 @@ export class HeaderComponent implements OnInit {
     await updateDoc(ref, { status: 'Inactive' }).then(() => {
       localStorage.setItem('currentUser', '');
     });
+
+    // this.deleteGuestData();
     
     signOut(this.auth).then(() => {
       this.router.navigate(['/']).then(() => {
@@ -107,6 +110,13 @@ export class HeaderComponent implements OnInit {
       });
     })
   }
+
+  // deleteGuestData() {
+  //   if(this.currentUser == this.guestUser) {
+  //     let ref = doc(this.coll, this.guestUser);
+  //     deleteDoc(ref);
+  //   }
+  // }
 
   openProfilePopup() {
     this.profilePopup = true;
