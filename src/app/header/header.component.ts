@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   @Input() workspaceMode = true;
   logoutPopup = false;
   profilePopup = false;
+  searchPopup = false;
   mouseOvered = false;
   mouseOveredTwo = false;
   user$: Observable<any>;
@@ -32,6 +33,9 @@ export class HeaderComponent implements OnInit {
   // guestUser;
   startFunction: boolean;
   interval;
+  allUsers = [];
+  results = [];
+  find;
 
 
   constructor(
@@ -130,6 +134,28 @@ export class HeaderComponent implements OnInit {
 
   closeProfilePopup() {
     this.profilePopup = false;
+  }
+
+  openSearchPopup() {
+    this.searchPopup = true;
+    let coll = collection(this.firestore, 'users')
+    collectionData(coll, {idField: 'id'}).subscribe(Users => {
+      this.allUsers = Users;
+      let searchInput = this.find.toLowerCase();
+
+      for (let i = 0; i < this.allUsers.length; i++) {
+        const searchName = this.allUsers[i]['name'].toLowerCase();
+        if(searchName.match(searchInput) == searchInput) {
+          this.results.push(this.allUsers[i]);
+          this.find = '';
+        }
+      }
+    })
+  }
+
+  closeSearchPopup() {
+    this.searchPopup = false;
+    this.results = [];
   }
 
 }

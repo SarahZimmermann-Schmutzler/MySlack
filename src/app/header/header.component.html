@@ -11,9 +11,9 @@
     </div>
 
     <div class="searchfield-container" *ngIf="workspaceMode">
-        <input type="search" placeholder="Coding durchsuchen">
+        <input type="search" placeholder="search a member" [(ngModel)]="find">
         <div class="img-container">
-            <img src="assets/img/header/search.png">
+            <img src="assets/img/header/search.png" (click)="openSearchPopup()">
         </div>
     </div>
 
@@ -59,6 +59,37 @@
 
         <div class="sixth-row">
             <span>{{userMail}}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Pop-up -->
+<div class="search-pop-up" *ngIf="searchPopup">
+    <div class="search-profile-box">
+        <div class="search-first-row">
+            <div class="search-firstrow-left-side">
+                <!-- <img src="assets/img/workspace/tag.png"> -->
+                <span>Search Results</span>
+            </div>
+
+            <div class="search-firstrow-right-side" (click)="closeSearchPopup()"><img src="assets/img/workspace/close.png"></div>
+        </div>
+
+        <div class="search-second-row">
+            <ul *ngFor="let result of results" >
+                <li>{{result.name}} <img src={{result.pic}}></li>
+                    <table>
+                        <tr>
+                            <td>Status:</td>
+                            <td>{{result.status}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mail:</td>
+                            <td>{{result.mail}}</td>
+                        </tr>
+                    </table>
+            </ul>
         </div>
     </div>
 </div>

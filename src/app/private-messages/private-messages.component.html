@@ -19,8 +19,7 @@
                 <div class="date-bubble">{{notes.noteDate}}</div>
             </div>
 
-            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-                (mouseout)="mouseOvered=false">
+            <div class="message-content-container">
                 <img src={{userPic}}>
 
                 <div class="message-infos-container">
@@ -29,7 +28,7 @@
                         <span>{{notes.noteTime}} Uhr</span>
                     </div>
 
-                    <div class="second-row" [class.bg-white]="mouseOvered">{{notes.noteText}}</div>
+                    <div class="second-row">{{notes.noteText}}</div>
                 </div>
             </div>
         </div>
