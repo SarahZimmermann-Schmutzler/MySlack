@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, docData, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, docData, getDoc, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
 import { ServiceService } from '../service.service';
@@ -41,6 +41,8 @@ export class ChannelMessagesComponent implements OnInit {
   // answers = [];
   // new = [];
   // docId;
+  newName;
+  newDescription;
 
 
   ngOnInit(): void {
@@ -56,6 +58,16 @@ export class ChannelMessagesComponent implements OnInit {
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
+
+  saveChangesName() {
+    let docRef = doc(this.collCh, this.currentChannel);
+    updateDoc(docRef, { name: this.newName });
+  }
+
+  saveChangesDescription() {
+    let docRef = doc(this.collCh, this.currentChannel);
+    updateDoc(docRef, { description: this.newDescription });
+  }
 
   getChannelData() {
     const docRef = doc(this.collCh, this.currentChannel);

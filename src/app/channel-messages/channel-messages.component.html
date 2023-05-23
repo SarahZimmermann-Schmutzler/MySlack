@@ -122,26 +122,30 @@
                 <span>{{channelName || 'Channel'}}</span>
             </div>
 
-            <div class="firstrow-right-side"><img src="assets/img/workspace/close.png" (click)="closePopup()"></div>
+            <!-- <div class="firstrow-right-side"><img src="assets/img/workspace/close.png"></div> -->
         </div>
 
         <div class="channel-second-row">
             <span>Channel-Name</span>
-            <span>Speichern</span>
+            <span (click)="saveChangesName()">Speichern</span>
         </div>
 
-        <input placeholder="{{channelName || '# Channel'}}">
+        <input placeholder="{{channelName || '# Channel'}}" [(ngModel)]="newName">
 
         <div class="channel-second-row">
             <span>Beschreibung</span>
-            <span>Speichern</span>
+            <span (click)="saveChangesDescription()">Speichern</span>
         </div>
 
         <textarea
-            placeholder="{{channelDescription || 'Beschreibe welches Ziel ihr mit dem Channel verfolgt.'}}"></textarea>
+            placeholder="{{channelDescription || 'Beschreibe welches Ziel ihr mit dem Channel verfolgt.'}}" [(ngModel)]="newDescription"></textarea>
 
-        <div class="btn-row">
+        <!-- coming soon: leave the channel -->
+        <!-- <div class="btn-row">
             <button>Channel verlassen</button>
+        </div> -->
+        <div class="btn-row">
+            <button (click)="closePopup()">Schließen</button>
         </div>
     </div>
 </div>
