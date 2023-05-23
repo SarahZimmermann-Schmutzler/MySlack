@@ -32,6 +32,7 @@ export class DirectMessagesComponent implements OnInit {
   directMessages = new DirectMessages();
   userDirectMessages = [];
   currentUserDirectMessages = [];
+  currentMemberDirectMessages = [];
   memberDirectMessages = [];
   allDirectMessages = [];
   allDirectMessagesSorted = [];
@@ -52,6 +53,7 @@ export class DirectMessagesComponent implements OnInit {
     this.directMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     this.directMessages.messageWriter = this.userName;
+    this.directMessages.messageAddressee = this.currentMember;
     this.directMessages.messagePic = this.userPic;
     this.directMessages.messageWriterId = this.currentUser;
     this.directMessages.thisIsUser = '';
@@ -70,7 +72,7 @@ export class DirectMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'users', this.currentMember, 'directMessages');
     collectionData(coll, { idField: 'id' }).subscribe(dm => {
       this.userDirectMessages = dm;
-      this.currentUserDirectMessages = this.userDirectMessages.filter(s => s.messageWriterId == this.currentUser);
+      this.currentUserDirectMessages = this.userDirectMessages.filter(s => s.messageWriterId == this.currentUser && s.messageAddressee == this.currentMember);
     });
   }
 
@@ -78,14 +80,15 @@ export class DirectMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'users', this.currentUser, 'directMessages');
     collectionData(coll, { idField: 'id' }).subscribe(dm => {
       this.memberDirectMessages = dm;
+      this.currentMemberDirectMessages = this.memberDirectMessages.filter(s => s.messageAddressee == this.currentUser && s.messageWriterId == this.currentMember)
       this.combineToMessageData();
     });
   }
 
   combineToMessageData() {
-    this.allDirectMessages = this.currentUserDirectMessages.concat(this.memberDirectMessages);
+    this.allDirectMessages = this.currentUserDirectMessages.concat(this.currentMemberDirectMessages);
     this.allDirectMessagesSorted = this.allDirectMessages.sort((a, b) => (a.id - b.id));
-    console.log('alle sortierten Nachrichten', this.allDirectMessagesSorted)
+    console.log('alle sortierten Nachrichten', this.allDirectMessagesSorted);
     this.messagePosition();
     this.getMessageData();
   }
