@@ -5,7 +5,7 @@ import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { User } from 'src/models/user.class';
 import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { DirectMessages } from 'src/models/directmessages.class';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,21 +15,28 @@ import { DirectMessages } from 'src/models/directmessages.class';
 export class SignUpComponent implements OnInit {
   user = new User();
   coll = collection(this.firestore, 'users');
-  disabled = true;
   popUp = false;
   name = '';
   mail = '';
   password = '';
   user$: Observable<any>;
   currentUser = '';
-  
+  form;
 
   ngOnInit(): void {
     setInterval(() => {
-      if(this.user.name && this.mail && this.password) {
-        this.disabled = false;
-      }
+      this.form = new FormGroup({
+        password: new FormControl(this.password, [Validators.minLength(8), Validators.required]),
+        name: new FormControl(this.user.name, [Validators.pattern('[A-Za-z ]+'), Validators.required]),
+        mail: new FormControl(this.mail, [Validators.email, Validators.required])
+      })
     }, 1000);
+    
+    // setInterval(() => {
+    //   if(this.user.name && this.mail && this.password) {
+    //     this.disabled = false;
+    //   }
+    // }, 1000);
   }
 
   constructor(private router: Router, private auth : Auth, public firestore: Firestore) {}
@@ -47,15 +54,12 @@ export class SignUpComponent implements OnInit {
         }
       });
     this.clearFields();
-    this.disabled = true;
     this.popUp = true;
     setTimeout(() => {
     this.router.navigate(['/']);
     }, 3000);
     });
   }
-
-  
 
   clearFields() {
     this.name = '';

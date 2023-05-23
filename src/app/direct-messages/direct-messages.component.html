@@ -42,8 +42,7 @@
                     <div class="date-bubble">{{dm.messageDate}}</div>
                 </div>
 
-                <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-                    (mouseout)="mouseOvered=false">
+                <div class="message-content-container">
                     <img src={{dm.messagePic}}>
 
                     <div class="message-infos-container">
@@ -52,7 +51,7 @@
                             <span>{{dm.messageTime}} Uhr</span>
                         </div>
 
-                        <div class="second-row" [class.bg-white]="mouseOvered">{{dm.messageText}}</div>
+                        <div class="second-row">{{dm.messageText}}</div>
                     </div>
                 </div>
             </div>

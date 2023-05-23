@@ -141,7 +141,6 @@
     justify-content: flex-end;
     padding-right: 20px;
     cursor: pointer;
-    background-color: aqua;
     margin-left: 85px;
 
     span {
@@ -149,6 +148,7 @@
         font-weight: 700;
         margin-right: 16px;
         text-align: center;
+        word-wrap: break-word;
     }
 }
 
@@ -395,7 +395,7 @@
 }
 
 .search-profile-box {
-    width: 800px;
+    width: auto;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
