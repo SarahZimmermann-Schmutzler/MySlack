@@ -17,6 +17,10 @@
     font-weight: 400;
     font-size: 18px;
 
+    @media(max-width: 511px) {
+        font-size: 14px;
+    }
+
     div {
         display: flex;
         justify-content: center;

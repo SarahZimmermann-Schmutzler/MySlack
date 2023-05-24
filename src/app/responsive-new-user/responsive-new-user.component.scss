@@ -19,6 +19,9 @@
         margin-left: -20px;
         margin-right: 20px;
 
+        @media(max-width: 511px) {
+            font-size: 16px;
+        }
     }
 
     a {
@@ -30,6 +33,10 @@
         cursor: pointer;
         padding: 8px;
         margin-left: 10px;
+
+        @media(max-width: 511px) {
+            font-size: 16px;
+        }
 
         &:hover {
             border: 1px solid #ADB0D9;
