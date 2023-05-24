@@ -26,6 +26,7 @@ import { PrivateMessagesComponent } from './private-messages/private-messages.co
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ServiceService } from './service.service';
+import { ResponsiveNewUserComponent } from './responsive-new-user/responsive-new-user.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ServiceService } from './service.service';
     NewMessageComponent,
     PrivateMessagesComponent,
     ImpressumComponent,
-    DatenschutzComponent
+    DatenschutzComponent,
+    ResponsiveNewUserComponent
   ],
   imports: [
     BrowserModule,

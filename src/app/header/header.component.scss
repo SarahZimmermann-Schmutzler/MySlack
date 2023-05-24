@@ -6,6 +6,10 @@
     padding-right: 75px;
     padding-top: 30px;
     height: 75px;
+
+    @media(max-width: 767px) {
+        justify-content: center;
+    }
 }
 
 .header-img-container {
@@ -19,12 +23,22 @@
             height: 70px;
             width: 70px;
             object-fit: contain;
+
+            @media(max-width: 767px) {
+                height: 60px;
+                width: 60px;
+            }
         }
 
         &:last-child {
             height: 35px;
             width: 140px;
             object-fit: contain;
+
+            @media(max-width: 767px) {
+                height: 30px;
+                width: 120px;
+            }
         }
     }
 }
@@ -41,6 +55,10 @@
     flex-direction: column;
     align-items: flex-end;
     height: 75px;
+
+    @media(max-width: 767px) {
+        display: none;
+    }
 
     span {
         font-weight: 400;
