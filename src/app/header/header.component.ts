@@ -30,8 +30,7 @@ export class HeaderComponent implements OnInit {
   active: boolean;
   currentUser = '';
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-  // guestUser;
-  startFunction: boolean;
+  // startFunction: boolean;
   interval;
   allUsers = [];
   results = [];
@@ -47,46 +46,29 @@ export class HeaderComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // onAuthStateChanged(this.auth, (user$) => {
-    //   if (user$) {
-    //     this.currentUser = user$.uid;
-    //     // console.log(this.currentUser);
-    //     this.getUserData();
-    //   } 
-    //   else {
-    //     this.currentUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-    //     this.getUserData();
-    //   }
-    // });
-
     this.interval = setInterval(() => {
       if (this.workspaceMode) {
         this.currentUser = localStorage.getItem('currentUser');
-        console.log(this.currentUser);
         this.getUserData()
       }
     }, 1000);
-
-    // this.service.guestUser.subscribe(data => {
-    //   this.guestUser = data;
-    //   console.log(this.guestUser)
-    // })
   }
+
 
   getUserData() {
     const docRef = doc(this.coll, this.currentUser);
     this.user$ = docData(docRef);
     this.user$.subscribe(user => {
-      // this.user = new User(user);
-      this.userName = user.name;
-      this.userMail = user.mail;
-      this.userStatus = user.status;
-      this.userPic = user.pic;
-      this.colorStatus();
-      this.service.sendUserStatus(this.userStatus);
-      clearInterval(this.interval);
+    this.userName = user.name;
+    this.userMail = user.mail;
+    this.userStatus = user.status;
+    this.userPic = user.pic;
+    this.colorStatus();
+    this.service.sendUserStatus(this.userStatus);
+    clearInterval(this.interval);
     })
   }
+
 
   colorStatus() {
     if (this.userStatus == 'Active') {
@@ -98,13 +80,16 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+
   openPopup() {
     this.logoutPopup = true;
   }
 
+
   closePopup() {
     this.logoutPopup = false;
   }
+
 
   async logout() {
     let ref = doc(this.coll, this.currentUser)
@@ -112,8 +97,6 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('currentUser', '');
     });
 
-    // this.deleteGuestData();
-    
     signOut(this.auth).then(() => {
       this.router.navigate(['/']).then(() => {
         window.location.reload();
@@ -121,20 +104,16 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  // deleteGuestData() {
-  //   if(this.currentUser == this.guestUser) {
-  //     let ref = doc(this.coll, this.guestUser);
-  //     deleteDoc(ref);
-  //   }
-  // }
 
   openProfilePopup() {
     this.profilePopup = true;
   }
 
+
   closeProfilePopup() {
     this.profilePopup = false;
   }
+
 
   openSearchPopup() {
     this.searchPopup = true;
@@ -153,9 +132,9 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+
   closeSearchPopup() {
     this.searchPopup = false;
     this.results = [];
   }
-
 }

@@ -40,6 +40,7 @@ export class NewPasswordComponent implements OnInit {
     });
   }
 
+  
   clearFields() {
     this.newpasswordOne = '';
     this.newpasswordTwo = '';

@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     clearInterval(this.interval);
   }
 
+
   login() {
     signInWithEmailAndPassword(this.auth, this.mail, this.password).then(() => {
       onAuthStateChanged(this.auth, (user$) => {
@@ -43,7 +44,6 @@ export class LoginComponent implements OnInit {
         }
       })
     }, () => {
-      console.log('Fehlgeschlagen')
       this.popUp = true;
       setTimeout(() => {
         this.mail = '';
@@ -62,6 +62,4 @@ export class LoginComponent implements OnInit {
       window.location.reload();
     });
   }
-
-
 }

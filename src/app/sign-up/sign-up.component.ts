@@ -31,36 +31,30 @@ export class SignUpComponent implements OnInit {
         mail: new FormControl(this.mail, [Validators.email, Validators.required])
       })
     }, 1000);
-    
-    // setInterval(() => {
-    //   if(this.user.name && this.mail && this.password) {
-    //     this.disabled = false;
-    //   }
-    // }, 1000);
   }
 
   constructor(private router: Router, private auth : Auth, public firestore: Firestore) {}
   
     registerUser() {
-    console.log(this.mail, this.password)
     createUserWithEmailAndPassword(this.auth, this.mail, this.password).then(() => {
       onAuthStateChanged(this.auth, (user$) => {
         if(user$) {
           this.currentUser = user$.uid;
-          // console.log(this.currentUser);
           this.user.pic = '' || 'assets/img/profiles/profile_bw.png';
           setDoc(doc(this.coll, this.currentUser), this.user.toJSON(), {merge: true});
-          
         }
       });
     this.clearFields();
     this.popUp = true;
     setTimeout(() => {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
     }, 3000);
     });
   }
 
+  
   clearFields() {
     this.name = '';
     this.mail = '';

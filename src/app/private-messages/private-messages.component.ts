@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./private-messages.component.scss']
 })
 export class PrivateMessagesComponent implements OnInit {
-  mouseOvered = false;
-  mouseOveredTwo = false;
-  mouseOveredThree = false;
+  // mouseOvered = false;
+  // mouseOveredTwo = false;
+  // mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
   @Input() userPic;
@@ -40,6 +40,7 @@ export class PrivateMessagesComponent implements OnInit {
     });
   }
 
+
   getNotes() {
     let coll = collection(this.firestore, 'users', this.currentUser, 'notes');
     collectionData(coll, { idField: 'id' }).subscribe(notes => {
@@ -48,10 +49,12 @@ export class PrivateMessagesComponent implements OnInit {
     });
   }
 
+
   openProfilePopup() {
     this.profilePopup = true;
   }
 
+  
   closeProfilePopup() {
     this.profilePopup = false;
   }

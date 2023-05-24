@@ -32,7 +32,7 @@ export class SidenavComponent implements OnInit {
   channelId;
   currentUser;
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-  allNames: Array<any> | undefined;
+  // allNames: Array<any> | undefined;
   members = [];
   userStatus;
   active = false;
@@ -44,7 +44,6 @@ export class SidenavComponent implements OnInit {
     this.currentUser = localStorage.getItem('currentUser');
 
     collectionData(this.collCh, {idField: 'id'}).subscribe(newChannels => {
-      console.log('Neue Channels sind', newChannels);
       this.allChannels = newChannels;
     })
 
@@ -60,6 +59,7 @@ export class SidenavComponent implements OnInit {
     })
   }
 
+
   createNewChannel() {
     addDoc(this.collCh, this.channels.toJSON()).then(() => {
       this.channels.name = '';
@@ -68,11 +68,13 @@ export class SidenavComponent implements OnInit {
     });
   }
 
+
   openAndCloseChannels() {
     this.rotateChannel = !this.rotateChannel;
     this.hideChannel = !this.hideChannel;
     
   }
+
 
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
@@ -80,13 +82,16 @@ export class SidenavComponent implements OnInit {
     this.members = this.allUsers.filter(s => s.name !== this.userName);
   }
 
+
   createChannel() {
     this.channelPopup = true;
   }
 
+
   closePopup() {
     this.channelPopup = false;
   }
+
 
   openPrivateMessages() {
     this.showChannelMessages.emit(false);
@@ -96,6 +101,7 @@ export class SidenavComponent implements OnInit {
     this.showThreadSection.emit(false);
     // this.hoverStay = false;
   }
+
 
   openDirectMessages(memberId) {
     this.showChannelMessages.emit(false);
@@ -107,6 +113,7 @@ export class SidenavComponent implements OnInit {
     localStorage.setItem('currentMember', memberId);
   }
 
+
   openNewMessage() {
     // this.showChannelMessages.emit(false);
     // this.showNewMessage.emit(true);
@@ -115,6 +122,7 @@ export class SidenavComponent implements OnInit {
     // this.showThreadSection.emit(false);
     // this.hoverStay = false;
   }
+
 
   openChannelMessages(channelId) {
     // this.showChannelMessages.emit(true);
@@ -126,6 +134,7 @@ export class SidenavComponent implements OnInit {
     localStorage.setItem('Channel ID', channelId);
     window.location.reload();
   }
+
 
   // hideThreadSection() {
   //   this.showThreadSection.emit(false);

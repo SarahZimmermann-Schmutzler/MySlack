@@ -14,7 +14,7 @@
     <!-- second section -->
     <div class="messages-display-container">
         <div class="message-box">
-            <div class="message-content-container" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+            <div class="message-content-container" *ngIf="thereIsAThread" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
                 (mouseout)="mouseOvered=false">
                 <img src={{threadPic}}>
 

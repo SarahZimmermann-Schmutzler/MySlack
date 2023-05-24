@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Firestore, collection, collectionData, doc, docData } from '@angular/fire/firestore';
+import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,17 +19,18 @@ export class WorkspaceComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
-  allUsers = [];
-  userNames = [];
+  // allUsers = [];
+  // userNames = [];
  
 
-  constructor(private auth: Auth, public firestore: Firestore) { }
+  constructor(public firestore: Firestore) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
     console.log(this.currentUser);
     this.getCurrentUserData();
   }
+
 
   getCurrentUserData() {
     const docRef = doc(this.coll, this.currentUser);
@@ -41,31 +41,36 @@ export class WorkspaceComponent {
     })
   }
 
+
   setVariableFalse($event: any) {
     this.showThreadsSection = $event;
   }
 
+
   setVariableTrue($event) {
-    console.log($event);
     this.showThreadsSection = $event;
   }
 
+
   showDirectMessagesSection($event) {
-    console.log($event)
     this.showDirectMessages = $event;
   }
+
 
   hideChannelMessagesSection($event) {
     this.showChannelMessages = $event;
   }
 
+
   showPrivateMessagesSection($event) {
     this.showPrivateMessages = $event;
   }
 
+
   showNewMessageSection($event) {
     this.showNewMessage = $event;
   }
+
 
   hideThreadSection($event) {
     this.showThreadsSection = $event;

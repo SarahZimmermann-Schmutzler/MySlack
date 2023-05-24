@@ -10,14 +10,13 @@ import { DirectMessages } from 'src/models/directmessages.class';
   styleUrls: ['./direct-messages.component.scss']
 })
 export class DirectMessagesComponent implements OnInit {
-  mouseOvered = false;
-  mouseOveredTwo = false;
-  mouseOveredThree = false;
+  // mouseOvered = false;
+  // mouseOveredTwo = false;
+  // mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
   @Input() userPic;
   member$: Observable<any>;
-  // user$: Observable<any>;
   active = false;
   userStatus;
   currentMember;
@@ -36,13 +35,12 @@ export class DirectMessagesComponent implements OnInit {
   memberDirectMessages = [];
   allDirectMessages = [];
   allDirectMessagesSorted = [];
-  userId;
+  // userId;
  
   ngOnInit() {
     this.currentMember = localStorage.getItem('currentMember');
     this.currentUser = localStorage.getItem('currentUser');
     this.getMessageData();
-    // this.getUserData();
     this.getMemberData();
   }
 
@@ -62,11 +60,13 @@ export class DirectMessagesComponent implements OnInit {
     });
   }
 
+
   getMessageData() {
       this.getUserDirectMessageData();
       this.getMemberDirectMessageData();
     
   }
+
 
   getUserDirectMessageData() {
     let coll = collection(this.firestore, 'users', this.currentMember, 'directMessages');
@@ -75,6 +75,7 @@ export class DirectMessagesComponent implements OnInit {
       this.currentUserDirectMessages = this.userDirectMessages.filter(s => s.messageWriterId == this.currentUser && s.messageAddressee == this.currentMember);
     });
   }
+
 
   getMemberDirectMessageData() {
     let coll = collection(this.firestore, 'users', this.currentUser, 'directMessages');
@@ -85,13 +86,14 @@ export class DirectMessagesComponent implements OnInit {
     });
   }
 
+
   combineToMessageData() {
     this.allDirectMessages = this.currentUserDirectMessages.concat(this.currentMemberDirectMessages);
     this.allDirectMessagesSorted = this.allDirectMessages.sort((a, b) => (a.id - b.id));
-    console.log('alle sortierten Nachrichten', this.allDirectMessagesSorted);
     this.messagePosition();
     this.getMessageData();
   }
+
 
   messagePosition() {
     for (let i = 0; i < this.allDirectMessagesSorted.length; i++) {
@@ -103,6 +105,7 @@ export class DirectMessagesComponent implements OnInit {
       }
     }
   }
+
 
   getMemberData() {
     const docRef = doc(this.coll, this.currentMember);
@@ -116,13 +119,6 @@ export class DirectMessagesComponent implements OnInit {
     })
   }
 
-  // getUserData() {
-  //   const docRef = doc(this.coll, this.currentUser);
-  //   this.user$ = docData(docRef);
-  //   this.user$.subscribe(user => {
-  //     this.userId = user.name;
-  //   })
-  // }
 
   colorStatus() {
     if (this.userStatus == 'Active') {
@@ -134,9 +130,11 @@ export class DirectMessagesComponent implements OnInit {
     }
   }
 
+
   openProfilePopup() {
     this.profilePopup = true;
   }
+
 
   closeProfilePopup() {
     this.profilePopup = false;
