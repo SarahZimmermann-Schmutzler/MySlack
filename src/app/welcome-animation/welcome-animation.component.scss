@@ -56,6 +56,14 @@
     img {
         width: 460px;
         object-fit: contain;
+
+        @media(max-width: 470px) {
+            width: 400px;
+        }
+
+        @media(max-width: 400px) {
+            font-size: 350px;
+        }
     }
 }
 
@@ -68,6 +76,14 @@
         color: white;
         font-weight: 700;
         font-size: 54px;
+
+        @media(max-width: 470px) {
+            font-size: 46px;
+        }
+
+        @media(max-width: 400px) {
+            font-size: 38px;
+        }
     }
 }
 
