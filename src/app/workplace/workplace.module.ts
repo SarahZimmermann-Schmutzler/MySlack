@@ -7,6 +7,7 @@ import { ChannelsComponent } from './channels/channels.component';
 import { DirectComponent } from './direct/direct.component';
 import { PrivateComponent } from './private/private.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
 
   exports: [

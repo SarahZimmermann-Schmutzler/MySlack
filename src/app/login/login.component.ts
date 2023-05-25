@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.currentUser = user$.uid;
           localStorage.setItem('currentUser', this.currentUser);
           setDoc(doc(this.coll, this.currentUser), { status: 'Active' }, { merge: true }).then(() => {
-            this.router.navigateByUrl('/workspace').then(() => {
+            this.router.navigateByUrl('/ws-channel').then(() => {
               window.location.reload();
             });
           });
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     await setDoc(doc(this.coll, this.guestUserId), { name: 'Guest', mail: 'guest@guest.de', status: 'Active', pic: 'assets/img/profiles/character3.png' }).then(() => {
       localStorage.setItem('currentUser', this.guestUserId);
     });
-    this.router.navigateByUrl('/workspace').then(() => {
+    this.router.navigateByUrl('/ws-channel').then(() => {
       window.location.reload();
     });
   }

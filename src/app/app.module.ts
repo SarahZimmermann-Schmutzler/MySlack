@@ -28,6 +28,9 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ServiceService } from './service.service';
 import { ResponsiveNewUserComponent } from './responsive-new-user/responsive-new-user.component';
 import { WorkplaceModule } from './workplace/workplace.module';
+import { WsChannelComponent } from './ws-channel/ws-channel.component';
+import { WsPrivateComponent } from './ws-private/ws-private.component';
+import { WsDirectComponent } from './ws-direct/ws-direct.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { WorkplaceModule } from './workplace/workplace.module';
     PrivateMessagesComponent,
     ImpressumComponent,
     DatenschutzComponent,
-    ResponsiveNewUserComponent
+    ResponsiveNewUserComponent,
+    WsChannelComponent,
+    WsPrivateComponent,
+    WsDirectComponent
   ],
   imports: [
     BrowserModule,

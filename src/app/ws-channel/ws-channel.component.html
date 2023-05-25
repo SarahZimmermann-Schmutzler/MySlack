@@ -1,0 +1,9 @@
+<div class="content-container">
+    <app-sidenav class="sidenav" [userPic]="userPic" [userName]="userName"></app-sidenav>
+
+    <app-channel-messages class="messages" [userPic]="userPic" [userName]="userName"
+        (showThreadsSection)="setVariableTrue($event)" *ngIf="showChannelMessages"></app-channel-messages>
+    
+    <app-threads class="threads" [userPic]="userPic" [userName]="userName"
+        (showThreadsSection)="setVariableFalse($event)" *ngIf="showThreadsSection"></app-threads>
+</div>

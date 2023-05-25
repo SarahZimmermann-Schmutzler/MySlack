@@ -95,25 +95,27 @@ export class SidenavComponent implements OnInit {
 
 
   openPrivateMessages() {
-    this.showChannelMessages.emit(false);
-    this.showPrivateMessages.emit(true);
-    this.showDirectMessages.emit(false);
-    this.showNewMessage.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(false);
+    // this.showPrivateMessages.emit(true);
+    // this.showDirectMessages.emit(false);
+    // this.showNewMessage.emit(false);
+    // this.showThreadSection.emit(false);
     // this.hoverStay = false;
-    // this.router.navigateByUrl('/workspace/pm')
+    this.router.navigateByUrl('/ws-private')
   }
 
 
   openDirectMessages(memberId) {
-    this.showChannelMessages.emit(false);
-    this.showDirectMessages.emit(true);
-    this.showPrivateMessages.emit(false);
-    this.showNewMessage.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(false);
+    // this.showDirectMessages.emit(true);
+    // this.showPrivateMessages.emit(false);
+    // this.showNewMessage.emit(false);
+    // this.showThreadSection.emit(false);
     // this.hoverStay = false;
-    // this.router.navigateByUrl('/workspace/dm')
     localStorage.setItem('currentMember', memberId);
+    this.router.navigateByUrl('/ws-direct').then(() => {
+      window.location.reload();
+    });
   }
 
 
@@ -128,17 +130,17 @@ export class SidenavComponent implements OnInit {
 
 
   openChannelMessages(channelId) {
-    this.showChannelMessages.emit(true);
-    this.showNewMessage.emit(false);
-    this.showDirectMessages.emit(false);
-    this.showPrivateMessages.emit(false);
-    this.showThreadSection.emit(false);
+    // this.showChannelMessages.emit(true);
+    // this.showNewMessage.emit(false);
+    // this.showDirectMessages.emit(false);
+    // this.showPrivateMessages.emit(false);
+    // this.showThreadSection.emit(false);
     // this.hoverStay = true;
     localStorage.setItem('Channel ID', channelId);
-    // this.router.navigateByUrl('/workspace').then(()=> {
-    //   window.location.reload();
-    // })
-    window.location.reload();
+    this.router.navigateByUrl('/ws-channel').then(()=> {
+      window.location.reload();
+    })
+    // window.location.reload();
     
   }
 

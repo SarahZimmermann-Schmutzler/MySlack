@@ -1,8 +1,8 @@
-<div class="header-container" [class.p20]="workspaceMode || pmMode || dmMode || workplaceMode">
-    <div class="header-img-container" [class.w20]="workspaceMode || pmMode || dmMode || workplaceMode">
+<div class="header-container" [class.p20]="pmMode || dmMode || workplaceMode">
+    <div class="header-img-container" [class.w20]="pmMode || dmMode || workplaceMode">
         <img src="assets/img/header/logo.png">
         <img src="assets/img/header/phrase.png">
-        <!-- <img src="assets/img/header/show-menu.png" class="show-menu-pic" *ngIf="workspaceMode" [class.img-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true" (mouseout)="mouseOveredTwo=false"> -->
+        <!-- <img src="assets/img/header/show-menu.png" class="show-menu-pic" *ngIf="workplaceMode" [class.img-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true" (mouseout)="mouseOveredTwo=false"> -->
     </div>
 
     <div class="header-link-container" *ngIf="logoMode">
@@ -10,14 +10,14 @@
         <a href="#" routerLink="signUp">Konto erstellen</a>
     </div>
 
-    <div class="searchfield-container" *ngIf="workspaceMode || pmMode || dmMode || workplaceMode">
+    <div class="searchfield-container" *ngIf="pmMode || dmMode || workplaceMode">
         <input type="search" placeholder="search a member" [(ngModel)]="find">
         <div class="img-container">
             <img src="assets/img/header/search.png" (click)="openSearchPopup()">
         </div>
     </div>
 
-    <div class="info-container" *ngIf="workspaceMode || pmMode || dmMode || workplaceMode" [class.font-lilac]="mouseOvered" (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false" (click)="openPopup()">
+    <div class="info-container" *ngIf="pmMode || dmMode || workplaceMode" [class.font-lilac]="mouseOvered" (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false" (click)="openPopup()">
         <span>{{userName}}</span>
         <img class="avatar" src={{userPic}}>
         <img src="assets/img/header/arrow_down.png" [class.img-lilac]="mouseOvered">
@@ -27,7 +27,7 @@
 <div class="pop-up-logout" *ngIf="logoutPopup" (click)="closePopup()">
     <div class="logout-profile-box">
         <div (click)="openProfilePopup()"><span>Profil</span></div>
-        <div (click)="logout()" *ngIf="workspaceMode || pmMode || dmMode || workplaceMode"><span>Logout</span></div>
+        <div (click)="logout()" *ngIf="pmMode || dmMode || workplaceMode"><span>Logout</span></div>
     </div>
 </div>
 

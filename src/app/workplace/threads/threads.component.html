@@ -1,1 +1,92 @@
-<p>threads works!</p>
+<div class="threads-container">
+    <div class="threads-header">
+        <div class="left-container">
+            <span>Thread</span>
+            <img src="assets/img/workspace/tag_lilac.png">
+            <span>{{currentChannelName || 'Channel'}}</span>
+        </div>
+
+        <div class="close-container" (click)="closeThread()">
+            <img src="assets/img/workspace/close.png">
+        </div>
+    </div>
+
+    <!-- second section -->
+    <div class="messages-display-container">
+        <div class="message-box">
+            <div class="message-content-container" *ngIf="thereIsAThread" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                (mouseout)="mouseOvered=false">
+                <img src={{threadPic}}>
+
+                <div class="message-infos-container">
+                    <div class="first-row">
+                        <span>{{threadWriter}}</span>
+                        <span>{{threadTime}} Uhr</span>
+                    </div>
+
+                    <div class="second-row" [class.bg-white]="mouseOvered">{{threadText}}</div>
+                </div>
+            </div>
+
+            <div class="answer-container">
+                <div class="answer">
+                    <span>{{howManyAnswers}} Antworten</span>
+                </div>
+
+                <div class="space"></div>
+
+                <div class="line">
+                    <div></div>
+                </div>
+            </div>
+
+            <div *ngFor="let answers of answers">
+                <!-- Antworten der Mitglieder -->
+                <div class="message-box" *ngIf="!answers.thisIsUser">
+                    <div class="message-content-container" [class.bg-lilac]="mouseOveredOne" (mouseover)="mouseOveredOne=true"
+                        (mouseout)="mouseOveredOne=false">
+                        <img src={{answers.answerPic}}>
+
+                        <div class="message-infos-container">
+                            <div class="first-row">
+                                <span>{{answers.answerWriter}}</span>
+                                <span>{{answers.answerTime}} Uhr</span>
+                            </div>
+
+                            <div class="second-row" [class.bg-white]="mouseOveredOne">{{answers.answerText}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antworten des Users -->
+                <div class="message-box" *ngIf="answers.thisIsUser">
+                    <div class="user-message-content-container">
+                        <div class="user-message-infos-container">
+                            <div class="user-first-row">
+                                <span>{{answers.answerWriter}}</span>
+                                <span>{{answers.answerTime}} Uhr</span>
+                            </div>
+
+                            <div class="user-second-row">{{answers.answerText}}</div>
+                        </div>
+
+                        <img src={{answers.answerPic}}>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- third section -->
+            <div class="third-section-container">
+                <div class="send-message-container">
+                    <textarea placeholder="Antworten..." name="answerText"
+                        [(ngModel)]="threadAnswers.answerText"></textarea>
+
+                    <div class="like-send-container">
+                        <div></div>
+
+                        <img src="assets/img/workspace/send.png" (click)="setAnswers()">
+                    </div>
+                </div>
+            </div>
+        </div>

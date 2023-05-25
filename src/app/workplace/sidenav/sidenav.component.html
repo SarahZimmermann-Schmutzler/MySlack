@@ -1,1 +1,97 @@
-<p>sidenav works!</p>
+<div class="sidenav-container">
+    <div class="header-container">
+        <img src="assets/img/workspace/logo.png">
+        <span>Coding</span>
+        <!-- coming soon: newMessage -->
+        <!-- <div class="edit-img-container">
+            <img src="assets/img/workspace/edit.png" (click)="openNewMessage()">
+        </div> -->
+    </div>
+
+    <div class="content-container">
+        <div class="channel-content">
+            <div class="channel-content-left" (click)="openAndCloseChannels()">
+                <img class="rotate" src="assets/img/workspace/arrow.png" [class.rotate-back]="rotateChannel">
+                <div class="channel-row-container">
+                    <img src="assets/img/workspace/workspaces.png">
+                    <div>Channels</div>
+                </div>
+            </div>
+
+            <div class="add-img-container" (click)="createChannel()">
+                <img src="assets/img/workspace/add.png">
+            </div>
+        </div>
+
+        <div class="hide-channel-container" *ngIf="hideChannel">
+            <!-- <div class="channel" [class.hover-stay]="hoverStay" (click)="openChannelMessages(channel.id)" *ngFor="let channel of allChannels">
+                <img src="assets/img/workspace/tag.png">
+                <span [class.hover-stay-span]="hoverStay">{{channel.name || 'Channel'}}</span>
+            </div> -->
+            <div class="channel" (click)="openChannelMessages(channel.id)" *ngFor="let channel of allChannels">
+                <img src="assets/img/workspace/tag.png">
+                <span>{{channel.name || 'Channel'}}</span>
+            </div>
+
+            <div class="new-channel" (click)="createChannel()">
+                <img src="assets/img/workspace/add_circle_white.png">
+                <span>Channel hinzufügen</span>
+            </div>
+        </div>
+
+        <div class="direct-content" (click)="openAndCloseDirectMessages()">
+            <img class="rotate" src="assets/img/workspace/arrow.png" [class.rotate-back]="rotateMessage">
+            <div class="direct-row-container">
+                <img src="assets/img/workspace/add_circle.png">
+                <div>Direktnachrichten</div>
+            </div>
+        </div>
+
+        <div class="hide-message-container" *ngIf="hideMessage">
+            <div class="contact-info-container" (click)="openPrivateMessages()">
+                <img src={{userPic}}>
+                <div class="status-container">
+                    <div [class.c-green]="active"></div>
+                </div>
+                <span>{{userName}} (Du)</span>
+            </div>
+
+            <div class="contact-info-container" (click)="openDirectMessages(member.id)" *ngFor="let member of members">
+                <img src={{member.pic}}>
+                <div class="status-container">
+                    <div></div>
+                </div>
+                <span>{{member.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Pop-up -->
+<div class="newChannel-pop-up" *ngIf="channelPopup">
+    <div class="newChannel-profile-box">
+        <div class="first-row">
+            <span>Channel erstellen</span>
+            <div><img src="assets/img/workspace/close.png" (click)="closePopup()"></div>
+        </div>
+
+        <span class="second-row">Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen
+            sein. <br> #marketing zum Beispiel.</span>
+
+        <span class="third-row">Channel-Name</span>
+
+        <input placeholder="# z.B. Kooperationsprojekte" name="name" [(ngModel)]="channels.name">
+
+        <div class="fourth-row">
+            <span>Beschreibung</span>
+            <span>(optional)</span>
+        </div>
+
+        <textarea name="description" [(ngModel)]="channels.description"></textarea>
+
+        <div class="btn-row">
+            <button (click)="createNewChannel()">Erstellen</button>
+        </div>
+    </div>
+</div>

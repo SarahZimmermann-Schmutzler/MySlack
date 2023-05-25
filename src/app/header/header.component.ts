@@ -14,7 +14,6 @@ import { ServiceService } from '../service.service';
 
 export class HeaderComponent implements OnInit {
   @Input() logoMode = true;
-  @Input() workspaceMode = true;
   @Input() pmMode = true;
   @Input() dmMode = true;
   @Input() workplaceMode = true;
@@ -50,7 +49,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.interval = setInterval(() => {
-      if (this.workspaceMode) {
+      if (this.workplaceMode || this.pmMode || this.dmMode) {
         this.currentUser = localStorage.getItem('currentUser');
         this.getUserData()
       }

@@ -1,1 +1,151 @@
-<p>channels works!</p>
+<div class="messages-container">
+    <!-- first section -->
+    <div class="messages-header">
+        <div class="left-container" [class.bg-font-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true"
+            (mouseout)="mouseOveredTwo=false" (click)="editChannel()">
+            <img src="assets/img/workspace/tag.png" [class.imgs-lilac]="mouseOveredTwo">
+            <span>{{channelName || 'Channel'}}</span>
+            <img src="assets/img/workspace/arrow_down.png" [class.imgs-lilac]="mouseOveredTwo">
+        </div>
+
+        <div class="right-container">
+            <div class="member-container" [class.bg-font-lilac]="mouseOveredThree" (mouseover)="mouseOveredThree=true"
+                (mouseout)="mouseOveredThree=false">
+                <!-- sollen erstellt werden mit versch. Bildern -->
+                <div class="member-ring">
+                    <img src="assets/img/profiles/character.png">
+                </div>
+
+                <div class="member-ring">
+                    <img src="assets/img/profiles/character3.png">
+                </div>
+
+                <div class="member-ring">
+                    <img src="assets/img/profiles/woman.png">
+                </div>
+
+                <!-- coming soon: Anzahl der Mitglieder im Channel -->
+                <!-- <span>0</span> -->
+                <!-- now: Anzahl der Users -->
+                <span>{{howManyUsers}}</span>
+            </div>
+
+            <!-- coming soon: invite members -->
+            <!-- <div class="add-member-img-container">
+                <img src="assets/img/workspace/add_member.png">
+            </div> -->
+        </div>
+    </div>
+
+    <!-- second section -->
+    <div class="messages-display-container">
+        <div *ngFor="let message of messages">
+            <div class="message-box" *ngIf="!message.thisIsUser">
+                    <div class="line-date-container">
+                        <div class="line"></div>
+                        <div class="date-bubble">{{message.threadDate}}</div>
+                    </div>
+    
+                    <div class="message-content-container"  [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                    (mouseout)="mouseOvered=false">
+                    <img src={{message.threadPic}}>
+    
+                    <div class="message-infos-container">
+                        <div class="first-row">
+                            <span>{{message.threadWriter}}</span>
+                            <span>{{message.threadTime}} Uhr</span>
+                        </div>
+    
+                        <div class="second-row" [class.bg-white]="mouseOvered">{{message.threadText}}</div>
+    
+                        <div class="third-row">
+                            <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
+                            <!-- Alt.: Antworten direkt bei messages als array speichern -->
+                            <a (click)="openThread(message.id)">Antworten</a>
+                            <!-- <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-box" *ngIf="message.thisIsUser">
+                    <div class="line-date-container">
+                        <div class="line"></div>
+                        <div class="date-bubble">{{message.threadDate}}</div>
+                    </div>
+    
+                    <div class="user-message-content-container" >
+                        <div class="user-message-infos-container">
+                            <div class="user-first-row">
+                                <span>{{message.threadTime}} Uhr</span>
+                                <span>{{message.threadWriter}}</span>
+                            </div>
+        
+                            <div class="user-second-row">{{message.threadText}}</div>
+        
+                            <div class="user-third-row">
+                                <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
+                                <!-- Alt.: Antworten direkt bei messages als array speichern -->
+                                <!-- <span>Letzte Antwort 00:00</span> -->
+                                <a (click)="openThread(message.id)">Antworten</a>
+                            </div>
+                        </div>
+        
+                        <img src={{message.threadPic}}>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- third section -->
+    <div class="third-section-container">
+        <div class="send-message-container">
+            <!-- Placeholder soll namen des Channels tragen -->
+            <textarea placeholder="Nachricht an # {{channelName}}" name="thread"
+                [(ngModel)]="channelMessages.threadText"></textarea>
+
+            <div class="like-send-container">
+                <div></div>
+
+                <img src="assets/img/workspace/send.png" (click)="setMessages()">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pop-up -->
+<div class="newChannel-pop-up" *ngIf="channelPopup">
+    <div class="newChannel-profile-box">
+        <div class="channel-first-row">
+            <div class="firstrow-left-side">
+                <img src="assets/img/workspace/tag.png">
+                <span>{{channelName || 'Channel'}}</span>
+            </div>
+
+            <!-- <div class="firstrow-right-side"><img src="assets/img/workspace/close.png"></div> -->
+        </div>
+
+        <div class="channel-second-row">
+            <span>Channel-Name</span>
+            <span (click)="saveChangesName()">Speichern</span>
+        </div>
+
+        <input placeholder="{{channelName || '# Channel'}}" [(ngModel)]="newName">
+
+        <div class="channel-second-row">
+            <span>Beschreibung</span>
+            <span (click)="saveChangesDescription()">Speichern</span>
+        </div>
+
+        <textarea
+            placeholder="{{channelDescription || 'Beschreibe welches Ziel ihr mit dem Channel verfolgt.'}}" [(ngModel)]="newDescription"></textarea>
+
+        <!-- coming soon: leave the channel -->
+        <!-- <div class="btn-row">
+            <button>Channel verlassen</button>
+        </div> -->
+        <div class="btn-row">
+            <button (click)="closePopup()">Schließen</button>
+        </div>
+    </div>
+</div>

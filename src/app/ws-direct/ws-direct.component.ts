@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { ServiceService } from 'src/app/service.service';
+import { ServiceService } from '../service.service';
 
 @Component({
-  selector: 'app-work',
-  templateUrl: './work.component.html',
-  styleUrls: ['./work.component.scss']
+  selector: 'app-ws-direct',
+  templateUrl: './ws-direct.component.html',
+  styleUrls: ['./ws-direct.component.scss']
 })
-export class WorkComponent {
+export class WsDirectComponent {
   showThreadsSection: boolean = true;
   showChannelMessages = true;
   showPrivateMessages = false;
