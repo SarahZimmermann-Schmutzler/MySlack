@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc } from '@angular/fire/firestore';
 import { PrivateMessages } from 'src/models/privatemessages.class';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-private-messages',
@@ -16,17 +17,29 @@ export class PrivateMessagesComponent implements OnInit {
   profilePopup = false;
   @Input() userName;
   @Input() userPic;
+  user$: Observable<any>;
   privateMessages = new PrivateMessages();
   currentTimestamp = new Date();
   timestamp;
   coll = collection(this.firestore, 'users');
   currentUser;
   allNotes = [];
+  username;
+  userpic;
 
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser');
     this.getNotes();
-    console.log('ng on Init works');
+    // this.getCurrentUserData();
+  }
+
+  getCurrentUserData() {
+    const docRef = doc(this.coll, this.currentUser);
+    this.user$ = docData(docRef);
+    this.user$.subscribe(currentUser => {
+      this.username = currentUser.name;
+      this.userpic = currentUser.pic;
+    })
   }
 
   constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }

@@ -15,6 +15,9 @@ import { ServiceService } from '../service.service';
 export class HeaderComponent implements OnInit {
   @Input() logoMode = true;
   @Input() workspaceMode = true;
+  @Input() pmMode = true;
+  @Input() dmMode = true;
+  @Input() workplaceMode = true;
   logoutPopup = false;
   profilePopup = false;
   searchPopup = false;

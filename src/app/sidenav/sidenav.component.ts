@@ -4,6 +4,7 @@ import { Firestore, addDoc, collection, collectionData, doc, docData, query, whe
 import { Observable } from 'rxjs';
 import { Channels } from 'src/models/channels.class';
 import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -38,7 +39,7 @@ export class SidenavComponent implements OnInit {
   active = false;
   howManyUsers;
 
-  constructor(private auth: Auth, public firestore: Firestore, private service: ServiceService) { }
+  constructor(private auth: Auth, public firestore: Firestore, private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
@@ -59,7 +60,7 @@ export class SidenavComponent implements OnInit {
     })
   }
 
-
+  
   createNewChannel() {
     addDoc(this.collCh, this.channels.toJSON()).then(() => {
       this.channels.name = '';
@@ -100,6 +101,7 @@ export class SidenavComponent implements OnInit {
     this.showNewMessage.emit(false);
     this.showThreadSection.emit(false);
     // this.hoverStay = false;
+    // this.router.navigateByUrl('/workspace/pm')
   }
 
 
@@ -110,6 +112,7 @@ export class SidenavComponent implements OnInit {
     this.showNewMessage.emit(false);
     this.showThreadSection.emit(false);
     // this.hoverStay = false;
+    // this.router.navigateByUrl('/workspace/dm')
     localStorage.setItem('currentMember', memberId);
   }
 
@@ -125,14 +128,18 @@ export class SidenavComponent implements OnInit {
 
 
   openChannelMessages(channelId) {
-    // this.showChannelMessages.emit(true);
-    // this.showNewMessage.emit(false);
-    // this.showDirectMessages.emit(false);
-    // this.showPrivateMessages.emit(false);
-    // this.showThreadSection.emit(false);
+    this.showChannelMessages.emit(true);
+    this.showNewMessage.emit(false);
+    this.showDirectMessages.emit(false);
+    this.showPrivateMessages.emit(false);
+    this.showThreadSection.emit(false);
     // this.hoverStay = true;
     localStorage.setItem('Channel ID', channelId);
+    // this.router.navigateByUrl('/workspace').then(()=> {
+    //   window.location.reload();
+    // })
     window.location.reload();
+    
   }
 
 

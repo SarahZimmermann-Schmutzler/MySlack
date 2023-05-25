@@ -1,3 +1,94 @@
+<!-- <div class="content-container">
+    <app-sidenav [userPic]="userPic" [userName]="userName"></app-sidenav>
+
+    
+    <div class="messages-container">
+    first section
+    <div class="messages-header">
+        <div class="left-container" (click)="openProfilePopup()">
+            <img src={{memberPic}}>
+            <div class="active-container">
+                <div [class.c-green]="active"></div>
+            </div>
+            <span>{{memberName}}</span>
+        </div>
+
+    </div>
+
+    second section
+    <div class="messages-display-container">
+        <div *ngFor="let dm of allDirectMessagesSorted" >
+            Antworten des Users
+            <div class="message-box" *ngIf="dm.thisIsUser">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble" >{{dm.messageDate}}</div>
+                </div>
+
+                <div class="user-message-content-container">
+                    <div class="user-message-infos-container">
+                        <div class="user-first-row">
+                            <span >{{dm.messageTime}}</span>
+                            <span>{{userName}}</span>
+                        </div>
+
+                        <div class="user-second-row">{{dm.messageText}}</div>
+                    </div>
+
+                    <img src={{dm.messagePic}}>
+                </div>
+            </div>
+
+            Antworten der Mitglieder
+            <div class="message-box" *ngIf="!dm.thisIsUser">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{dm.messageDate}}</div>
+                </div>
+
+                <div class="message-content-container">
+                    <img src={{dm.messagePic}}>
+
+                    <div class="message-infos-container">
+                        <div class="first-row">
+                            <span>{{dm.messageWriter}}</span>
+                            <span>{{dm.messageTime}} Uhr</span>
+                        </div>
+
+                        <div class="second-row">{{dm.messageText}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    Info
+    <div class="info-container">
+        <div>Diese Unterhaltung findet nur zwischen <span (click)="openProfilePopup()">@{{memberName}}</span> und dir
+            statt.
+        </div>
+    </div>
+
+    third section
+    <div class="third-section-container">
+        <div class="send-message-container">
+            Placeholder soll namen des Channels tragen
+            <textarea placeholder="Nachricht" name="messageText" [(ngModel)]="directMessages.messageText"></textarea>
+
+            <div class="like-send-container">
+                <div></div>
+
+                <img src="assets/img/workspace/send.png" (click)="createDirectMessages()">
+            </div>
+        </div>
+    </div>
+</div>
+</div> -->
+
+
+
 <div class="messages-container">
     <!-- first section -->
     <div class="messages-header">
@@ -80,7 +171,9 @@
             </div>
         </div>
     </div>
-</div>
+
+
+
 
 <div class="pop-up-profile" *ngIf="profilePopup">
     <div class="profile-box">

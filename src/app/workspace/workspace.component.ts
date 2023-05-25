@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-workspace',
@@ -13,6 +14,7 @@ export class WorkspaceComponent {
   showPrivateMessages = false;
   showDirectMessages = false;
   showNewMessage = false;
+  showSidenav = true;
   currentUser = '';
   // guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   userName = '';
@@ -23,7 +25,7 @@ export class WorkspaceComponent {
   // userNames = [];
  
 
-  constructor(public firestore: Firestore) { }
+  constructor(public firestore: Firestore, private service: ServiceService) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
@@ -38,6 +40,8 @@ export class WorkspaceComponent {
     this.user$.subscribe(currentUser => {
       this.userName = currentUser.name;
       this.userPic = currentUser.pic;
+      // this.service.sendUserName(this.userName);
+      // this.service.sendUserPic(this.userPic);
     })
   }
 

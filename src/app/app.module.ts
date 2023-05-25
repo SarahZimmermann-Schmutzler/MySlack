@@ -27,6 +27,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ServiceService } from './service.service';
 import { ResponsiveNewUserComponent } from './responsive-new-user/responsive-new-user.component';
+import { WorkplaceModule } from './workplace/workplace.module';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ResponsiveNewUserComponent } from './responsive-new-user/responsive-new
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     FormsModule,
+    WorkplaceModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

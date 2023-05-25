@@ -1,5 +1,5 @@
 <!-- <app-header [logoMode]="router.url == '/'" [workspaceMode]="router.url == '/workspace/' + currentUserId"></app-header> -->
-<app-header [logoMode]="router.url == '/'" [workspaceMode]="router.url == '/workspace'"></app-header>
+<app-header [logoMode]="router.url == '/'" [workspaceMode]="router.url == '/workspace'" [pmMode]="router.url == '/workspace/pm'" [dmMode]="router.url == '/workspace/dm'" [workplaceMode]="router.url == '/workplace'"></app-header>
 <!-- logoMode ist true, wenn die routerUrl die Startseite ist -->
 
 <router-outlet></router-outlet>
