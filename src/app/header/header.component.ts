@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   @Input() logoMode = true;
   @Input() pmMode = true;
   @Input() dmMode = true;
-  @Input() workplaceMode = true;
+  @Input() chMode = true;
   logoutPopup = false;
   profilePopup = false;
   searchPopup = false;
@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.interval = setInterval(() => {
-      if (this.workplaceMode || this.pmMode || this.dmMode) {
+      if (this.chMode || this.pmMode || this.dmMode) {
         this.currentUser = localStorage.getItem('currentUser');
         this.getUserData()
       }

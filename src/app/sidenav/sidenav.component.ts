@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Firestore, addDoc, collection, collectionData, doc, docData, query, where } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
 import { Channels } from 'src/models/channels.class';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
@@ -20,10 +18,6 @@ export class SidenavComponent implements OnInit {
   channelPopup = false;
   @Input() userName: string;
   @Input() userPic;
-  @Output() showPrivateMessages = new EventEmitter();
-  @Output() showDirectMessages = new EventEmitter();
-  @Output() showNewMessage = new EventEmitter();
-  @Output() showChannelMessages = new EventEmitter();
   @Output() showThreadSection = new EventEmitter();
   channels = new Channels();
   collCh = collection(this.firestore, 'channels');
@@ -33,13 +27,12 @@ export class SidenavComponent implements OnInit {
   channelId;
   currentUser;
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-  // allNames: Array<any> | undefined;
   members = [];
   userStatus;
   active = false;
   howManyUsers;
 
-  constructor(private auth: Auth, public firestore: Firestore, private service: ServiceService, private router: Router) { }
+  constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
@@ -95,23 +88,11 @@ export class SidenavComponent implements OnInit {
 
 
   openPrivateMessages() {
-    // this.showChannelMessages.emit(false);
-    // this.showPrivateMessages.emit(true);
-    // this.showDirectMessages.emit(false);
-    // this.showNewMessage.emit(false);
-    // this.showThreadSection.emit(false);
-    // this.hoverStay = false;
     this.router.navigateByUrl('/ws-private')
   }
 
 
   openDirectMessages(memberId) {
-    // this.showChannelMessages.emit(false);
-    // this.showDirectMessages.emit(true);
-    // this.showPrivateMessages.emit(false);
-    // this.showNewMessage.emit(false);
-    // this.showThreadSection.emit(false);
-    // this.hoverStay = false;
     localStorage.setItem('currentMember', memberId);
     this.router.navigateByUrl('/ws-direct').then(() => {
       window.location.reload();
@@ -120,28 +101,16 @@ export class SidenavComponent implements OnInit {
 
 
   openNewMessage() {
-    // this.showChannelMessages.emit(false);
-    // this.showNewMessage.emit(true);
-    // this.showDirectMessages.emit(false);
-    // this.showPrivateMessages.emit(false);
-    // this.showThreadSection.emit(false);
-    // this.hoverStay = false;
+    // coming soon
   }
 
 
   openChannelMessages(channelId) {
-    // this.showChannelMessages.emit(true);
-    // this.showNewMessage.emit(false);
-    // this.showDirectMessages.emit(false);
-    // this.showPrivateMessages.emit(false);
     // this.showThreadSection.emit(false);
-    // this.hoverStay = true;
     localStorage.setItem('Channel ID', channelId);
     this.router.navigateByUrl('/ws-channel').then(()=> {
       window.location.reload();
-    })
-    // window.location.reload();
-    
+    });
   }
 
 

@@ -13,6 +13,7 @@ export class ThreadsComponent implements OnInit {
   mouseOvered = false;
   mouseOveredOne = false;
   @Output() showThreadsSection = new EventEmitter();
+  @Output() channelFull = new EventEmitter();
   @Input() userName;
   @Input() userPic;
   threadAnswers = new ThreadAnswers();
@@ -23,12 +24,8 @@ export class ThreadsComponent implements OnInit {
   currentThread;
   currentUser;
   answers = [];
-  // answeri = [];
-  // userAnswers = [];
-  // memberAnswers = [];
   howManyAnswers;
   currentChannelName;
-  // lastAnswers = [];
   threads$: Observable<any>;
   threadAnswer$: Observable<any>;
   threadWriter;
@@ -36,7 +33,6 @@ export class ThreadsComponent implements OnInit {
   threadText;
   threadPic;
   thereIsAThread = false;
-  // number;
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');
@@ -82,6 +78,7 @@ export class ThreadsComponent implements OnInit {
     this.threadAnswers.answerText = '';
   }
 
+
   getAnswerData() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.currentThread, 'answers');
     collectionData(coll, { idField: 'id' }).subscribe(answers => {
@@ -106,6 +103,7 @@ export class ThreadsComponent implements OnInit {
 
   closeThread() {
     this.showThreadsSection.emit(false);
+    this.channelFull.emit(true);
   }
 }
 

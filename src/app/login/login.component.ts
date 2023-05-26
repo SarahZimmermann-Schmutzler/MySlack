@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Auth, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { User } from 'src/models/user.class';
-import { Firestore, collection, doc, setDoc, updateDoc } from '@angular/fire/firestore';
-import { ServiceService } from '../service.service';
+import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +21,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  constructor(private router: Router, private auth: Auth, public firestore: Firestore, private route: ActivatedRoute, private service: ServiceService) {}
+  constructor(
+    private router: Router, 
+    private auth: Auth, 
+    public firestore: Firestore) {}
 
   stopReload() {
     clearInterval(this.interval);
