@@ -57,6 +57,7 @@ export class DirectMessagesComponent implements OnInit {
     this.directMessages.thisIsUser = '';
     setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp), this.directMessages.toJSON(), { merge: true }).then(() => {
       this.directMessages.messageText = '';
+      window.location.reload();
     });
   }
 

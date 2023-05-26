@@ -50,6 +50,7 @@ export class PrivateMessagesComponent implements OnInit {
     this.privateMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     setDoc(doc(this.coll, this.currentUser, "notes", this.timestamp), this.privateMessages.toJSON(), { merge: true }).then(() => {
       this.privateMessages.messageText = '';
+      window.location.reload();
     });
   }
 
@@ -57,8 +58,9 @@ export class PrivateMessagesComponent implements OnInit {
   getNotes() {
     let coll = collection(this.firestore, 'users', this.currentUser, 'notes');
     collectionData(coll, { idField: 'id' }).subscribe(notes => {
-      console.log('Notes sind', notes);
       this.allNotes = notes;
+      console.log('notes are', this.allNotes)
+      this.allNotes = this.allNotes.sort((a, b) => (a.id - b.id));
     });
   }
 

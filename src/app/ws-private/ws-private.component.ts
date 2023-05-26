@@ -16,13 +16,10 @@ export class WsPrivateComponent {
   showNewMessage = false;
   showSidenav = true;
   currentUser = '';
-  // guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
   userName = '';
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
-  // allUsers = [];
-  // userNames = [];
  
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -40,43 +37,6 @@ export class WsPrivateComponent {
     this.user$.subscribe(currentUser => {
       this.userName = currentUser.name;
       this.userPic = currentUser.pic;
-      // this.service.sendUserName(this.userName);
-      // this.service.sendUserPic(this.userPic);
     })
-  }
-
-
-  setVariableFalse($event: any) {
-    this.showThreadsSection = $event;
-  }
-
-
-  setVariableTrue($event) {
-    this.showThreadsSection = $event;
-  }
-
-
-  // showDirectMessagesSection($event) {
-  //   this.showDirectMessages = $event;
-  // }
-
-
-  // hideChannelMessagesSection($event) {
-  //   this.showChannelMessages = $event;
-  // }
-
-
-  // showPrivateMessagesSection($event) {
-  //   this.showPrivateMessages = $event;
-  // }
-
-
-  // showNewMessageSection($event) {
-  //   this.showNewMessage = $event;
-  // }
-
-
-  hideThreadSection($event) {
-    this.showThreadsSection = $event;
   }
 }
