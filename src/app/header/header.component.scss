@@ -95,7 +95,6 @@
 .w20 {
     width: 19% !important;
     justify-content: center;
-    // background-color: red;
     margin-right: 20px;
 
     img {
@@ -119,7 +118,6 @@
     justify-content: space-between;
     background-color: white;
     border-radius: 30px;
-    // background-color: aqua;
     margin-right: -48px;
 
     input {
@@ -138,7 +136,6 @@
             outline: none;
         }
     }
-
 }
 
 .img-container {
@@ -153,7 +150,6 @@
 
 .info-container {
     width: 20%;
-    // background-color: aqua;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -167,6 +163,10 @@
         margin-right: 16px;
         text-align: center;
         word-wrap: break-word;
+
+        @media(max-width: 1400px) {
+            font-size: 18px;;
+        }
     }
 }
 

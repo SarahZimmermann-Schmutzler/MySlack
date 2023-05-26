@@ -47,7 +47,8 @@
                         <div class="date-bubble">{{message.threadDate}}</div>
                     </div>
     
-                    <div class="message-content-container"  [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
+                    <div class="message-content-container"  [class.bg-lilac]="mouseOvered" 
+                    (mouseover)="mouseOvered=true"
                     (mouseout)="mouseOvered=false">
                     <img src={{message.threadPic}}>
     

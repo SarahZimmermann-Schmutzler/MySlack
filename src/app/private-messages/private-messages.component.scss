@@ -50,6 +50,10 @@
         font-weight: 700;
         font-size: 22px;
         margin-right: 5px;
+
+        @media(max-width: 1400px) {
+            font-size: 20px;
+        }
     }
 }
 
@@ -224,6 +228,8 @@
     padding-right: 30px;
     padding-bottom: 35px;
     background-color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .send-message-container {

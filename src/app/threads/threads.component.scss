@@ -26,6 +26,10 @@
             font-weight: 700;
             font-size: 24px;
             margin-right: 8px;
+
+            @media(max-width: 1400px) {
+                font-size: 20px;
+            }
         }
 
         &:last-child {
@@ -54,6 +58,11 @@
     margin-right: 30px;
     cursor: pointer;
 
+    @media(max-width: 1400px) {
+        width: 20px;
+        height: 20px;
+    }
+
     &:hover {
         background-color: rgba(236, 238, 254, 1);
     }
@@ -61,6 +70,11 @@
     img {
         &:hover {
             filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+        }
+
+        @media(max-width: 1400px) {
+            width: 10px;
+            object-fit: contain;
         }
     }
 }
@@ -97,7 +111,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    // margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px 30px;
 
@@ -107,6 +120,11 @@
         object-fit: contain;
         border-radius: 100%;
         margin-right: 20px;
+
+        @media(max-width: 1400px) {
+            width: 40px;
+            height: 40px;
+        }
     }
 }
 
@@ -117,7 +135,6 @@
 
 .first-row {
     margin-bottom: 8px;
-    // background-color: aqua;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,12 +145,20 @@
             font-weight: 700;
             font-size: 18px;
             margin-right: 20px;
+
+            @media(max-width: 1400px) {
+                font-size: 16px;
+            }
         }
 
         &:last-child {
             font-weight: 400;
             font-size: 14px;
             color: rgba(104, 104, 104, 1);
+
+            @media(max-width: 1400px) {
+                font-size: 12px;
+            }
         }
     }
 }
@@ -154,6 +179,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
+    @media(max-width: 1400px) {
+        font-size: 16px;
+    }
 }
 
 .bg-white {
@@ -183,6 +212,10 @@
         font-size: 16px;
         color: rgba(173, 176, 217, 1);
         white-space: nowrap;
+
+        @media(max-width: 1400px) {
+            font-size: 14px;
+        }
     }
 }
 
