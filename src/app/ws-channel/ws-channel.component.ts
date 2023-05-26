@@ -11,6 +11,7 @@ import { ServiceService } from '../service.service';
 export class WsChannelComponent {
   showThreadsSection: boolean = true;
   channelFull = false;
+  hideSidenav = false;
   showChannelMessages = true;
   showPrivateMessages = false;
   showDirectMessages = false;
@@ -54,6 +55,7 @@ export class WsChannelComponent {
   hideThreadSection($event) {
     this.showThreadsSection = $event;
   }
+
 
   makeChannelFull($event) {
     this.channelFull = $event;
