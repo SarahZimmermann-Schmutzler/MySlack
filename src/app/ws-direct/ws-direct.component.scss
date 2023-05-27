@@ -7,9 +7,27 @@
     display: flex;
     box-sizing: border-box;
     // background-color: aqua;
+
+    @media(max-width: 1199px) {
+        flex-direction: column;
+    }
 }
 
 .sidenav {
     min-width: 20%; 
     height: 100%;
+
+    @media(max-width: 1199px) {
+        width: auto;
+        min-height: 200px;
+        margin-bottom: 50px;
+
+        &:focus {
+            min-height: 400px !important;
+        }
+    }
+}
+
+.responsive-sidenav {
+    min-height: 100% !important;
 }

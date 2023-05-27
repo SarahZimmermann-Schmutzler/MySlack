@@ -8,6 +8,7 @@ import { ServiceService } from '../service.service';
   templateUrl: './ws-private.component.html',
   styleUrls: ['./ws-private.component.scss']
 })
+
 export class WsPrivateComponent {
   showThreadsSection: boolean = true;
   showChannelMessages = true;
@@ -20,6 +21,7 @@ export class WsPrivateComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
+  fullSize = false;
  
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -38,5 +40,10 @@ export class WsPrivateComponent {
       this.userName = currentUser.name;
       this.userPic = currentUser.pic;
     })
+  }
+
+  resizeSidenav($event) {
+    this.fullSize = $event;
+    console.log(this.fullSize)
   }
 }

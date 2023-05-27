@@ -20,7 +20,15 @@
         width: auto;
         min-height: 200px;
         margin-bottom: 20px;
+
+        &:focus {
+            min-height: 400px !important;
+        }
     }
+}
+
+.responsive-sidenav {
+    min-height: 100% !important;
 }
 
 .messages {

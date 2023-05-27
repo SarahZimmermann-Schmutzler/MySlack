@@ -19,6 +19,7 @@ export class SidenavComponent implements OnInit {
   @Input() userName: string;
   @Input() userPic;
   @Output() showThreadSection = new EventEmitter();
+  @Output() fullSize = new EventEmitter();
   channels = new Channels();
   collCh = collection(this.firestore, 'channels');
   collUs = collection(this.firestore, 'users');
@@ -66,7 +67,7 @@ export class SidenavComponent implements OnInit {
   openAndCloseChannels() {
     this.rotateChannel = !this.rotateChannel;
     this.hideChannel = !this.hideChannel;
-    
+    this.fullSize.emit(true);
   }
 
 
@@ -74,6 +75,7 @@ export class SidenavComponent implements OnInit {
     this.rotateMessage = !this.rotateMessage;
     this.hideMessage = !this.hideMessage;
     this.members = this.allUsers.filter(s => s.name !== this.userName);
+    this.fullSize.emit(true);
   }
 
 

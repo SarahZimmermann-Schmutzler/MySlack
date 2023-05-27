@@ -22,6 +22,7 @@ export class WsChannelComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
+  fullSize = false;
  
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -59,5 +60,10 @@ export class WsChannelComponent {
 
   makeChannelFull($event) {
     this.channelFull = $event;
+  }
+
+  resizeSidenav($event) {
+    this.fullSize = $event;
+    console.log(this.fullSize)
   }
 }

@@ -8,6 +8,7 @@ import { ServiceService } from '../service.service';
   templateUrl: './ws-direct.component.html',
   styleUrls: ['./ws-direct.component.scss']
 })
+
 export class WsDirectComponent {
   showThreadsSection: boolean = true;
   showChannelMessages = true;
@@ -20,6 +21,7 @@ export class WsDirectComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
+  fullSize = false;
  
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -37,6 +39,11 @@ export class WsDirectComponent {
       this.userName = currentUser.name;
       this.userPic = currentUser.pic;
     })
+  }
+
+  resizeSidenav($event) {
+    this.fullSize = $event;
+    console.log(this.fullSize)
   }
 
 }
