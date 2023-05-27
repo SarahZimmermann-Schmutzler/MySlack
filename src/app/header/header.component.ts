@@ -129,6 +129,8 @@ export class HeaderComponent implements OnInit {
         if(searchName.match(searchInput) == searchInput) {
           this.results.push(this.allUsers[i]);
           this.find = '';
+        } else {
+          this.find = '';
         }
       }
     })
