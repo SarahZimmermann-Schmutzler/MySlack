@@ -40,11 +40,11 @@
                 </div>
             </div>
 
-            <div *ngFor="let answers of answers">
+            <div *ngFor="let answers of answers; let i = index">
                 <!-- Antworten der Mitglieder -->
                 <div class="message-box" *ngIf="!answers.thisIsUser">
-                    <div class="message-content-container" [class.bg-lilac]="mouseOveredOne" (mouseover)="mouseOveredOne=true"
-                        (mouseout)="mouseOveredOne=false">
+                    <div class="message-content-container" [ngClass]="{'bg-lilac': hoveredIndex === i}"
+                    (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
                         <img src={{answers.answerPic}}>
 
                         <div class="message-infos-container">
@@ -53,7 +53,8 @@
                                 <span>{{answers.answerTime}} Uhr</span>
                             </div>
 
-                            <div class="second-row" [class.bg-white]="mouseOveredOne">{{answers.answerText}}</div>
+                            <div class="second-row" [ngClass]="{'bg-white': hoveredIndex === i}"
+                            (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">{{answers.answerText}}</div>
                         </div>
                     </div>
                 </div>

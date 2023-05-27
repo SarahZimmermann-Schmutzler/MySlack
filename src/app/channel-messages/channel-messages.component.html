@@ -40,26 +40,26 @@
 
     <!-- second section -->
     <div class="messages-display-container">
-        <div *ngFor="let message of messages">
+        <div *ngFor="let message of messages; let i = index">
             <div class="message-box" *ngIf="!message.thisIsUser">
-                    <div class="line-date-container">
-                        <div class="line"></div>
-                        <div class="date-bubble">{{message.threadDate}}</div>
-                    </div>
-    
-                    <div class="message-content-container"  [class.bg-lilac]="mouseOvered" 
-                    (mouseover)="mouseOvered=true"
-                    (mouseout)="mouseOvered=false">
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{message.threadDate}}</div>
+                </div>
+
+                <div class="message-content-container" [ngClass]="{'bg-lilac': hoveredIndex === i}"
+                    (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
                     <img src={{message.threadPic}}>
-    
+
                     <div class="message-infos-container">
                         <div class="first-row">
                             <span>{{message.threadWriter}}</span>
                             <span>{{message.threadTime}} Uhr</span>
                         </div>
-    
-                        <div class="second-row" [class.bg-white]="mouseOvered">{{message.threadText}}</div>
-    
+
+                        <div class="second-row" [ngClass]="{'bg-white': hoveredIndex === i}"
+                            (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">{{message.threadText}}</div>
+
                         <div class="third-row">
                             <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
                             <!-- Alt.: Antworten direkt bei messages als array speichern -->
@@ -71,30 +71,30 @@
             </div>
 
             <div class="message-box" *ngIf="message.thisIsUser">
-                    <div class="line-date-container">
-                        <div class="line"></div>
-                        <div class="date-bubble">{{message.threadDate}}</div>
-                    </div>
-    
-                    <div class="user-message-content-container" >
-                        <div class="user-message-infos-container">
-                            <div class="user-first-row">
-                                <span>{{message.threadTime}} Uhr</span>
-                                <span>{{message.threadWriter}}</span>
-                            </div>
-        
-                            <div class="user-second-row">{{message.threadText}}</div>
-        
-                            <div class="user-third-row">
-                                <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
-                                <!-- Alt.: Antworten direkt bei messages als array speichern -->
-                                <!-- <span>Letzte Antwort 00:00</span> -->
-                                <a (click)="openThread(message.id)">Antworten</a>
-                            </div>
+                <div class="line-date-container">
+                    <div class="line"></div>
+                    <div class="date-bubble">{{message.threadDate}}</div>
+                </div>
+
+                <div class="user-message-content-container">
+                    <div class="user-message-infos-container">
+                        <div class="user-first-row">
+                            <span>{{message.threadTime}} Uhr</span>
+                            <span>{{message.threadWriter}}</span>
                         </div>
-        
-                        <img src={{message.threadPic}}>
+
+                        <div class="user-second-row">{{message.threadText}}</div>
+
+                        <div class="user-third-row">
+                            <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
+                            <!-- Alt.: Antworten direkt bei messages als array speichern -->
+                            <!-- <span>Letzte Antwort 00:00</span> -->
+                            <a (click)="openThread(message.id)">Antworten</a>
+                        </div>
                     </div>
+
+                    <img src={{message.threadPic}}>
+                </div>
             </div>
         </div>
     </div>
@@ -139,8 +139,8 @@
             <span (click)="saveChangesDescription()">Speichern</span>
         </div>
 
-        <textarea
-            placeholder="{{channelDescription || 'Beschreibe welches Ziel ihr mit dem Channel verfolgt.'}}" [(ngModel)]="newDescription"></textarea>
+        <textarea placeholder="{{channelDescription || 'Beschreibe welches Ziel ihr mit dem Channel verfolgt.'}}"
+            [(ngModel)]="newDescription"></textarea>
 
         <!-- coming soon: leave the channel -->
         <!-- <div class="btn-row">

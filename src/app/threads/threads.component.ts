@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ThreadsComponent implements OnInit {
   mouseOvered = false;
-  mouseOveredOne = false;
+  // mouseOveredOne = false;
   @Output() showThreadsSection = new EventEmitter();
   @Output() channelFull = new EventEmitter();
   @Input() userName;
@@ -33,6 +33,7 @@ export class ThreadsComponent implements OnInit {
   threadText;
   threadPic;
   thereIsAThread = false;
+  hoveredIndex: number | null = null;
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');

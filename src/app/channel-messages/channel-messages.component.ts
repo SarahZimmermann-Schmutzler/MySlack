@@ -1,18 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, docData, getDoc, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
 import { ServiceService } from '../service.service';
-import { idToken } from '@angular/fire/auth';
-import { get } from '@angular/fire/database';
 
 @Component({
   selector: 'app-channel-messages',
   templateUrl: './channel-messages.component.html',
   styleUrls: ['./channel-messages.component.scss']
 })
+
 export class ChannelMessagesComponent implements OnInit {
-  mouseOvered = false;
+  // mouseOvered = false;
   mouseOveredTwo = false;
   mouseOveredThree = false;
   channelPopup = false;
@@ -35,6 +34,7 @@ export class ChannelMessagesComponent implements OnInit {
   howManyUsers;
   newName;
   newDescription;
+  hoveredIndex: number | null = null;
 
 
   ngOnInit(): void {
