@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { Channels } from 'src/models/channels.class';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
@@ -20,11 +20,11 @@ export class SidenavComponent implements OnInit {
   @Input() userPic;
   @Output() showThreadSection = new EventEmitter();
   @Output() fullSize = new EventEmitter();
-  channels = new Channels();
   collCh = collection(this.firestore, 'channels');
   collUs = collection(this.firestore, 'users');
   allChannels: Array<any> | undefined;
   allUsers: Array<any> | undefined;
+  channels = new Channels();
   channelId;
   currentUser;
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
@@ -32,17 +32,18 @@ export class SidenavComponent implements OnInit {
   userStatus;
   active = false;
   howManyUsers;
+  channelDescription;
 
   constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
 
-    collectionData(this.collCh, {idField: 'id'}).subscribe(newChannels => {
+    collectionData(this.collCh, { idField: 'id' }).subscribe(newChannels => {
       this.allChannels = newChannels;
     })
 
-    collectionData(this.collUs, {idField: 'id'}).subscribe(Users => {
+    collectionData(this.collUs, { idField: 'id' }).subscribe(Users => {
       this.allUsers = Users;
       this.howManyUsers = this.allUsers.length;
       this.service.sendNumberOfUsers(this.howManyUsers);
@@ -54,8 +55,9 @@ export class SidenavComponent implements OnInit {
     })
   }
 
-  
+
   createNewChannel() {
+    this.channels.description = this.channelDescription || '';
     addDoc(this.collCh, this.channels.toJSON()).then(() => {
       this.channels.name = '';
       this.channels.description = '';
@@ -104,7 +106,7 @@ export class SidenavComponent implements OnInit {
 
   openChannelMessages(channelId) {
     localStorage.setItem('Channel ID', channelId);
-    this.router.navigateByUrl('/ws-channel').then(()=> {
+    this.router.navigateByUrl('/ws-channel').then(() => {
       window.location.reload();
     });
   }
