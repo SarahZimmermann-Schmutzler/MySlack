@@ -197,6 +197,7 @@
 
     @media(max-width: 767px) {
         width: 30%;
+        padding-right: 0px;
     }
     
 
@@ -242,6 +243,10 @@
     border-radius: 100%;
     object-fit: contain;
     margin-right: 20px;
+
+    @media(max-width: 767px) {
+        margin-right: 0px;
+    }
 }
 
 .pop-up-logout {

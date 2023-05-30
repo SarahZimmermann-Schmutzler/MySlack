@@ -44,6 +44,11 @@
         height: 55px;
         border-radius: 100%;
         object-fit: contain;
+
+        @media(max-width: 500px) {
+            width: 45px;
+            height: 45px;
+        }
     }
 
     span {
@@ -82,6 +87,11 @@
     margin-top: 20px;
     margin-bottom: 30px;
     overflow-y: scroll;
+    // background-color: red;
+
+    @media(max-width: 1199px) {
+        height: 600px;
+    }
 
     &::-webkit-scrollbar {
         background-color: white;
@@ -149,6 +159,12 @@
         object-fit: contain;
         border-radius: 100%;
         margin-right: 30px;
+
+        @media(max-width: 500px) {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
     }
 }
 
@@ -164,7 +180,7 @@
         &:first-child {
             font-weight: 700;
             font-size: 18px;
-            margin-right: 20px;
+            margin-right: 0;
         }
 
         &:last-child {
@@ -191,6 +207,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
+    @media(max-width: 500px) {
+        font-size: 16px;
+    }
 }
 
 .bg-white {

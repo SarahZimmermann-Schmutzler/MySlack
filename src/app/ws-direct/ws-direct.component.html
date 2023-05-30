@@ -1,5 +1,5 @@
 <div class="content-container">
     <app-sidenav class="sidenav" [class.responsive-sidenav]="fullSize" (fullSize)="resizeSidenav($event)" [userPic]="userPic" [userName]="userName"></app-sidenav>
 
-    <app-direct-messages [userPic]="userPic" [userName]="userName"></app-direct-messages>
+    <app-direct-messages class="messages" [userPic]="userPic" [userName]="userName"></app-direct-messages>
 </div>

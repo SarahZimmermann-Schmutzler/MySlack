@@ -2,7 +2,7 @@
     width: 100%;
     height: 85vh;
     padding-left: 20px;
-    padding-right: 20px;
+    // padding-right: 20px;
     padding-top: 20px;
     display: flex;
     box-sizing: border-box;
@@ -31,3 +31,12 @@
 .responsive-sidenav {
     min-height: 100% !important;
 }
+
+// .messages {
+//     min-width: 80%; 
+//     height: 100%;
+
+//     @media(max-width: 1199px) {
+//         height: 500px;
+//     }
+// }
