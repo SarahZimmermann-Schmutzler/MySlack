@@ -130,7 +130,7 @@
 
 // second section
 .messages-display-container {
-    height: 470px;
+    height: 405px;
     margin-top: 20px;
     margin-bottom: 30px;
     overflow-y: scroll;
@@ -408,10 +408,10 @@
 
 // third section
 .third-section-container {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    // position: absolute;
+    // bottom: 0px;
+    // left: 0px;
+    // right: 0px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 35px;
@@ -500,6 +500,11 @@
     border-radius: 20px;
     margin-top: 140px;
     margin-right: 20px;
+    margin-left: 20px;
+
+    @media(max-width: 1199px) {
+        margin-top: 270px;
+    }
 
     input,
     textarea {
@@ -512,6 +517,10 @@
         resize: none;
         font-weight: 400;
         font-size: 16px;
+
+        @media(max-width: 1199px) {
+            width: 85%;
+        }
 
         &::placeholder {
             font-weight: 400;

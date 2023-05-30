@@ -389,6 +389,19 @@
     border-radius: 20px;
     margin-top: 140px;
     margin-right: 20px;
+    margin-left: 20px;
+
+    @media(max-width: 1199px) {
+        margin-top: -135px;
+    }
+
+    @media(max-width: 763px) {
+        margin-top: -115px;
+    }
+
+    @media(max-width: 447px) {
+        margin-top: -92px;
+    }
 
     input, textarea {
         width: 95%;
@@ -399,6 +412,10 @@
         height: 20px;
         resize: none;
         font-family: 'Nunito';
+
+        @media(max-width: 1199px) {
+            width: 85%;
+        }
 
         &:focus {
             outline: none;
@@ -451,6 +468,10 @@
     font-weight: 400;
     font-size: 18px;
     margin-bottom: 30px;
+
+    @media(max-width: 1199px) {
+       font-size: 16px;
+    }
 }
 
 .third-row {

@@ -14,8 +14,8 @@
     <!-- second section -->
     <div class="messages-display-container">
         <div class="message-box">
-            <div class="message-content-container" *ngIf="thereIsAThread" [class.bg-lilac]="mouseOvered" (mouseover)="mouseOvered=true"
-                (mouseout)="mouseOvered=false">
+            <div class="message-content-container" *ngIf="thereIsAThread" [class.bg-lilac]="mouseOvered"
+                (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false">
                 <img src={{threadPic}}>
 
                 <div class="message-infos-container">
@@ -44,7 +44,7 @@
                 <!-- Antworten der Mitglieder -->
                 <div class="message-box" *ngIf="!answers.thisIsUser">
                     <div class="message-content-container" [ngClass]="{'bg-lilac': hoveredIndex === i}"
-                    (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
+                        (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">
                         <img src={{answers.answerPic}}>
 
                         <div class="message-infos-container">
@@ -54,7 +54,8 @@
                             </div>
 
                             <div class="second-row" [ngClass]="{'bg-white': hoveredIndex === i}"
-                            (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">{{answers.answerText}}</div>
+                                (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">{{answers.answerText}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,19 +76,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <!-- third section -->
+    <div class="third-section-container">
+        <div class="send-message-container">
+            <textarea placeholder="Antworten..." name="answerText" [(ngModel)]="threadAnswers.answerText"></textarea>
 
-            <!-- third section -->
-            <div class="third-section-container">
-                <div class="send-message-container">
-                    <textarea placeholder="Antworten..." name="answerText"
-                        [(ngModel)]="threadAnswers.answerText"></textarea>
-
-                    <div class="like-send-container">
-                        <div></div>
-
-                        <img src="assets/img/workspace/send.png" (click)="setAnswers()">
-                    </div>
-                </div>
+            <div class="like-send-container">
+                <div></div>
+                <img src="assets/img/workspace/send.png" (click)="setAnswers()">
             </div>
         </div>
+    </div>
+</div>

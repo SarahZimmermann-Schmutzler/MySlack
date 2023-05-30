@@ -307,13 +307,14 @@
 
 // Info Container
 .info-container {
-    height: 50px;
-    position: absolute;
-    bottom: 150px;
-    left: 30px;
-    right: 30px;
+    // height: 50px;
+    // position: absolute;
+    // bottom: 150px;
+    padding-left: 30px;
+    padding-right: 30px;
     color: rgba(104, 104, 104, 1);
     background-color: white;
+    margin-bottom: 20px;
 
     span {
         color: rgba(83, 90, 241, 1);
@@ -323,10 +324,10 @@
 
 // third section
 .third-section-container {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    // position: absolute;
+    // bottom: 0px;
+    // left: 0px;
+    // right: 0px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 35px;

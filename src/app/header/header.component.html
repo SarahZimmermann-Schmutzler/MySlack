@@ -27,6 +27,7 @@
 
 <div class="pop-up-logout" *ngIf="logoutPopup" (click)="closePopup()">
     <div class="logout-profile-box">
+        <img src="assets/img/header/close.png" (click)="closePopup()">
         <div (click)="openProfilePopup()"><span>Profil</span></div>
         <div (click)="logout()" *ngIf="pmMode || dmMode || chMode"><span>Logout</span></div>
     </div>
