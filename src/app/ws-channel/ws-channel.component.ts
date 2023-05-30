@@ -25,7 +25,7 @@ export class WsChannelComponent {
   fullSize = false;
  
 
-  constructor(public firestore: Firestore, private service: ServiceService) { }
+  constructor(public firestore: Firestore) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
@@ -61,6 +61,7 @@ export class WsChannelComponent {
   makeChannelFull($event) {
     this.channelFull = $event;
   }
+
 
   resizeSidenav($event) {
     this.fullSize = $event;

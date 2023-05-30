@@ -19,10 +19,8 @@ export class AppComponent implements OnInit {
     onAuthStateChanged(this.auth, (currentUser$) => {
       if (currentUser$) {
         this.currentUserId = currentUser$.uid;
-        // console.log('User id is', this.currentUserId);
       } else {
         this.currentUserId = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-        // console.log('Guest id is', this.currentUserId);
         // Guest Login
       }
     });

@@ -1,4 +1,3 @@
-<!-- <app-header [logoMode]="router.url == '/'" [workspaceMode]="router.url == '/workspace/' + currentUserId"></app-header> -->
 <app-header [logoMode]="router.url == '/'" [pmMode]="router.url == '/ws-private'" [dmMode]="router.url == '/ws-direct'" [chMode]="router.url == '/ws-channel'"></app-header>
 <!-- logoMode ist true, wenn die routerUrl die Startseite ist -->
 
@@ -6,5 +5,4 @@
 
 <app-responsive-new-user [logoMode]="router.url == '/'"></app-responsive-new-user>
 
-<!-- <app-footer [footer]="router.url !== '/workspace/' + currentUserId" [login]="router.url == '/impressum'" [legal]="router.url !== '/impressum'" [login]="router.url == '/datenschutz'" [legal]="router.url !== '/datenschutz'" [position]="router.url == '/datenschutz'"></app-footer> -->
 <app-footer [footer]="router.url !== '/ws-channel'" [footer]="router.url !== '/ws-private'" [footer]="router.url !== '/ws-direct'" [login]="router.url == '/impressum'" [legal]="router.url !== '/impressum'" [login]="router.url == '/datenschutz'" [legal]="router.url !== '/datenschutz'"></app-footer>

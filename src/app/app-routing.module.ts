@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PasswordComponent } from './password/password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
-import { WorkspaceComponent } from './workspace/workspace.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { WsChannelComponent } from './ws-channel/ws-channel.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: 'ws-channel', component: WsChannelComponent},
   { path: 'ws-direct', component: WsDirectComponent},
   { path: 'ws-private', component: WsPrivateComponent},
-  { path: 'workspace/:currentUser', component: WorkspaceComponent},
   { path: 'impressum', component: ImpressumComponent},
   { path: 'datenschutz', component: DatenschutzComponent}
 ];

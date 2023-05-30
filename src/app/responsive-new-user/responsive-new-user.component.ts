@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-responsive-new-user',
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 export class ResponsiveNewUserComponent {
   @Input() logoMode = true;
 
-  constructor(private router: Router) {
+  constructor() {
 
   }
 }

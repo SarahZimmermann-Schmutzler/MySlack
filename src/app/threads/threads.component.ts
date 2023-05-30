@@ -54,7 +54,6 @@ export class ThreadsComponent implements OnInit {
     const docRef = doc(collCh, this.currentThread);
     this.threads$ = docData(docRef);
     this.threads$.subscribe(thread => {
-      
       if (thread) {
         this.thereIsAThread = true;
         this.threadWriter = thread.threadWriter;

@@ -10,6 +10,7 @@
 
         <div class="right-container">
             <div class="member-container">
+                <!-- coming soon: first three members -->
                 <!-- <div class="member-container" [class.bg-font-lilac]="mouseOveredThree" (mouseover)="mouseOveredThree=true"
                 (mouseout)="mouseOveredThree=false"> -->
                 <!-- sollen erstellt werden mit versch. Bildern -->
@@ -25,13 +26,13 @@
                     <img src="assets/img/profiles/woman.png">
                 </div>
 
-                <!-- coming soon: Anzahl der Mitglieder im Channel -->
+                <!-- coming soon: number of channel members -->
                 <!-- <span>0</span> -->
-                <!-- now: Anzahl der Users -->
+                <!-- now: number of users -->
                 <span>{{howManyUsers}}</span>
             </div>
 
-            <!-- coming soon: invite members -->
+            <!-- coming soon: invite a members -->
             <!-- <div class="add-member-img-container">
                 <img src="assets/img/workspace/add_member.png">
             </div> -->
@@ -61,8 +62,8 @@
                             (mouseover)="hoveredIndex = i" (mouseout)="hoveredIndex = null">{{message.threadText}}</div>
 
                         <div class="third-row">
-                            <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
-                            <!-- Alt.: Antworten direkt bei messages als array speichern -->
+                            <!-- you can't get these infos by a subcollection -->
+                            <!-- alternat.: save answers in messages -->
                             <a (click)="openThread(message.id)">Antworten</a>
                             <!-- <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span> -->
                         </div>
@@ -86,8 +87,8 @@
                         <div class="user-second-row">{{message.threadText}}</div>
 
                         <div class="user-third-row">
-                            <!-- diese Infos können wahrscheinlich nicht über die Subcollection abgerufen werden -->
-                            <!-- Alt.: Antworten direkt bei messages als array speichern -->
+                            <!-- you can't get these infos by a subcollection -->
+                            <!-- alternat.: save answers in messages -->
                             <!-- <span>Letzte Antwort 00:00</span> -->
                             <a (click)="openThread(message.id)">Antworten</a>
                         </div>
@@ -102,7 +103,6 @@
     <!-- third section -->
     <div class="third-section-container">
         <div class="send-message-container">
-            <!-- Placeholder soll namen des Channels tragen -->
             <textarea placeholder="Nachricht an # {{channelName}}" name="thread"
                 [(ngModel)]="channelMessages.threadText"></textarea>
 

@@ -10,9 +10,6 @@ import { DirectMessages } from 'src/models/directmessages.class';
   styleUrls: ['./direct-messages.component.scss', './direct-messages2.component.scss']
 })
 export class DirectMessagesComponent implements OnInit {
-  // mouseOvered = false;
-  // mouseOveredTwo = false;
-  // mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
   @Input() userPic;
@@ -35,7 +32,7 @@ export class DirectMessagesComponent implements OnInit {
   memberDirectMessages = [];
   allDirectMessages = [];
   allDirectMessagesSorted = [];
-  // userId;
+
  
   ngOnInit() {
     this.currentMember = localStorage.getItem('currentMember');

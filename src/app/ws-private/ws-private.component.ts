@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ServiceService } from '../service.service';
@@ -42,6 +42,7 @@ export class WsPrivateComponent {
     })
   }
 
+  
   resizeSidenav($event) {
     this.fullSize = $event;
     console.log(this.fullSize)

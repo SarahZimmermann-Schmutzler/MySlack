@@ -49,8 +49,8 @@
         display: flex;
         justify-content: center;
 
-        &:first-child {
-            margin-bottom: 15px;
+        &:last-child {
+            margin-top: 15px;
         }
 
         &:hover {

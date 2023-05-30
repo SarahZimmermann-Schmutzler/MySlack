@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Auth, onAuthStateChanged, signOut } from '@angular/fire/auth';
-import { Firestore, collection, collectionData, deleteDoc, doc, docData, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { Auth, signOut } from '@angular/fire/auth';
+import { Firestore, collection, collectionData, doc, docData, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   active: boolean;
   currentUser = '';
   guestUser = 'kLLzHS4VI6TDTL2gZUPbRzgOoID3';
-  // startFunction: boolean;
   interval;
   allUsers = [];
   results = [];
@@ -42,10 +41,10 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router, 
     private auth: Auth, 
-    private route: ActivatedRoute, 
     public firestore: Firestore,
     private service: ServiceService
     ) { }
+
 
   ngOnInit(): void {
     this.interval = setInterval(() => {
@@ -123,7 +122,6 @@ export class HeaderComponent implements OnInit {
     collectionData(coll, {idField: 'id'}).subscribe(Users => {
       this.allUsers = Users;
       let searchInput = this.find.toLowerCase();
-
       for (let i = 0; i < this.allUsers.length; i++) {
         const searchName = this.allUsers[i]['name'].toLowerCase();
         if(searchName.match(searchInput) == searchInput) {

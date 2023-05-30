@@ -11,7 +11,6 @@ import { ServiceService } from '../service.service';
 })
 
 export class ChannelMessagesComponent implements OnInit {
-  // mouseOvered = false;
   mouseOveredTwo = false;
   mouseOveredThree = false;
   channelPopup = false;

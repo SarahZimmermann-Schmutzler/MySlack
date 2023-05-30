@@ -14,20 +14,17 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth, Auth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { WorkspaceComponent } from './workspace/workspace.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ChannelMessagesComponent } from './channel-messages/channel-messages.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
-import { NewMessageComponent } from './new-message/new-message.component';
 import { PrivateMessagesComponent } from './private-messages/private-messages.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ServiceService } from './service.service';
 import { ResponsiveNewUserComponent } from './responsive-new-user/responsive-new-user.component';
-import { WorkplaceModule } from './workplace/workplace.module';
 import { WsChannelComponent } from './ws-channel/ws-channel.component';
 import { WsPrivateComponent } from './ws-private/ws-private.component';
 import { WsDirectComponent } from './ws-direct/ws-direct.component';
@@ -41,13 +38,11 @@ import { WsDirectComponent } from './ws-direct/ws-direct.component';
     WelcomeAnimationComponent,
     PasswordComponent,
     NewPasswordComponent,
-    WorkspaceComponent,
     SidenavComponent,
     ChannelMessagesComponent,
     ThreadsComponent,
     FooterComponent,
     DirectMessagesComponent,
-    NewMessageComponent,
     PrivateMessagesComponent,
     ImpressumComponent,
     DatenschutzComponent,
@@ -63,8 +58,7 @@ import { WsDirectComponent } from './ws-direct/ws-direct.component';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    FormsModule,
-    WorkplaceModule
+    FormsModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

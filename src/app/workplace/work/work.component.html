@@ -1,6 +1,0 @@
-<div class="content-container">
-    <app-sidenav class="sidenav" [userPic]="userPic" [userName]="userName"></app-sidenav>
-    <app-channels class="messages" [userPic]="userPic" [userName]="userName"></app-channels>
-    <router-outlet name="work"></router-outlet>
-    <app-threads class="threads" [userPic]="userPic" [userName]="userName" (showThreadsSection)="setVariableFalse($event)" *ngIf="showThreadsSection"></app-threads>
-</div>

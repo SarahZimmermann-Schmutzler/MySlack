@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Component, Input, OnInit } from '@angular/core';
+import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { PrivateMessages } from 'src/models/privatemessages.class';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
@@ -11,9 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./private-messages.component.scss']
 })
 export class PrivateMessagesComponent implements OnInit {
-  // mouseOvered = false;
-  // mouseOveredTwo = false;
-  // mouseOveredThree = false;
   profilePopup = false;
   @Input() userName;
   @Input() userPic;
@@ -30,19 +27,9 @@ export class PrivateMessagesComponent implements OnInit {
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser');
     this.getNotes();
-    // this.getCurrentUserData();
   }
 
-  getCurrentUserData() {
-    const docRef = doc(this.coll, this.currentUser);
-    this.user$ = docData(docRef);
-    this.user$.subscribe(currentUser => {
-      this.username = currentUser.name;
-      this.userpic = currentUser.pic;
-    })
-  }
-
-  constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }
+  constructor(public firestore: Firestore) { }
 
   createNotes() {
     this.timestamp = this.currentTimestamp.getTime().toString();

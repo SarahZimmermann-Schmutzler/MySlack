@@ -102,21 +102,10 @@ export class SidenavComponent implements OnInit {
   }
 
 
-  openNewMessage() {
-    // coming soon
-  }
-
-
   openChannelMessages(channelId) {
-    // this.showThreadSection.emit(false);
     localStorage.setItem('Channel ID', channelId);
     this.router.navigateByUrl('/ws-channel').then(()=> {
       window.location.reload();
     });
   }
-
-
-  // hideThreadSection() {
-  //   this.showThreadSection.emit(false);
-  // }
 }
