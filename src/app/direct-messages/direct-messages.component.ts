@@ -7,7 +7,7 @@ import { DirectMessages } from 'src/models/directmessages.class';
 @Component({
   selector: 'app-direct-messages',
   templateUrl: './direct-messages.component.html',
-  styleUrls: ['./direct-messages.component.scss']
+  styleUrls: ['./direct-messages.component.scss', './direct-messages2.component.scss']
 })
 export class DirectMessagesComponent implements OnInit {
   // mouseOvered = false;

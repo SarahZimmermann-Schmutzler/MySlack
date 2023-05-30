@@ -7,7 +7,7 @@ import { ServiceService } from '../service.service';
 @Component({
   selector: 'app-channel-messages',
   templateUrl: './channel-messages.component.html',
-  styleUrls: ['./channel-messages.component.scss']
+  styleUrls: ['./channel-messages.component.scss', './channel-messages2.component.scss' ]
 })
 
 export class ChannelMessagesComponent implements OnInit {

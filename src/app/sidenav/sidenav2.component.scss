@@ -1,0 +1,158 @@
+.newChannel-pop-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(236, 238, 254, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.newChannel-profile-box {
+    width: 800px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 1px 6px -6px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 0px 2px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 0px 2px -2px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 140px;
+    margin-right: 20px;
+    margin-left: 20px;
+
+    @media(max-width: 1199px) {
+        margin-top: -135px;
+    }
+
+    @media(max-width: 763px) {
+        margin-top: -115px;
+    }
+
+    @media(max-width: 447px) {
+        margin-top: -92px;
+    }
+
+    input, textarea {
+        width: 95%;
+        border-radius: 30px;
+        border: 1px solid #ADB0D9;
+        margin-bottom: 30px;
+        padding: 10px 20px;
+        height: 20px;
+        resize: none;
+        font-family: 'Nunito';
+
+        @media(max-width: 1199px) {
+            width: 85%;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    textarea {
+        height: 40px !important;
+    }
+}
+
+.first-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    span {
+        font-weight: 700;
+        font-size: 24px;
+    }
+
+    div {
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: rgba(236, 238, 254, 1);
+        }
+    }
+
+    img {
+        width: 13px;
+        height: 13px;
+        object-fit: contain;
+        cursor: pointer;
+
+        &:hover {
+            filter: invert(32%) sepia(89%) saturate(954%) hue-rotate(208deg) brightness(104%) contrast(93%);
+        }
+    }
+}
+
+.second-row {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 30px;
+
+    @media(max-width: 1199px) {
+       font-size: 16px;
+    }
+}
+
+.third-row {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.fourth-row {
+    margin-bottom: 10px;
+
+    span {
+        &:first-child {
+            font-weight: 700;
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        &:last-child {
+            font-weight: 400;
+            font-size: 18px;
+        }
+    }
+}
+
+.btn-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+
+    button {
+        height: 45px;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-weight: 400;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: rgba(68, 77, 242, 1);
+        color: white;
+        border: none;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}

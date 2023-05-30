@@ -87,7 +87,7 @@
 
 // second section
 .messages-display-container {
-    height: 405px;
+    height: 480px;
     margin-top: 20px;
     margin-bottom: 30px;
     overflow-y: scroll;
@@ -309,10 +309,6 @@
 
 // third section
 .third-section-container {
-    // position: absolute;
-    // bottom: 0px;
-    // left: 0px;
-    // right: 0px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 35px;
@@ -320,10 +316,6 @@
 }
 
 .send-message-container {
-    // position: absolute;
-    // bottom: 35px;
-    // padding-left: 30px;
-    // padding-right: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
