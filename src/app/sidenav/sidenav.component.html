@@ -53,7 +53,15 @@
         </div>
 
         <div class="hide-message-container" *ngIf="hideMessage">
-            <div class="contact-info-container" (click)="openPrivateMessages()">
+            <div class="contact-info-container hide" (click)="openPrivateMessages()">
+                <img src={{userPic}}>
+                <div class="status-container">
+                    <div [class.c-green]="active"></div>
+                </div>
+                <span>{{userName}} (Du)</span>
+            </div>
+
+            <div class="contact-info-container-responsive" (click)="openPrivateMessagesResponsive()">
                 <img src={{userPic}}>
                 <div class="status-container">
                     <div [class.c-green]="active"></div>

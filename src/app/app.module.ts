@@ -29,6 +29,7 @@ import { WsChannelComponent } from './ws-channel/ws-channel.component';
 import { WsPrivateComponent } from './ws-private/ws-private.component';
 import { WsDirectComponent } from './ws-direct/ws-direct.component';
 import { WsChannelResponsiveComponent } from './ws-channel-responsive/ws-channel-responsive.component';
+import { WsPmResponsiveComponent } from './ws-pm-responsive/ws-pm-responsive.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { WsChannelResponsiveComponent } from './ws-channel-responsive/ws-channel
     WsChannelComponent,
     WsPrivateComponent,
     WsDirectComponent,
-    WsChannelResponsiveComponent
+    WsChannelResponsiveComponent,
+    WsPmResponsiveComponent
   ],
   imports: [
     BrowserModule,

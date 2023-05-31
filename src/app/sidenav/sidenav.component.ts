@@ -125,4 +125,10 @@ export class SidenavComponent implements OnInit {
       window.location.reload();
     });
   }
+
+  openPrivateMessagesResponsive() {
+    this.router.navigateByUrl('/private-responsive').then(() => {
+      window.location.reload();
+    });
+  }
 }

@@ -10,6 +10,7 @@ import { WsChannelComponent } from './ws-channel/ws-channel.component';
 import { WsDirectComponent } from './ws-direct/ws-direct.component';
 import { WsPrivateComponent } from './ws-private/ws-private.component';
 import { WsChannelResponsiveComponent } from './ws-channel-responsive/ws-channel-responsive.component';
+import { WsPmResponsiveComponent } from './ws-pm-responsive/ws-pm-responsive.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'ws-direct', component: WsDirectComponent},
   { path: 'ws-private', component: WsPrivateComponent},
   { path: 'channel-responsive', component: WsChannelResponsiveComponent},
+  { path: 'private-responsive', component: WsPmResponsiveComponent},
   { path: 'impressum', component: ImpressumComponent},
   { path: 'datenschutz', component: DatenschutzComponent}
 ];
