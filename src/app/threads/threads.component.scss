@@ -68,6 +68,10 @@
         height: 20px;
     }
 
+    @media(max-width: 1199px) {
+        display: none;
+    }
+
     &:hover {
         background-color: rgba(236, 238, 254, 1);
     }
@@ -93,7 +97,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
-    @media(max-width: 1199px) {
+    @media(max-width: 767px) {
         height: 450px;
     }
 
