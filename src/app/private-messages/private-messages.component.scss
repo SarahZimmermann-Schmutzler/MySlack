@@ -85,6 +85,10 @@
     margin-bottom: 30px;
     overflow-y: scroll;
 
+    @media(max-width: 767px) {
+        height: 360px;
+    }
+
     &::-webkit-scrollbar {
         background-color: white;
         width: 3px;

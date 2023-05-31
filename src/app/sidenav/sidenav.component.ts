@@ -131,4 +131,11 @@ export class SidenavComponent implements OnInit {
       window.location.reload();
     });
   }
+
+  openDirectMessagesResponsive(memberId) {
+    localStorage.setItem('currentMember', memberId);
+    this.router.navigateByUrl('/direct-responsive').then(() => {
+      window.location.reload();
+    });
+  }
 }

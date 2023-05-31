@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
   @Input() chMode = true;
   @Input() chrMode = true;
   @Input() pmrMode = true;
+  @Input() dmrMode = true;
+  @Input() threadMode = true;
   logoutPopup = false;
   profilePopup = false;
   searchPopup = false;
@@ -50,7 +52,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.interval = setInterval(() => {
-      if (this.chMode || this.pmMode || this.dmMode || this.chrMode || this.pmrMode) {
+      if (this.chMode || this.pmMode || this.dmMode || this.chrMode || this.pmrMode || this.dmrMode || this.threadMode) {
         this.currentUser = localStorage.getItem('currentUser');
         this.getUserData()
       }

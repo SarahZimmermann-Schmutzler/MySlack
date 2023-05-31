@@ -93,6 +93,10 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
+    @media(max-width: 1199px) {
+        height: 450px;
+    }
+
     &::-webkit-scrollbar {
         background-color: white;
         width: 3px;

@@ -30,6 +30,8 @@ import { WsPrivateComponent } from './ws-private/ws-private.component';
 import { WsDirectComponent } from './ws-direct/ws-direct.component';
 import { WsChannelResponsiveComponent } from './ws-channel-responsive/ws-channel-responsive.component';
 import { WsPmResponsiveComponent } from './ws-pm-responsive/ws-pm-responsive.component';
+import { WsDmResponsiveComponent } from './ws-dm-responsive/ws-dm-responsive.component';
+import { ThreadResponsiveComponent } from './thread-responsive/thread-responsive.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { WsPmResponsiveComponent } from './ws-pm-responsive/ws-pm-responsive.com
     WsPrivateComponent,
     WsDirectComponent,
     WsChannelResponsiveComponent,
-    WsPmResponsiveComponent
+    WsPmResponsiveComponent,
+    WsDmResponsiveComponent,
+    ThreadResponsiveComponent
   ],
   imports: [
     BrowserModule,

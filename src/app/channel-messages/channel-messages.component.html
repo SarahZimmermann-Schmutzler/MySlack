@@ -67,6 +67,13 @@
                             <a (click)="openThread(message.id)">Antworten</a>
                             <!-- <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span> -->
                         </div>
+
+                        <div class="third-row-responsive">
+                            <!-- you can't get these infos by a subcollection -->
+                            <!-- alternat.: save answers in messages -->
+                            <a (click)="openThreadResponsive(message.id)">Antworten</a>
+                            <!-- <span [class.black-font]="mouseOvered">Letzte Antwort 00:00</span> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,6 +98,13 @@
                             <!-- alternat.: save answers in messages -->
                             <!-- <span>Letzte Antwort 00:00</span> -->
                             <a (click)="openThread(message.id)">Antworten</a>
+                        </div>
+
+                        <div class="user-third-row-responsive">
+                            <!-- you can't get these infos by a subcollection -->
+                            <!-- alternat.: save answers in messages -->
+                            <!-- <span>Letzte Antwort 00:00</span> -->
+                            <a (click)="openThreadResponsive(message.id)">Antworten</a>
                         </div>
                     </div>
 

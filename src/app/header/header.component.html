@@ -1,11 +1,11 @@
-<div class="header-container" [class.p20]="pmMode || dmMode || chMode || chrMode || pmrMode" [class.space]="pmMode || dmMode || chMode || chrMode || pmrMode">
-    <div class="header-img-container" *ngIf="!chrMode && !pmrMode" [class.w20]="pmMode || dmMode || chMode" [class.w50]="pmMode || dmMode || chMode">
+<div class="header-container" [class.p20]="pmMode || dmMode || chMode || chrMode || pmrMode || dmrMode || threadMode" [class.space]="pmMode || dmMode || chMode || chrMode || pmrMode || dmrMode || threadMode">
+    <div class="header-img-container" *ngIf="!chrMode && !pmrMode && !dmrMode && !threadMode" [class.w20]="pmMode || dmMode || chMode" [class.w50]="pmMode || dmMode || chMode">
         <img src="assets/img/header/logo.png">
         <img src="assets/img/header/phrase.png">
         <!-- <img src="assets/img/header/show-menu.png" class="show-menu-pic" *ngIf="workplaceMode" [class.img-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true" (mouseout)="mouseOveredTwo=false"> -->
     </div>
 
-    <div class="header-img-container-responsive" (click)="backToSidenav()" *ngIf="chrMode || pmrMode">
+    <div class="header-img-container-responsive" (click)="backToSidenav()" *ngIf="chrMode || pmrMode || dmrMode || threadMode">
         <img src="assets/img/header/back.png">
         <img src="assets/img/workspace/logo.png">
         <span>Coding</span>
@@ -16,14 +16,14 @@
         <a href="#" routerLink="signUp">Konto erstellen</a>
     </div>
 
-    <div class="searchfield-container" *ngIf="pmMode || dmMode || chMode || chrMode || pmrMode">
+    <div class="searchfield-container" *ngIf="pmMode || dmMode || chMode || chrMode || pmrMode || dmrMode || threadMode">
         <input type="search" placeholder="search a member" [(ngModel)]="find" (keyup.enter)="openSearchPopup()">
         <div class="img-container">
             <img src="assets/img/header/search.png" (click)="openSearchPopup()">
         </div>
     </div>
 
-    <div class="info-container" *ngIf="pmMode || dmMode || chMode || chrMode || pmrMode" [class.font-lilac]="mouseOvered"
+    <div class="info-container" *ngIf="pmMode || dmMode || chMode || chrMode || pmrMode || dmrMode || threadMode" [class.font-lilac]="mouseOvered"
         (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false" (click)="openPopup()">
         <span>{{userName}}</span>
         <img class="avatar" src={{userPic}}>
@@ -35,7 +35,7 @@
     <div class="logout-profile-box">
         <img src="assets/img/header/close.png" (click)="closePopup()">
         <div (click)="openProfilePopup()"><span>Profil</span></div>
-        <div (click)="logout()" *ngIf="pmMode || dmMode || chMode || chrMode || pmrMode"><span>Logout</span></div>
+        <div (click)="logout()" *ngIf="pmMode || dmMode || chMode || chrMode || pmrMode || dmrMode || threadMode"><span>Logout</span></div>
     </div>
 </div>
 

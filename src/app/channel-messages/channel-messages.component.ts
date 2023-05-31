@@ -3,6 +3,7 @@ import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc 
 import { Observable } from 'rxjs';
 import { ChannelMessages } from 'src/models/channelmessage.class';
 import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-channel-messages',
@@ -51,7 +52,7 @@ export class ChannelMessagesComponent implements OnInit {
     }, 1000)
   }
 
-  constructor(public firestore: Firestore, private service: ServiceService) { }
+  constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }
 
   saveChangesName() {
     let docRef = doc(this.collCh, this.currentChannel);
@@ -117,6 +118,14 @@ export class ChannelMessagesComponent implements OnInit {
     this.showThreadsSection.emit(true);
     localStorage.setItem('threadId', threadId);
     window.location.reload();
+  }
+
+  openThreadResponsive(threadId) {
+    // this.showThreadsSection.emit(true);
+    localStorage.setItem('threadId', threadId);
+    this.router.navigateByUrl('/threads-responsive').then(() => {
+      window.location.reload();
+    });
   }
 
 
