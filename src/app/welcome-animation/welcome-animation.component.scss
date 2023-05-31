@@ -8,7 +8,7 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(rgba(121, 126, 243, 1), rgba(49, 58, 229, 1));
-    animation: opening 6000ms forwards;
+    animation: opening 3000ms forwards;
 }
 
 @keyframes opening {
@@ -50,7 +50,7 @@
 }
 
 .img-container {
-    animation: imgLeft 2000ms forwards;
+    animation: imgLeft 1000ms forwards;
     margin-right: -160px;
 
     img {
@@ -68,7 +68,7 @@
 }
 
 .span-container {
-    animation: spanRight 4000ms forwards;
+    animation: spanRight 2000ms forwards;
     width: 50%;
     margin-left: -270px;
 

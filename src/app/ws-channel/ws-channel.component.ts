@@ -11,7 +11,7 @@ import { ServiceService } from '../service.service';
 export class WsChannelComponent {
   showThreadsSection: boolean = true;
   channelFull = false;
-  hideSidenav = false;
+  // hideSidenav = false;
   showChannelMessages = true;
   showPrivateMessages = false;
   showDirectMessages = false;
@@ -22,7 +22,9 @@ export class WsChannelComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
-  fullSize = false;
+  // fullSize = true;
+  showMessage = false;
+  hideSidenav = false;
  
 
   constructor(public firestore: Firestore) { }
@@ -62,9 +64,15 @@ export class WsChannelComponent {
     this.channelFull = $event;
   }
 
-
-  resizeSidenav($event) {
-    this.fullSize = $event;
-    console.log(this.fullSize)
+  showMessages($event) {
+    this.showMessage = $event;
   }
+
+  hideSidenavMenu($event) {
+    this.hideSidenav = $event;
+  }
+
+  // resizeSidenav($event) {
+  //   this.fullSize = $event;
+  // }
 }

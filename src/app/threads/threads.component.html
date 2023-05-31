@@ -82,7 +82,7 @@
     <!-- third section -->
     <div class="third-section-container">
         <div class="send-message-container">
-            <textarea placeholder="Antworten..." name="answerText" [(ngModel)]="threadAnswers.answerText"></textarea>
+            <textarea placeholder="Antworten..." name="answerText" [(ngModel)]="threadAnswers.answerText" (keyup.enter)="setAnswers()"></textarea>
 
             <div class="like-send-container">
                 <div></div>

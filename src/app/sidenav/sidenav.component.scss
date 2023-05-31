@@ -20,7 +20,7 @@
         justify-content: flex-start;
         margin-bottom: 20px;
     }
-    
+
 
     span {
         font-weight: 700;
@@ -82,7 +82,8 @@
     cursor: pointer;
 
     @media(max-width: 1199px) {
-        justify-content: flex-start;;
+        justify-content: flex-start;
+        ;
     }
 }
 
@@ -217,7 +218,7 @@
     }
 
     div {
-        margin-bottom: 20px; 
+        margin-bottom: 20px;
     }
 
     img {
@@ -245,6 +246,10 @@
     border-radius: 20px;
     cursor: pointer;
 
+    @media(max-width: 1199px) {
+        display: none;
+    }
+
     &:hover {
         background-color: rgba(236, 238, 254, 1);
         color: rgba(83, 90, 241, 1);
@@ -253,6 +258,28 @@
     span {
         &:hover {
             font-weight: 700 !important;
+        }
+    }
+}
+
+.responsive-channel {
+    @media(max-width: 1199px) {
+        display: flex;
+        align-items: center;
+        padding: 5px 15px;
+        margin-left: -15px;
+        border-radius: 20px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(236, 238, 254, 1);
+            color: rgba(83, 90, 241, 1);
+        }
+
+        span {
+            &:hover {
+                font-weight: 700 !important;
+            }
         }
     }
 }

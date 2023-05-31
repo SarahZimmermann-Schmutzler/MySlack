@@ -11,7 +11,7 @@
     </div>
 
     <div class="searchfield-container" *ngIf="pmMode || dmMode || chMode">
-        <input type="search" placeholder="search a member" [(ngModel)]="find">
+        <input type="search" placeholder="search a member" [(ngModel)]="find" (keyup.enter)="openSearchPopup()">
         <div class="img-container">
             <img src="assets/img/header/search.png" (click)="openSearchPopup()">
         </div>

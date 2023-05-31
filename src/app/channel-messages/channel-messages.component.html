@@ -104,7 +104,7 @@
     <div class="third-section-container">
         <div class="send-message-container">
             <textarea placeholder="Nachricht an # {{channelName}}" name="thread"
-                [(ngModel)]="channelMessages.threadText"></textarea>
+                [(ngModel)]="channelMessages.threadText" (keyup.enter)="setMessages()"></textarea>
 
             <div class="like-send-container">
                 <div></div>

@@ -10,16 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss', './sidenav2.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  rotateChannel = false;
-  rotateMessage = false;
-  hideChannel = false;
-  hideMessage = false;
+  rotateChannel = true;
+  rotateMessage = true;
+  hideChannel = true;
+  hideMessage = true;
   hoverStay = false;
   channelPopup = false;
   @Input() userName: string;
   @Input() userPic;
   @Output() showThreadSection = new EventEmitter();
   @Output() fullSize = new EventEmitter();
+  @Output() showMessage = new EventEmitter();
+  @Output() hideSidenav = new EventEmitter();
   collCh = collection(this.firestore, 'channels');
   collUs = collection(this.firestore, 'users');
   allChannels: Array<any> | undefined;
@@ -33,6 +35,7 @@ export class SidenavComponent implements OnInit {
   active = false;
   howManyUsers;
   channelDescription;
+  hoveredIndex: number | null = null;
 
   constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }
 
@@ -45,6 +48,7 @@ export class SidenavComponent implements OnInit {
 
     collectionData(this.collUs, { idField: 'id' }).subscribe(Users => {
       this.allUsers = Users;
+      this.members = this.allUsers.filter(s => s.name !== this.userName);
       this.howManyUsers = this.allUsers.length;
       this.service.sendNumberOfUsers(this.howManyUsers);
     })
@@ -69,15 +73,15 @@ export class SidenavComponent implements OnInit {
   openAndCloseChannels() {
     this.rotateChannel = !this.rotateChannel;
     this.hideChannel = !this.hideChannel;
-    this.fullSize.emit(true);
+    // this.fullSize.emit(false);
   }
 
 
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
     this.hideMessage = !this.hideMessage;
-    this.members = this.allUsers.filter(s => s.name !== this.userName);
-    this.fullSize.emit(true);
+    // this.members = this.allUsers.filter(s => s.name !== this.userName);
+    // this.fullSize.emit(false);
   }
 
 
@@ -92,7 +96,9 @@ export class SidenavComponent implements OnInit {
 
 
   openPrivateMessages() {
-    this.router.navigateByUrl('/ws-private')
+    this.router.navigateByUrl('/ws-private').then(() => {
+      window.location.reload();
+    });
   }
 
 
@@ -106,6 +112,15 @@ export class SidenavComponent implements OnInit {
 
   openChannelMessages(channelId) {
     localStorage.setItem('Channel ID', channelId);
+    this.router.navigateByUrl('/ws-channel').then(() => {
+      window.location.reload();
+    });
+  }
+
+  openChannelMessagesResponsive(channelId) {
+    localStorage.setItem('Channel ID', channelId);
+    this.showMessage.emit(true);
+    this.hideSidenav.emit(true);
     this.router.navigateByUrl('/ws-channel').then(() => {
       window.location.reload();
     });

@@ -21,7 +21,7 @@ export class WsDirectComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
-  fullSize = false;
+  fullSize = true;
  
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -44,7 +44,6 @@ export class WsDirectComponent {
 
   resizeSidenav($event) {
     this.fullSize = $event;
-    console.log(this.fullSize)
   }
 
 }

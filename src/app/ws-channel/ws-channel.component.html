@@ -1,7 +1,7 @@
 <div class="content-container">
-    <app-sidenav class="sidenav" [class.responsive-sidenav]="fullSize" (fullSize)="resizeSidenav($event)" [userPic]="userPic" [userName]="userName"></app-sidenav>
+    <app-sidenav class="sidenav" [class.d-none]="hideSidenav" [userPic]="userPic" [userName]="userName" (showMessage)="showMessages($event)" (hideSidenav)="hideSidenavMenu($event)"></app-sidenav>
 
-    <app-channel-messages class="messages" [class.full]="channelFull" [userPic]="userPic" [userName]="userName"
+    <app-channel-messages class="messages" [class.display]="showMessage"  [class.full]="channelFull" [userPic]="userPic" [userName]="userName"
         (showThreadsSection)="setVariableTrue($event)" *ngIf="showChannelMessages"></app-channel-messages>
     
     <app-threads class="threads" [userPic]="userPic" [userName]="userName"

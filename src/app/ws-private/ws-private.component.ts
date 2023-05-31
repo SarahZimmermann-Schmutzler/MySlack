@@ -21,14 +21,14 @@ export class WsPrivateComponent {
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
-  fullSize = false;
+  fullSize = true;
  
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
-    console.log(this.currentUser);
+    // console.log(this.currentUser);
     this.getCurrentUserData();
   }
 
@@ -45,6 +45,5 @@ export class WsPrivateComponent {
   
   resizeSidenav($event) {
     this.fullSize = $event;
-    console.log(this.fullSize)
   }
 }

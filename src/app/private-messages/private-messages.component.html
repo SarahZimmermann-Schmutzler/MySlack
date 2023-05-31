@@ -44,7 +44,7 @@
     <!-- third section -->
     <div class="third-section-container">
         <div class="send-message-container">
-            <textarea placeholder="Notiz" name="notes" [(ngModel)]="privateMessages.messageText"></textarea>
+            <textarea placeholder="Notiz" name="notes" [(ngModel)]="privateMessages.messageText" (keyup.enter)="createNotes()"></textarea>
 
             <div class="like-send-container">
                 <div></div>
