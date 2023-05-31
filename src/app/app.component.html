@@ -1,8 +1,8 @@
-<app-header [logoMode]="router.url == '/'" [pmMode]="router.url == '/ws-private'" [dmMode]="router.url == '/ws-direct'" [chMode]="router.url == '/ws-channel'"></app-header>
+<app-header [logoMode]="router.url == '/'" [chrMode]="router.url == '/channel-responsive'" [pmMode]="router.url == '/ws-private'" [dmMode]="router.url == '/ws-direct'" [chMode]="router.url == '/ws-channel'"></app-header>
 <!-- logoMode ist true, wenn die routerUrl die Startseite ist -->
 
 <router-outlet></router-outlet>
 
 <app-responsive-new-user [logoMode]="router.url == '/'"></app-responsive-new-user>
 
-<app-footer [footer]="router.url !== '/ws-channel'" [footer]="router.url !== '/ws-private'" [footer]="router.url !== '/ws-direct'" [login]="router.url == '/impressum'" [legal]="router.url !== '/impressum'" [login]="router.url == '/datenschutz'" [legal]="router.url !== '/datenschutz'"></app-footer>
+<app-footer [footer]="router.url !== '/channel-responsive'" [footer]="router.url !== '/ws-channel'" [footer]="router.url !== '/ws-private'" [footer]="router.url !== '/ws-direct'" [login]="router.url == '/impressum'" [legal]="router.url !== '/impressum'" [login]="router.url == '/datenschutz'" [legal]="router.url !== '/datenschutz'"></app-footer>

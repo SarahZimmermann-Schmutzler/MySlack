@@ -20,8 +20,8 @@ export class SidenavComponent implements OnInit {
   @Input() userPic;
   @Output() showThreadSection = new EventEmitter();
   @Output() fullSize = new EventEmitter();
-  @Output() showMessage = new EventEmitter();
-  @Output() hideSidenav = new EventEmitter();
+  // @Output() showMessage = new EventEmitter();
+  // @Output() hideSidenav = new EventEmitter();
   collCh = collection(this.firestore, 'channels');
   collUs = collection(this.firestore, 'users');
   allChannels: Array<any> | undefined;
@@ -119,9 +119,9 @@ export class SidenavComponent implements OnInit {
 
   openChannelMessagesResponsive(channelId) {
     localStorage.setItem('Channel ID', channelId);
-    this.showMessage.emit(true);
-    this.hideSidenav.emit(true);
-    this.router.navigateByUrl('/ws-channel').then(() => {
+    // this.showMessage.emit(true);
+    // this.hideSidenav.emit(true);
+    this.router.navigateByUrl('/channel-responsive').then(() => {
       window.location.reload();
     });
   }

@@ -9,6 +9,9 @@
 
     @media(max-width: 767px) {
         justify-content: center;
+        background-color: #ECEEFE;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 
@@ -46,6 +49,32 @@
                 width: 120px;
             }
         }
+    }
+}
+
+.header-img-container-responsive {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+
+    img {
+        &:first-child {
+            margin-right: 10px;
+            height: 12px;
+            object-fit: contain;
+        }
+
+        &:last-of-type {
+            height: 50px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+    }
+
+    span {
+        font-size: 18px;
+        font-weight: 700;
     }
 }
 

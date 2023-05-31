@@ -4,19 +4,20 @@ import { Observable } from 'rxjs';
 import { ServiceService } from '../service.service';
 
 @Component({
-  selector: 'app-ws-channel',
-  templateUrl: './ws-channel.component.html',
-  styleUrls: ['./ws-channel.component.scss']
+  selector: 'app-ws-channel-responsive',
+  templateUrl: './ws-channel-responsive.component.html',
+  styleUrls: ['./ws-channel-responsive.component.scss']
 })
-export class WsChannelComponent {
+
+export class WsChannelResponsiveComponent {
   showThreadsSection: boolean = true;
   channelFull = false;
   // hideSidenav = false;
-  showChannelMessages = true;
-  showPrivateMessages = false;
-  showDirectMessages = false;
-  showNewMessage = false;
-  showSidenav = true;
+  // showChannelMessages = true;
+  // showPrivateMessages = false;
+  // showDirectMessages = false;
+  // showNewMessage = false;
+  // showSidenav = true;
   currentUser = '';
   userName = '';
   userPic = '';
@@ -45,34 +46,23 @@ export class WsChannelComponent {
   }
 
 
-  setVariableFalse($event: any) {
-    this.showThreadsSection = $event;
-  }
-
-
-  setVariableTrue($event) {
-    this.showThreadsSection = $event;
-  }
-
-
-  hideThreadSection($event) {
-    this.showThreadsSection = $event;
-  }
-
-
-  makeChannelFull($event) {
-    this.channelFull = $event;
-  }
-
-  // showMessages($event) {
-  //   this.showMessage = $event;
+  // setVariableFalse($event: any) {
+  //   this.showThreadsSection = $event;
   // }
 
-  // hideSidenavMenu($event) {
-  //   this.hideSidenav = $event;
+
+  // setVariableTrue($event) {
+  //   this.showThreadsSection = $event;
   // }
 
-  // resizeSidenav($event) {
-  //   this.fullSize = $event;
+
+  // hideThreadSection($event) {
+  //   this.showThreadsSection = $event;
+  // }
+
+
+  // makeChannelFull($event) {
+  //   this.channelFull = $event;
   // }
 }
+

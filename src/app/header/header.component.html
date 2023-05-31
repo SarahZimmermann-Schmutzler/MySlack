@@ -1,8 +1,14 @@
-<div class="header-container" [class.p20]="pmMode || dmMode || chMode" [class.space]="pmMode || dmMode || chMode">
-    <div class="header-img-container" [class.w20]="pmMode || dmMode || chMode" [class.w50]="pmMode || dmMode || chMode">
+<div class="header-container" [class.p20]="pmMode || dmMode || chMode || chrMode" [class.space]="pmMode || dmMode || chMode || chrMode">
+    <div class="header-img-container" *ngIf="!chrMode" [class.w20]="pmMode || dmMode || chMode || chrMode" [class.w50]="pmMode || dmMode || chMode || chrMode">
         <img src="assets/img/header/logo.png">
         <img src="assets/img/header/phrase.png">
         <!-- <img src="assets/img/header/show-menu.png" class="show-menu-pic" *ngIf="workplaceMode" [class.img-lilac]="mouseOveredTwo" (mouseover)="mouseOveredTwo=true" (mouseout)="mouseOveredTwo=false"> -->
+    </div>
+
+    <div class="header-img-container-responsive" (click)="backToSidenav()" *ngIf="chrMode">
+        <img src="assets/img/header/back.png">
+        <img src="assets/img/workspace/logo.png">
+        <span>Coding</span>
     </div>
 
     <div class="header-link-container" *ngIf="logoMode">
@@ -10,14 +16,14 @@
         <a href="#" routerLink="signUp">Konto erstellen</a>
     </div>
 
-    <div class="searchfield-container" *ngIf="pmMode || dmMode || chMode">
+    <div class="searchfield-container" *ngIf="pmMode || dmMode || chMode || chrMode">
         <input type="search" placeholder="search a member" [(ngModel)]="find" (keyup.enter)="openSearchPopup()">
         <div class="img-container">
             <img src="assets/img/header/search.png" (click)="openSearchPopup()">
         </div>
     </div>
 
-    <div class="info-container" *ngIf="pmMode || dmMode || chMode" [class.font-lilac]="mouseOvered"
+    <div class="info-container" *ngIf="pmMode || dmMode || chMode || chrMode" [class.font-lilac]="mouseOvered"
         (mouseover)="mouseOvered=true" (mouseout)="mouseOvered=false" (click)="openPopup()">
         <span>{{userName}}</span>
         <img class="avatar" src={{userPic}}>
@@ -29,7 +35,7 @@
     <div class="logout-profile-box">
         <img src="assets/img/header/close.png" (click)="closePopup()">
         <div (click)="openProfilePopup()"><span>Profil</span></div>
-        <div (click)="logout()" *ngIf="pmMode || dmMode || chMode"><span>Logout</span></div>
+        <div (click)="logout()" *ngIf="pmMode || dmMode || chMode || chrMode"><span>Logout</span></div>
     </div>
 </div>
 

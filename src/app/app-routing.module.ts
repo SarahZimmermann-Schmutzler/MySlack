@@ -9,6 +9,7 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { WsChannelComponent } from './ws-channel/ws-channel.component';
 import { WsDirectComponent } from './ws-direct/ws-direct.component';
 import { WsPrivateComponent } from './ws-private/ws-private.component';
+import { WsChannelResponsiveComponent } from './ws-channel-responsive/ws-channel-responsive.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'ws-channel', component: WsChannelComponent},
   { path: 'ws-direct', component: WsDirectComponent},
   { path: 'ws-private', component: WsPrivateComponent},
+  { path: 'channel-responsive', component: WsChannelResponsiveComponent},
   { path: 'impressum', component: ImpressumComponent},
   { path: 'datenschutz', component: DatenschutzComponent}
 ];

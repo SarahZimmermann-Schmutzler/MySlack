@@ -327,6 +327,10 @@ body {
     margin: 0;
     background-color: #ECEEFE;
     font-family: 'Nunito';
+
+    @media(max-width: 767px) {
+        background-color: white;
+    }
 }
 
 .d-none {
