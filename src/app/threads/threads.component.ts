@@ -34,6 +34,7 @@ export class ThreadsComponent implements OnInit {
   threadPic;
   thereIsAThread = false;
   hoveredIndex: number | null = null;
+  newTime;
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID');
@@ -45,6 +46,9 @@ export class ThreadsComponent implements OnInit {
     })
     this.getAnswerData();
     this.getThreadData();
+    setInterval(() => {
+      this.newTime = new Date();
+    }, 1000)
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -67,7 +71,8 @@ export class ThreadsComponent implements OnInit {
 
   setAnswers() {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
-    this.timestamp = this.currentTimestamp.getTime().toString();
+    // this.timestamp = this.currentTimestamp.getTime().toString();
+    this.timestamp = this.newTime.getTime().toString();
     this.threadAnswers.answerWriter = this.userName;
     this.threadAnswers.answerPic = this.userPic;
     this.threadAnswers.answerDate = this.currentTimestamp.toLocaleDateString('de-DE');

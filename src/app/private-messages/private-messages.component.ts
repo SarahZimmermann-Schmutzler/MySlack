@@ -23,21 +23,26 @@ export class PrivateMessagesComponent implements OnInit {
   allNotes = [];
   username;
   userpic;
+  newTime;
 
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser');
     this.getNotes();
+    setInterval(() => {
+      this.newTime = new Date();
+    }, 1000)
   }
 
   constructor(public firestore: Firestore) { }
 
   createNotes() {
-    this.timestamp = this.currentTimestamp.getTime().toString();
+    // this.timestamp = this.currentTimestamp.getTime().toString();
+    this.timestamp = this.newTime.getTime().toString();
     this.privateMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.privateMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     setDoc(doc(this.coll, this.currentUser, "notes", this.timestamp), this.privateMessages.toJSON(), { merge: true }).then(() => {
       this.privateMessages.messageText = '';
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -46,7 +51,6 @@ export class PrivateMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'users', this.currentUser, 'notes');
     collectionData(coll, { idField: 'id' }).subscribe(notes => {
       this.allNotes = notes;
-      console.log('notes are', this.allNotes)
       this.allNotes = this.allNotes.sort((a, b) => (a.id - b.id));
     });
   }

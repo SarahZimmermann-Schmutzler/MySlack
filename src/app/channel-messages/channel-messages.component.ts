@@ -34,6 +34,7 @@ export class ChannelMessagesComponent implements OnInit {
   newName;
   newDescription;
   hoveredIndex: number | null = null;
+  newTime;
 
 
   ngOnInit(): void {
@@ -44,6 +45,10 @@ export class ChannelMessagesComponent implements OnInit {
     });
     this.getChannelData();
     this.getMessagesData();
+
+    setInterval(() => {
+      this.newTime = new Date();
+    }, 1000)
   }
 
   constructor(public firestore: Firestore, private service: ServiceService) { }
@@ -93,15 +98,18 @@ export class ChannelMessagesComponent implements OnInit {
 
 
   setMessages() {
-    this.timestamp = this.currentTimestamp.getTime().toString();
+    // this.timestamp = this.currentTimestamp.getTime().toString();
+    this.timestamp = this.newTime.getTime().toString();
     this.channelMessages.threadWriter = this.userName;
     this.channelMessages.threadPic = this.userPic;
     this.channelMessages.threadDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.channelMessages.threadTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     this.channelMessages.thisIsUser = '';
-    setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp), this.channelMessages.toJSON(), { merge: true });
-    localStorage.setItem('messageId', this.timestamp);
-    this.channelMessages.threadText = '';
+    setDoc(doc(this.collCh, this.currentChannel, "messages", this.timestamp), this.channelMessages.toJSON(), { merge: true }).then(() => {
+      localStorage.setItem('messageId', this.timestamp);
+      this.channelMessages.threadText = '';
+    });
+    
   }
 
 

@@ -32,6 +32,7 @@ export class DirectMessagesComponent implements OnInit {
   memberDirectMessages = [];
   allDirectMessages = [];
   allDirectMessagesSorted = [];
+  newTime;
 
  
   ngOnInit() {
@@ -39,12 +40,16 @@ export class DirectMessagesComponent implements OnInit {
     this.currentUser = localStorage.getItem('currentUser');
     this.getMessageData();
     this.getMemberData();
+    setInterval(() => {
+      this.newTime = new Date();
+    }, 1000)
   }
 
   constructor(private service: ServiceService, private firestore: Firestore) { }
 
   createDirectMessages() {
-    this.timestamp = this.currentTimestamp.getTime().toString();
+    // this.timestamp = this.currentTimestamp.getTime().toString();
+    this.timestamp = this.newTime.getTime().toString();
     this.directMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.directMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     this.directMessages.messageWriter = this.userName;
@@ -54,7 +59,7 @@ export class DirectMessagesComponent implements OnInit {
     this.directMessages.thisIsUser = '';
     setDoc(doc(this.coll, this.currentMember, "directMessages", this.timestamp), this.directMessages.toJSON(), { merge: true }).then(() => {
       this.directMessages.messageText = '';
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
