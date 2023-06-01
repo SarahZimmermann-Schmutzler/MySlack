@@ -304,6 +304,11 @@
 .hover-stay {
     background-color: rgba(236, 238, 254, 1);
     color: rgba(83, 90, 241, 1);
+
+    span {
+        font-weight: 700 !important;
+    }
+    
 }
 
 .hover-stay-span {

@@ -13,6 +13,11 @@
     align-items: center;
     justify-content: center;
     z-index: 5;
+
+    @media(max-width: 1199px) {
+        right: -20px;
+        bottom: -35px;
+    }
 }
 
 .profile-box {
@@ -34,6 +39,10 @@
 
     @media(max-width: 1199px) {
         margin-top: -110px;
+    }
+
+    @media(max-width: 1199px) {
+        margin-left: 20px;
     }
 }
 

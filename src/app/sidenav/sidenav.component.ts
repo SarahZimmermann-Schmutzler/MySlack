@@ -35,7 +35,9 @@ export class SidenavComponent implements OnInit {
   active = false;
   howManyUsers;
   channelDescription;
-  hoveredIndex: number | null = null;
+  hoveredChannel;
+  hoveredMember;
+  hoveredPm;
 
   constructor(public firestore: Firestore, private service: ServiceService, private router: Router) { }
 
@@ -56,6 +58,18 @@ export class SidenavComponent implements OnInit {
     this.service.userStatus.subscribe(data => {
       this.userStatus = data;
       this.active = true;
+    });
+
+    this.service.hoveredChannel.subscribe(data => {
+      this.hoveredChannel = data;
+    })
+
+    this.service.hoveredMember.subscribe(data => {
+      this.hoveredMember = data;
+    })
+
+    this.service.hoveredPm.subscribe(data => {
+      this.hoveredPm = data;
     })
   }
 
@@ -111,6 +125,7 @@ export class SidenavComponent implements OnInit {
 
 
   openChannelMessages(channelId) {
+    // this.channelId = channelId;
     localStorage.setItem('Channel ID', channelId);
     this.router.navigateByUrl('/ws-channel').then(() => {
       window.location.reload();

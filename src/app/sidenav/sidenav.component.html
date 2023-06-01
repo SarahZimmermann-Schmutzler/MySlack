@@ -28,7 +28,7 @@
                 <img src="assets/img/workspace/tag.png">
                 <span [class.hover-stay-span]="hoverStay">{{channel.name || 'Channel'}}</span>
             </div> -->
-            <div class="channel" (click)="openChannelMessages(channel.id)" *ngFor="let channel of allChannels, let i = index">
+            <div class="channel" [class.hover-stay]="channel.id == this.hoveredChannel" (click)="openChannelMessages(channel.id)" *ngFor="let channel of allChannels, let i = index">
                 <img src="assets/img/workspace/tag.png">
                 <span>{{channel.name || 'Channel'}}</span>
             </div>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="hide-message-container" *ngIf="hideMessage">
-            <div class="contact-info-container" (click)="openPrivateMessages()">
+            <div class="contact-info-container" [class.hover-stay]="hoveredPm" (click)="openPrivateMessages()">
                 <img src={{userPic}}>
                 <div class="status-container">
                     <div [class.c-green]="active"></div>
@@ -69,7 +69,7 @@
                 <span>{{userName}} (Du)</span>
             </div>
 
-            <div class="contact-info-container" (click)="openDirectMessages(member.id)" *ngFor="let member of members">
+            <div class="contact-info-container" [class.hover-stay]="member.id == this.hoveredMember" (click)="openDirectMessages(member.id)" *ngFor="let member of members">
                 <img src={{member.pic}}>
                 <div class="status-container">
                     <div></div>

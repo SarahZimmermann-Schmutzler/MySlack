@@ -24,16 +24,18 @@ export class PrivateMessagesComponent implements OnInit {
   username;
   userpic;
   newTime;
+  hoveredPm;
 
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser');
+    this.service.sendHoveredPm(this.hoveredPm = true);
     this.getNotes();
     setInterval(() => {
       this.newTime = new Date();
     }, 1000)
   }
 
-  constructor(public firestore: Firestore) { }
+  constructor(public firestore: Firestore, private service: ServiceService) { }
 
   createNotes() {
     // this.timestamp = this.currentTimestamp.getTime().toString();

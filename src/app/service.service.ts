@@ -12,6 +12,9 @@ export class ServiceService {
   guestUser = new Subject();
   userName = new Subject();
   userPic = new Subject();
+  hoveredChannel = new Subject();
+  hoveredMember = new Subject();
+  hoveredPm = new Subject();
 
   constructor() { }
 
@@ -29,5 +32,17 @@ export class ServiceService {
 
   sendGuestUser(data) {
     this.guestUser.next(data);
+  }
+
+  sendChannelId(data) {
+    this.hoveredChannel.next(data);
+  }
+
+  sendMemberId(data) {
+    this.hoveredMember.next(data);
+  }
+
+  sendHoveredPm(data) {
+    this.hoveredPm.next(data);
   }
 }

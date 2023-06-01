@@ -37,6 +37,7 @@ export class DirectMessagesComponent implements OnInit {
  
   ngOnInit() {
     this.currentMember = localStorage.getItem('currentMember');
+    this.service.sendMemberId(this.currentMember);
     this.currentUser = localStorage.getItem('currentUser');
     this.getMessageData();
     this.getMemberData();
