@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-ws-pm-responsive',
@@ -11,20 +10,11 @@ import { ServiceService } from '../service.service';
 export class WsPmResponsiveComponent {
   showThreadsSection: boolean = true;
   channelFull = false;
-  // hideSidenav = false;
-  // showChannelMessages = true;
-  // showPrivateMessages = false;
-  // showDirectMessages = false;
-  // showNewMessage = false;
-  // showSidenav = true;
   currentUser = '';
   userName = '';
   userPic = '';
   user$: Observable<any>;
   coll = collection(this.firestore, 'users');
-  // fullSize = true;
-  // showMessage = false;
-  // hideSidenav = false;
  
 
   constructor(public firestore: Firestore) { }
@@ -43,24 +33,4 @@ export class WsPmResponsiveComponent {
       this.userPic = currentUser.pic;
     })
   }
-
-
-  // setVariableFalse($event: any) {
-  //   this.showThreadsSection = $event;
-  // }
-
-
-  // setVariableTrue($event) {
-  //   this.showThreadsSection = $event;
-  // }
-
-
-  // hideThreadSection($event) {
-  //   this.showThreadsSection = $event;
-  // }
-
-
-  // makeChannelFull($event) {
-  //   this.channelFull = $event;
-  // }
 }

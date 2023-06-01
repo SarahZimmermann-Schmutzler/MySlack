@@ -28,7 +28,6 @@ export class WsPrivateComponent {
 
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
-    // console.log(this.currentUser);
     this.getCurrentUserData();
   }
 

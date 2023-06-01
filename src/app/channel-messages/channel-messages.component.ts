@@ -36,11 +36,13 @@ export class ChannelMessagesComponent implements OnInit {
   newDescription;
   hoveredIndex: number | null = null;
   newTime;
+  // today;
 
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('currentUser');
     this.currentChannel = localStorage.getItem('Channel ID');
+    // this.today = this.currentTimestamp.toLocaleDateString('de-DE');
     this.service.sendChannelId(this.currentChannel);
     this.service.howManyUsers.subscribe(data => {
       this.howManyUsers = data;
