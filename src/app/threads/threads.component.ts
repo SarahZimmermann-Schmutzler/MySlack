@@ -38,8 +38,8 @@ export class ThreadsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentChannel = localStorage.getItem('Channel ID') || '6qwzLrVMLaibiNgDtTCT';
-    this.currentMessage = localStorage.getItem('messageId');
-    this.currentThread = localStorage.getItem('threadId');
+    this.currentThread = localStorage.getItem('threadId') || '1684912530211';
+    // this.currentMessage = localStorage.getItem('messageId');
     this.currentUser = localStorage.getItem('currentUser');
     this.service.currentChannelName.subscribe(data => {
       this.currentChannelName = data;
@@ -85,6 +85,7 @@ export class ThreadsComponent implements OnInit {
 
 
   getAnswerData() {
+    
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages', this.currentThread, 'answers');
     collectionData(coll, { idField: 'id' }).subscribe(answers => {
       this.answers = answers;
