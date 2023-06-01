@@ -43,7 +43,7 @@
     <div class="messages-display-container">
         <div *ngFor="let message of messages; let i = index">
             <div class="message-box" *ngIf="!message.thisIsUser">
-                <div class="line-date-container">
+                <div class="line-date-container" *ngIf="today">
                     <div class="line"></div>
                     <div class="date-bubble">{{message.threadDate}}</div>
                 </div>
@@ -79,7 +79,7 @@
             </div>
 
             <div class="message-box" *ngIf="message.thisIsUser">
-                <div class="line-date-container">
+                <div class="line-date-container" *ngIf="today">
                     <div class="line"></div>
                     <div class="date-bubble">{{message.threadDate}}</div>
                 </div>

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { PrivateMessages } from 'src/models/privatemessages.class';
 import { ServiceService } from '../service.service';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -25,6 +24,7 @@ export class PrivateMessagesComponent implements OnInit {
   userpic;
   newTime;
   hoveredPm;
+  today;
 
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser');
@@ -54,7 +54,21 @@ export class PrivateMessagesComponent implements OnInit {
     collectionData(coll, { idField: 'id' }).subscribe(notes => {
       this.allNotes = notes;
       this.allNotes = this.allNotes.sort((a, b) => (a.id - b.id));
+      this.messageDates()
     });
+  }
+
+  messageDates() {
+    for (let i = 0; i < this.allNotes.length; i++) {
+      let element = this.allNotes[i];
+      let elementOne = this.allNotes[i+1];
+
+      if(elementOne.noteDate !== element.noteDate) {
+        this.today = true;
+      } else {
+        this.today = false;
+      }
+    }
   }
 
 

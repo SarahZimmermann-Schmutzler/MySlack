@@ -36,7 +36,9 @@ export class ChannelMessagesComponent implements OnInit {
   newDescription;
   hoveredIndex: number | null = null;
   newTime;
-  // today;
+  today;
+  dateOne;
+  dateTwo;
 
 
   ngOnInit(): void {
@@ -84,6 +86,7 @@ export class ChannelMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     collectionData(coll, { idField: 'id' }).subscribe(messages => {
       this.messages = messages;
+      // this.messageDates();
       this.messagePosition();
     });
   }
@@ -99,6 +102,17 @@ export class ChannelMessagesComponent implements OnInit {
       }
     }
   }
+
+  // messageDates() {
+  //   for (let i = 0; i < this.messages.length; i++) {
+  //     let element = this.messages[i];
+  //     let elementOne = this.messages[i+1];
+
+  //     if(elementOne.threadDate !== element.threadDate) {
+  //       this.today = true;
+  //     }
+  //   }
+  // }
 
 
   setMessages() {
