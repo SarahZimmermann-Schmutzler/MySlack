@@ -313,24 +313,26 @@
 }
 
 .third-row-responsive {
-    @media(max-width: 1199px) {
-        a {
-            text-decoration: none;
-            color: rgba(83, 90, 241, 1);
-            font-size: 16px;
-            font-weight: 400;
-            margin-right: 20px;
-            cursor: pointer;
+    @media(min-width: 1199px) {
+        display: none;
+    }
 
-            &:hover {
-                font-weight: bold;
-            }
-        }
+    a {
+        text-decoration: none;
+        color: rgba(83, 90, 241, 1);
+        font-size: 16px;
+        font-weight: 400;
+        margin-right: 20px;
+        cursor: pointer;
 
-        span {
-            font-weight: 400;
-            font-size: 14px;
-            color: rgba(104, 104, 104, 1);
+        &:hover {
+            font-weight: bold;
         }
+    }
+
+    span {
+        font-weight: 400;
+        font-size: 14px;
+        color: rgba(104, 104, 104, 1);
     }
 }

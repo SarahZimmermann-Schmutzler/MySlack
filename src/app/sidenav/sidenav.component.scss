@@ -278,8 +278,11 @@
 }
 
 .responsive-channel {
-    @media(max-width: 1199px) {
-        display: flex;
+    @media(min-width: 1199px) {
+        display: none;
+    }
+
+    display: flex;
         align-items: center;
         padding: 5px 15px;
         margin-left: -15px;
@@ -296,7 +299,6 @@
                 font-weight: 700 !important;
             }
         }
-    }
 }
 
 .hover-stay {
@@ -383,35 +385,37 @@
 }
 
 .contact-info-container-responsive {
-    @media(max-width: 1199px) {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-top: 30px;
-        margin-bottom: -20px;
-        width: 100%;
-        border-radius: 30px;
-        padding: 5px 5px;
-        margin-left: -15px;
-        cursor: pointer;
+    @media(min-width: 1199px) {
+        display: none;
+    }
 
-        &:hover {
-            background-color: rgba(236, 238, 254, 1);
-        }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: -20px;
+    width: 100%;
+    border-radius: 30px;
+    padding: 5px 5px;
+    margin-left: -15px;
+    cursor: pointer;
 
-        img {
-            height: 50px;
-            width: 50px;
-            object-fit: contain;
-            border-radius: 100%;
-        }
+    &:hover {
+        background-color: rgba(236, 238, 254, 1);
+    }
 
-        span {
-            font-weight: 400;
-            font-size: 14px;
-            word-break: normal;
-            margin-right: 5px;
-        }
+    img {
+        height: 50px;
+        width: 50px;
+        object-fit: contain;
+        border-radius: 100%;
+    }
+
+    span {
+        font-weight: 400;
+        font-size: 14px;
+        word-break: normal;
+        margin-right: 5px;
     }
 }
 
