@@ -85,6 +85,7 @@
 
     @media(max-width: 767px) {
         justify-content: center;
+        align-items: center;
     }
 }
 
@@ -110,6 +111,7 @@
     @media(max-width: 767px) {
         margin-left: 20px;
         border-top-right-radius: 20px;
+        margin-top: 0;
     }
 }
 
