@@ -43,9 +43,9 @@ export class ChannelMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('currentUser');
-    this.currentChannel = localStorage.getItem('Channel ID');
+    // this.currentChannel = localStorage.getItem('Channel ID');
     // this.today = this.currentTimestamp.toLocaleDateString('de-DE');
-    this.service.sendChannelId(this.currentChannel);
+    // this.service.sendChannelId(this.currentChannel);
     this.service.howManyUsers.subscribe(data => {
       this.howManyUsers = data;
     });
@@ -72,6 +72,8 @@ export class ChannelMessagesComponent implements OnInit {
 
 
   getChannelData() {
+    this.currentChannel = localStorage.getItem('Channel ID') || '6qwzLrVMLaibiNgDtTCT';
+    this.service.sendChannelId(this.currentChannel);
     const docRef = doc(this.collCh, this.currentChannel);
     this.channel$ = docData(docRef);
     this.channel$.subscribe(channel => {

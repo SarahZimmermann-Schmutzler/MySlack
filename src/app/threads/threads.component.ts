@@ -37,7 +37,7 @@ export class ThreadsComponent implements OnInit {
   newTime;
 
   ngOnInit(): void {
-    this.currentChannel = localStorage.getItem('Channel ID');
+    this.currentChannel = localStorage.getItem('Channel ID') || '6qwzLrVMLaibiNgDtTCT';
     this.currentMessage = localStorage.getItem('messageId');
     this.currentThread = localStorage.getItem('threadId');
     this.currentUser = localStorage.getItem('currentUser');
