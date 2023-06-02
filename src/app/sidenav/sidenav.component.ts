@@ -78,7 +78,7 @@ export class SidenavComponent implements OnInit {
     this.channels.description = this.channelDescription || '';
     addDoc(this.collCh, this.channels.toJSON()).then(() => {
       this.channels.name = '';
-      this.channels.description = '';
+      this.channelDescription = '';
       this.closePopup();
     });
   }
@@ -87,15 +87,12 @@ export class SidenavComponent implements OnInit {
   openAndCloseChannels() {
     this.rotateChannel = !this.rotateChannel;
     this.hideChannel = !this.hideChannel;
-    // this.fullSize.emit(false);
   }
 
 
   openAndCloseDirectMessages() {
     this.rotateMessage = !this.rotateMessage;
     this.hideMessage = !this.hideMessage;
-    // this.members = this.allUsers.filter(s => s.name !== this.userName);
-    // this.fullSize.emit(false);
   }
 
 
@@ -125,7 +122,6 @@ export class SidenavComponent implements OnInit {
 
 
   openChannelMessages(channelId) {
-    // this.channelId = channelId;
     localStorage.setItem('Channel ID', channelId);
     this.router.navigateByUrl('/ws-channel').then(() => {
       window.location.reload();
@@ -134,8 +130,6 @@ export class SidenavComponent implements OnInit {
 
   openChannelMessagesResponsive(channelId) {
     localStorage.setItem('Channel ID', channelId);
-    // this.showMessage.emit(true);
-    // this.hideSidenav.emit(true);
     this.router.navigateByUrl('/channel-responsive').then(() => {
       window.location.reload();
     });
