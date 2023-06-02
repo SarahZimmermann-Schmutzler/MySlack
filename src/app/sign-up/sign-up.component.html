@@ -19,7 +19,7 @@
             <div class="input-container"><input required type="email" placeholder="name@mail.de" class="input-mail" name="mail" [(ngModel)]="mail" [(ngModel)]="user.mail" autocomplete="off"></div>
             <div class="input-container"><input required type="password" minLength="8" placeholder="Passwort" class="input-lock" name="password" [(ngModel)]="password"></div>
             <div class="btn-container">
-                <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid">Weiter</button>
+                <button type="submit" [disabled]="form?.invalid" [class.disabled]="form?.invalid">Weiter</button>
             </div>
         </form>
     </div>
