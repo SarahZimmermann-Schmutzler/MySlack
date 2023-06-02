@@ -24,7 +24,9 @@ export class PrivateMessagesComponent implements OnInit {
   userpic;
   newTime;
   hoveredPm;
-  today;
+  messageToday;
+  messagesToday = [];
+  date;
 
   ngOnInit() {
     this.currentUser = localStorage.getItem('currentUser');
@@ -38,13 +40,11 @@ export class PrivateMessagesComponent implements OnInit {
   constructor(public firestore: Firestore, private service: ServiceService) { }
 
   createNotes() {
-    // this.timestamp = this.currentTimestamp.getTime().toString();
     this.timestamp = this.newTime.getTime().toString();
     this.privateMessages.messageDate = this.currentTimestamp.toLocaleDateString('de-DE');
     this.privateMessages.messageTime = this.currentTimestamp.toLocaleTimeString().slice(0, 5);
     setDoc(doc(this.coll, this.currentUser, "notes", this.timestamp), this.privateMessages.toJSON(), { merge: true }).then(() => {
       this.privateMessages.messageText = '';
-      // window.location.reload();
     });
   }
 
@@ -54,21 +54,30 @@ export class PrivateMessagesComponent implements OnInit {
     collectionData(coll, { idField: 'id' }).subscribe(notes => {
       this.allNotes = notes;
       this.allNotes = this.allNotes.sort((a, b) => (a.id - b.id));
-      this.messageDates()
+      // this.messageDates()
     });
   }
 
   messageDates() {
-    for (let i = 0; i < this.allNotes.length; i++) {
-      let element = this.allNotes[i];
-      let elementOne = this.allNotes[i+1];
+    this.date = this.currentTimestamp.toLocaleDateString('de-DE');
+    // this.messagesToday = this.allNotes.filter(s => s.noteDate == this.date)
+    // if(this.messagesToday.length > 0){
+    //   this.messageToday = true;
+    // }
+    // if (this.messagesToday.length > 2) {
+    //   this.messageToday = false;
+    // }
 
-      if(elementOne.noteDate !== element.noteDate) {
-        this.today = true;
+    for (let i = 0; i < this.allNotes.length; i++) {
+      const element = this.allNotes[i].noteDate;
+
+      if(element == this.date) {
+        this.messageToday = true;
       } else {
-        this.today = false;
+        this.messageToday = false;
       }
     }
+    
   }
 
 

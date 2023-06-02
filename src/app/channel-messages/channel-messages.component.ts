@@ -43,9 +43,6 @@ export class ChannelMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('currentUser');
-    // this.currentChannel = localStorage.getItem('Channel ID');
-    // this.today = this.currentTimestamp.toLocaleDateString('de-DE');
-    // this.service.sendChannelId(this.currentChannel);
     this.service.howManyUsers.subscribe(data => {
       this.howManyUsers = data;
     });
@@ -88,7 +85,6 @@ export class ChannelMessagesComponent implements OnInit {
     let coll = collection(this.firestore, 'channels', this.currentChannel, 'messages');
     collectionData(coll, { idField: 'id' }).subscribe(messages => {
       this.messages = messages;
-      // this.messageDates();
       this.messagePosition();
     });
   }
@@ -105,20 +101,8 @@ export class ChannelMessagesComponent implements OnInit {
     }
   }
 
-  // messageDates() {
-  //   for (let i = 0; i < this.messages.length; i++) {
-  //     let element = this.messages[i];
-  //     let elementOne = this.messages[i+1];
-
-  //     if(elementOne.threadDate !== element.threadDate) {
-  //       this.today = true;
-  //     }
-  //   }
-  // }
-
 
   setMessages() {
-    // this.timestamp = this.currentTimestamp.getTime().toString();
     this.timestamp = this.newTime.getTime().toString();
     this.channelMessages.threadWriter = this.userName;
     this.channelMessages.threadPic = this.userPic;
@@ -140,7 +124,6 @@ export class ChannelMessagesComponent implements OnInit {
   }
 
   openThreadResponsive(threadId) {
-    // this.showThreadsSection.emit(true);
     localStorage.setItem('threadId', threadId);
     this.router.navigateByUrl('/threads-responsive').then(() => {
       window.location.reload();

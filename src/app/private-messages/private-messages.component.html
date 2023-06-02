@@ -14,7 +14,7 @@
     <!-- second section -->
     <div class="messages-display-container">
         <div class="message-box" *ngFor="let notes of allNotes; let i = index">
-            <div class="line-date-container" *ngIf="today">
+            <div class="line-date-container">
                 <div class="line"></div>
                 <div class="date-bubble">{{notes.noteDate}}</div>
             </div>
