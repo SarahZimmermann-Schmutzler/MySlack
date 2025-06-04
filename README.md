@@ -4,7 +4,7 @@
 
 **MySlack** is a **business chat client** - a platform similar to [slack](https://slack.com/intl/de-de), but specifically for business use.  
   
-This is the **final project for the frontend course** at the Developer Akademie.
+The project was created as part of my training at the Developer Akademie. This is the **final project of the Frontend course**.
 
 ## Table of Contents
 
@@ -20,17 +20,16 @@ This is the **final project for the frontend course** at the Developer Akademie.
 * **Angular CLI** 15.2.0, [More Information](https://github.com/angular/angular-cli)
 * **HTML / SCSS / TypeScript**
 * **AngularFire** 7.5.0, [More Information](https://github.com/angular/angularfire)
-  * offers an Angular-specific integration of [Firebase](https://firebase.google.com/)
+  * Offers an Angular-specific integration of [Firebase](https://firebase.google.com/)
 
 ## Description
 
 ### Frontend (Angular)
 
-This frontend project is based on a template provided by the Developer Akademie and offers a fully functional chat application powered by Firebase.
+This frontend project is based on a **template provided by the Developer Akademie** and offers a fully functional **chat application powered by Firebase**.
 
 * **User Accounts & Authentication**
   * **Sign up** with name, email and password
-    * Profile saves the **status** so you can see which users are currently active
     ![signup](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/signup.png)
   * **Login** via user account or guest access
     ![login](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/login.png)
@@ -53,11 +52,12 @@ This frontend project is based on a template provided by the Developer Akademie 
 * **Additional Features**
   * Built-in **dummy profiles** provide example content
   * **Search** for members
+  * The profile saves the **status** so you can see which users are currently active
 
 ## Backend (AngularFire/Firebase)
 
 This project does not use a custom backend.  
-Instead, it relies on [**Firebase**](https://firebase.google.com/) as a Backend-as-a-Service (BaaS), integrated via [AngularFire](https://github.com/angular/angularfire), the official Angular library for Firebase.  
+Instead, it relies on [**Firebase**](https://firebase.google.com/) as a **Backend-as-a-Service (BaaS)**, integrated via [AngularFire](https://github.com/angular/angularfire), the official Angular library for Firebase.  
   
 **Firebase handles**:
 
@@ -78,7 +78,7 @@ This setup allows for a fully serverless and scalable chat application with mini
 
 ## Quickstart
 
-This section provides a fast and **minimal setup guide** for using the tools in this repository. For a more **in-depth understanding** and additional options, please refer to the [Usage](#usage) section.
+This section provides a **minimal setup guide**. For detailed instructions, see [Usage](#usage) section.
 
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the project to your platform:
     * <ins>Example</ins>: Clone the repo e.g. using an SSH-Key:  
@@ -87,7 +87,7 @@ This section provides a fast and **minimal setup guide** for using the tools in 
     git clone git@github.com:SarahZimmermann-Schmutzler/MySlack.git
     ```
 
-1. **Install Dependencies**:
+1. **Install the Dependencies**:
 
     ```bash
     npm install
@@ -111,9 +111,9 @@ This section provides a fast and **minimal setup guide** for using the tools in 
     ```
 
 > [!IMPORTANT]
-> Do not use the configuration provided in this repository. Always use your own Firebase credentials!
+> **Do not use the configuration provided in this repository. Always use your own Firebase credentials!**
 
-1. **Run the App**
+1. **Run the App**:
 
     ```bash
     ng serve
@@ -128,26 +128,29 @@ This section provides a fast and **minimal setup guide** for using the tools in 
     git clone git@github.com:SarahZimmermann-Schmutzler/MySlack.git
     ```
 
+    * Change in the project directory:
+
     ```bash
     cd MySlack
     ```
 
-1. **Install Dependencies**:
+1. **Install the Dependencies**:
 
     ```bash
     npm install
     ```
 
-1. Create a **Firebase Project** [here](https://console.firebase.google.com)
+1. Create a **Firebase Project** [here](https://console.firebase.google.com):
 
-   * In the Firebase console click `Add project` and follow the setup wizard
+   * Go to **Firebase Console**
+   * Click `Add project`
+   * Complete the setup wizard
+   * Under `Project Settings > General`, create a **Web App**
+   * Your will need the **config object** for the next step
 
-1. **Change Firebase Configuration** in `environment.ts` and `environment.development.ts`
+1. **Change Firebase Configuration** in `environment.ts` and `environment.development.ts`:
 
    * To **connect your local project to your own Firebase instance**, follow these steps:
-     * Open the Firebase Console
-     * Select your project
-     * In the left sidebar, click the **gear icon** to `project overview`, then select `project settings`
      * Copy the Firebase configuration and replace the values in:
 
        ```bash
@@ -171,12 +174,12 @@ This section provides a fast and **minimal setup guide** for using the tools in 
     ```
 
 > [!IMPORTANT]
-> Do not use the configuration provided in this repository. Always use your own Firebase credentials!
+> **Do not use the configuration provided in this repository. Always use your own Firebase credentials!**
 
-1. Run the App
+1. **Run the App**:
 
     ```bash
     ng serve
     ```
 
-    * Navigate in your browser to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+    * Navigate in your **browser** to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
