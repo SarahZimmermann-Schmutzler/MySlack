@@ -1,6 +1,50 @@
 # MySlack
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+**MySlack** is a **business chat client** - a platform similar to [slack](https://slack.com/intl/de-de), but specifically for business use.  
+  
+This is the **final project for the frontend course** at the Developer Akademie.
+
+## Table of Contents
+
+1. [Technologies](#technologies)  
+1. [Description](#description)
+   * [Frontend (Angular)](#frontend-angular)
+1. [Quickstart](#quickstart)  
+1. [Usage](#usage)
+
+## Technologies
+
+* **Angular CLI** 15.2.0, [More Information](https://github.com/angular/angular-cli)
+* **HTML / SCSS / TypeScript**
+* **AngularFire** 7.5.0, [More Information](https://github.com/angular/angularfire)
+  * offers an Angular-specific integration of [Firebase](https://firebase.google.com/)
+
+## Description
+
+### Frontend (Angular)
+
+This frontend project is based on a template provided by the Developer Akademie and offers a fully functional chat application powered by Firebase.
+
+* **User Accounts & Authentication**
+  * **Sign up** with name, email and password
+    * Profile saves the **status** so you can see which users are currently active
+      ![signup](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/signup.png)
+  * **Login** via user account or guest access
+  * **Password reset** via email
+
+* **Channel System**
+  * **Public channels** for group chatting
+    * Users can **create and edit** channels (name & description)
+  * Post **messages** and reply in **threads**
+  * **Thread section** is open by default, but can be toggled
+
+* **Direct Messaging (DMs)**
+  * Send **private messages** to other registered users
+  * Send messages to yourself (e.g., for **personal notes**)
+
+* **Additional Features**
+  * Built-in **dummy profiles** provide example content
+  * **Search** for members
 
 ## Development server
 
