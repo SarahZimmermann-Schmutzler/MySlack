@@ -113,7 +113,7 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
 > [!IMPORTANT]
 > **Do not use the configuration provided in this repository. Always use your own Firebase credentials!**
 
-1. **Run the App**:
+5. **Run the App**:
 
     ```bash
     ng serve
@@ -176,7 +176,7 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
 > [!IMPORTANT]
 > **Do not use the configuration provided in this repository. Always use your own Firebase credentials!**
 
-1. **Run the App**:
+5. **Run the App**:
 
     ```bash
     ng serve
