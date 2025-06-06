@@ -8,73 +8,19 @@ The project was created as part of my training at the Developer Akademie. This i
 
 ## Table of Contents
 
-1. [Technologies](#technologies)  
-1. [Description](#description)
-   * [Frontend (Angular)](#frontend-angular)
-   * [Backend (AngularFire/Firebase)](#backend-angularfirefirebase)
-1. [Quickstart](#quickstart)  
+1. [Prerequisites](#prerequisites)
+1. [Quickstart](#quickstart)
 1. [Usage](#usage)
+   * [Setup Guide](#setup-guide)
+   * [Description](#description)
+     * [Frontend (Angular)](#frontend-angular)
+     * [Backend (AngularFire/Firebase)](#backend-angularfirefirebase)
 
-## Technologies
+## Prerequisites
 
 * **Angular CLI** 15.2.0, [More Information](https://github.com/angular/angular-cli)
-* **HTML / SCSS / TypeScript**
 * **AngularFire** 7.5.0, [More Information](https://github.com/angular/angularfire)
   * Offers an Angular-specific integration of [Firebase](https://firebase.google.com/)
-
-## Description
-
-### Frontend (Angular)
-
-This frontend project is based on a **template provided by the Developer Akademie** and offers a fully functional **chat application powered by Firebase**.
-
-* **User Accounts & Authentication**
-  * **Sign up** with name, email and password
-    ![signup](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/signup.png)
-  * **Login** via user account or guest access
-    ![login](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/login.png)
-  * **Password reset** via email
-    ![password](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/password.png)
-
-* **Channel System**
-  * **Public channels** for group chatting
-    * Users can **create and edit** channels (name & description)
-  * Post **messages** and reply in **threads**
-  * **Thread section** is open by default, but can be toggled
-    ![channels](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/channels.png)
-
-* **Direct Messaging (DMs)**
-  * Send **private messages** to other registered users
-    ![dm](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/dm.png)
-  * Send messages to yourself (e.g., for **personal notes**)
-    ![note](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/notes.png)
-
-* **Additional Features**
-  * Built-in **dummy profiles** provide example content
-  * **Search** for members
-  * The profile saves the **status** so you can see which users are currently active
-
-## Backend (AngularFire/Firebase)
-
-This project does not use a custom backend.  
-Instead, it relies on [**Firebase**](https://firebase.google.com/) as a **Backend-as-a-Service (BaaS)**, integrated via [AngularFire](https://github.com/angular/angularfire), the official Angular library for Firebase.  
-  
-**Firebase handles**:
-
-* **Authentication**
-  * Email/password **login**
-  * **Password reset** via email
-* **Firestore database** - Real-time storage and retrieval of:
-  * **Users** (mail, name, picture, status)
-    * Direct messages between users
-    * Notes (self-messages)
-  * **Channels** (description, name)
-    * Messages within each channel
-    * Threaded replies to messages
-* **Firebase Hosting**
-  * **Static deployment** of the Angular app
-
-This setup allows for a fully serverless and scalable chat application with minimal backend maintenance.
 
 ## Quickstart
 
@@ -85,6 +31,7 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
 
     ```bash
     git clone git@github.com:SarahZimmermann-Schmutzler/MySlack.git
+    cd MySlack
     ```
 
 1. **Install the Dependencies**:
@@ -120,6 +67,8 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
     ```
 
 ## Usage
+
+### Setup Guide
 
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the project to your platform:
     * <ins>Example</ins>: Clone the repo e.g. using an SSH-Key:  
@@ -183,3 +132,57 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
     ```
 
     * Navigate in your **browser** to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+### Description
+
+#### Frontend (Angular)
+
+This frontend project is based on a **template provided by the Developer Akademie** and offers a fully functional **chat application powered by Firebase**.
+
+* **User Accounts & Authentication**
+  * **Sign up** with name, email and password
+    ![signup](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/signup.png)
+  * **Login** via user account or guest access
+    ![login](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/login.png)
+  * **Password reset** via email
+    ![password](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/password.png)
+
+* **Channel System**
+  * **Public channels** for group chatting
+    * Users can **create and edit** channels (name & description)
+  * Post **messages** and reply in **threads**
+  * **Thread section** is open by default, but can be toggled
+    ![channels](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/channels.png)
+
+* **Direct Messaging (DMs)**
+  * Send **private messages** to other registered users
+    ![dm](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/dm.png)
+  * Send messages to yourself (e.g., for **personal notes**)
+    ![note](https://raw.githubusercontent.com/SarahZimmermann-Schmutzler/MySlack/main/img_github/notes.png)
+
+* **Additional Features**
+  * Built-in **dummy profiles** provide example content
+  * **Search** for members
+  * The profile saves the **status** so you can see which users are currently active
+
+### Backend (AngularFire/Firebase)
+
+This project does not use a custom backend.  
+Instead, it relies on [**Firebase**](https://firebase.google.com/) as a **Backend-as-a-Service (BaaS)**, integrated via [AngularFire](https://github.com/angular/angularfire), the official Angular library for Firebase.  
+  
+**Firebase handles**:
+
+* **Authentication**
+  * Email/password **login**
+  * **Password reset** via email
+* **Firestore database** - Real-time storage and retrieval of:
+  * **Users** (mail, name, picture, status)
+    * Direct messages between users
+    * Notes (self-messages)
+  * **Channels** (description, name)
+    * Messages within each channel
+    * Threaded replies to messages
+* **Firebase Hosting**
+  * **Static deployment** of the Angular app
+
+This setup allows for a fully serverless and scalable chat application with minimal backend maintenance.
