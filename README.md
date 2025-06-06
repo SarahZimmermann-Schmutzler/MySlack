@@ -51,7 +51,7 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
             appId: 'your-app-id',
             storageBucket: 'your-project.appspot.com',
             apiKey: 'YOUR_API_KEY',
-            authDomain: 'myour-project.firebaseapp.com',
+            authDomain: 'your-project.firebaseapp.com',
             messagingSenderId: 'your-messaging-sender-id',
         }
     };
@@ -116,7 +116,7 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
             appId: 'your-app-id',
             storageBucket: 'your-project.appspot.com',
             apiKey: 'YOUR_API_KEY',
-            authDomain: 'myour-project.firebaseapp.com',
+            authDomain: 'your-project.firebaseapp.com',
             messagingSenderId: 'your-messaging-sender-id',
         }
     };
