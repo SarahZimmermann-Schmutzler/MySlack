@@ -137,7 +137,7 @@ This section provides a **minimal setup guide**. For detailed instructions, see 
 
 #### Frontend (Angular)
 
-This frontend project is based on a **template provided by the Developer Akademie** and offers a fully functional **chat application powered by Firebase**.
+Based on a **mockup by the Developer Akademie**, I independently developed the frontend and built a fully functional **chat application powered by Firebase**.
 
 * **User Accounts & Authentication**
   * **Sign up** with name, email and password
